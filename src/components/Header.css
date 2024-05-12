@@ -1,0 +1,69 @@
+/* Base styling for the header */
+.header {
+    background-color: #333; /* Dark background for the header */
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3); /* Subtle shadow for depth */
+}
+
+/* Logo styling */
+.logo {
+    width: 150px; /* Adjust based on your logo size */
+    height: auto; /* Maintain aspect ratio */
+}
+
+/* Navigation links styling */
+.nav_links {
+    list-style: none;
+    padding: 0; /* Removes padding */
+    margin: 0; /* Aligns closely with the flex container */
+    display: flex; /* Flexbox for horizontal layout */
+    align-items: center; /* Center items vertically */
+}
+
+.nav_links li {
+    margin: 0 15px; /* Spacing between menu items */
+}
+
+/* Link styling */
+.nav_links a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px; /* Padding for clickable area */
+    border-radius: 5px; /* Rounded corners for the hover effect */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
+}
+
+/* Hover and focus styles for links */
+.nav_links a:hover, .nav_links a:focus {
+    background-color: #555; /* Slightly lighter background on hover */
+    color: #fff; /* Keeps text color white */
+    outline: none; /* Removes the outline on focus for clean look */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column; /* Stacks logo and navigation vertically on small screens */
+        padding: 20px;
+    }
+
+    .nav_links {
+        width: 100%; /* Full width for the nav links */
+        justify-content: center; /* Centering links */
+        margin-top: 10px; /* Adds space between logo and links */
+    }
+
+    .nav_links li {
+        display: block; /* Stacks links vertically */
+        margin: 5px 0; /* Reduces margin for stacked links */
+    }
+
+    .nav_links a {
+        display: block; /* Full width link areas */
+    }
+}
