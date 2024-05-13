@@ -1,6 +1,6 @@
 /* Base styling for the header */
 .header {
-    background-color: #333; /* Dark background for the header */
+    background-color: #000; /* Black background for the header */
     color: white;
     padding: 10px 20px;
     display: flex;
@@ -11,8 +11,13 @@
 
 /* Logo styling */
 .logo {
-    width: 150px; /* Adjust based on your logo size */
+    width: 200px; /* Increased logo size */
     height: auto; /* Maintain aspect ratio */
+    transition: transform 0.3s; /* Smooth transition for hover effect */
+}
+
+.logo:hover {
+    transform: scale(1.1); /* Slightly enlarge the logo on hover */
 }
 
 /* Navigation links styling */
@@ -33,7 +38,7 @@
     color: white;
     text-decoration: none;
     font-weight: bold;
-    padding: 10px; /* Padding for clickable area */
+    padding: 10px 15px; /* Increased padding for clickable area */
     border-radius: 5px; /* Rounded corners for the hover effect */
     transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
 }

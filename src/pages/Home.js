@@ -18,15 +18,16 @@ function Home() {
                     Embark on a tailored learning journey that transforms your curiosity into expertise.<br />
                     Join Standex Dojo and start building real skills today.
                 </p>
-                <img src="Learning.webp" alt="Learning at Standex Dojo" className="learning-image"/>
-                <div className="features">
-                    <h2>Features</h2>
-                    <ul>
-                        <li><strong>AI-driven Course Recommendations:</strong> Utilize cutting-edge artificial intelligence to receive personalized course suggestions tailored to your skills, career goals, and learning pace, ensuring an optimal educational pathway.</li>
-                        <li><strong>Interactive Learning Paths:</strong> Engage with dynamic, customizable learning paths that adapt to your progress and interests, featuring interactive elements such as quizzes, hands-on projects, and real-time feedback to enhance your learning experience.</li>
-                        <li><strong>Community Support and Networking:</strong> Gain access to a vibrant community of learners and professionals. Participate in forums, collaborative projects, and networking events that foster connections with industry experts and peers worldwide.</li>
-                        <li><strong>Progress Tracking and Achievements:</strong> Monitor your learning progress with an advanced tracking system that visually displays your achievements and milestones. Get motivated by earning badges and certificates as you master new skills and complete courses.</li>
-                    </ul>
+                <img src="/Learning.png" alt="Learning at Standex Dojo" className="learning-image"/>
+                <div className="why-choose">
+                    <h2>Why Choose Standex Dojo</h2>
+                    <p>At Standex Dojo, we are committed to providing an unparalleled learning experience tailored to your individual needs. Our platform stands out because of our focus on personalized education, community support, and comprehensive progress tracking. Here are a few reasons why you should choose Standex Dojo:</p>
+                    <div className="feature-images">
+                        <img src="/Frame1.svg" alt="AI-driven Course Recommendations" className="feature-image"/>
+                        <img src="/Frame2.svg" alt="Interactive Learning Paths" className="feature-image"/>
+                        <img src="/Frame3.svg" alt="Community Support and Networking" className="feature-image"/>
+                        <img src="/Frame4.svg" alt="Progress Tracking and Achievements" className="feature-image"/>
+                    </div>
                 </div>
                 <div className="demo">
                     <h3>Interactive Demo</h3>

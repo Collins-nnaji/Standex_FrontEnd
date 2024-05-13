@@ -1,41 +1,78 @@
 /* Base styling for the footer */
 .footer {
-    background-color: #333; /* Dark background for the footer */
+    background-color: #000; /* Black background for the footer */
     color: white;
-    text-align: center;
-    padding: 20px 0; /* Adjust padding for better vertical alignment */
-    font-family: 'Arial', sans-serif; /* Ensuring consistent font usage */
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.3); /* Subtle shadow for depth */
+    flex-wrap: wrap; /* Allows content to wrap on smaller screens */
 }
 
-/* Styling for social links */
+/* Footer logo styling */
+.footer-logo {
+    width: 150px; /* Adjust size based on your logo */
+    height: auto; /* Maintain aspect ratio */
+    transition: transform 0.3s; /* Smooth transition for hover effect */
+    margin-right: 20px; /* Space between logo and text */
+}
+
+.footer-logo:hover {
+    transform: scale(1.1); /* Slightly enlarge the logo on hover */
+}
+
+/* Footer text styling */
+.footer p {
+    margin: 0; /* Remove default margin */
+    flex: 1; /* Allow text to take up remaining space */
+}
+
+/* Social links styling */
 .social_links {
-    padding: 0;
-    margin: 0; /* Remove default margin for list if it's used */
-    list-style: none; /* Remove bullets if it's a list */
+    list-style: none;
+    padding: 0; /* Removes padding */
+    margin: 0; /* Aligns closely with the flex container */
+    display: flex; /* Flexbox for horizontal layout */
+    align-items: center; /* Center items vertically */
 }
 
 .social_links a {
     color: white;
-    margin: 0 15px; /* Increased margin for better spacing */
     text-decoration: none;
-    font-weight: bold; /* Makes the links stand out more */
-    transition: color 0.3s, transform 0.3s; /* Smooth transition for hover effects */
+    font-weight: bold;
+    padding: 10px; /* Padding for clickable area */
+    border-radius: 5px; /* Rounded corners for the hover effect */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
+    margin: 0 10px; /* Space between social links */
 }
 
-/* Hover effects for links */
 .social_links a:hover, .social_links a:focus {
-    color: #aaa; /* Lighter color on hover for visibility */
-    transform: translateY(-2px); /* Subtle lift effect on hover */
-    outline: none; /* Remove outline on focus for a clean look */
+    background-color: #555; /* Slightly lighter background on hover */
+    color: #fff; /* Keeps text color white */
+    outline: none; /* Removes the outline on focus for clean look */
 }
 
-/* Additional responsive styling can be added as needed */
+/* Responsive adjustments */
 @media (max-width: 768px) {
     .footer {
-        padding: 20px 10px; /* Adjust padding for smaller screens */
+        flex-direction: column; /* Stacks logo and navigation vertically on small screens */
+        align-items: center; /* Center items horizontally */
+        padding: 20px;
+    }
+
+    .footer p {
+        margin: 10px 0; /* Adds space above and below the text */
+        text-align: center; /* Center align the text */
+    }
+
+    .social_links {
+        justify-content: center; /* Centering links */
+        margin-top: 10px; /* Adds space between text and links */
     }
 
     .social_links a {
-        margin: 0 10px; /* Adjust margins on smaller screens */
+        display: block; /* Full width link areas */
+        margin: 5px 0; /* Adds space between links */
     }
 }
