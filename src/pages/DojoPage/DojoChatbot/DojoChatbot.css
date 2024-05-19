@@ -1,0 +1,12 @@
+.dojo-chatbot {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+.dojo-chatbot h1 {
+  color: #333;
+}
+
+.dojo-chatbot p {
+  margin: 10px 0;
+}

@@ -1,0 +1,46 @@
+.ui.styled.accordion {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .ui.styled.accordion .title {
+    cursor: pointer;
+    padding: 15px;
+    background: #f7f7f7;
+    border: 1px solid #ddd;
+    border-top: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .ui.styled.accordion .title:first-child {
+    border-top: 1px solid #ddd;
+  }
+  
+  .ui.styled.accordion .title.active {
+    background: #e7e7e7;
+  }
+  
+  .ui.styled.accordion .content {
+    display: none;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-top: none;
+    background: #fff;
+  }
+  
+  .ui.styled.accordion .content.active {
+    display: block;
+  }
+  
+  .ui.styled.accordion .icon {
+    margin-left: auto;
+    transition: transform 0.2s ease;
+  }
+  
+  .ui.styled.accordion .icon.active {
+    transform: rotate(180deg);
+  }
+  

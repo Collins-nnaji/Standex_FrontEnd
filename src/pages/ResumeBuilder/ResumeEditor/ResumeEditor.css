@@ -1,0 +1,15 @@
+.resume-editor {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  text-align: center;
+}
+
+.resume-editor h1 {
+  color: #333;
+}
+
+.feature-image {
+  width: 100%;
+  max-width: 600px;
+  margin: 20px 0;
+}
