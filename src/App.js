@@ -4,7 +4,6 @@ import HomePage from './pages/HomePage/HomePage';
 import DojoPage from './pages/DojoPage/DojoPage';
 import JobBoard from './pages/JobBoard/JobBoard';
 import ResumeBuilder from './pages/ResumeBuilder/ResumeBuilder';
-import ServicesPage from './pages/ServicesPage/ServicesPage';
 import DojoChatbot from './pages/DojoPage/DojoChatbot/DojoChatbot';
 import LearningPath from './pages/DojoPage/LearningPath/LearningPath';
 import ProgressTracking from './pages/DojoPage/ProgressTracking/ProgressTracking';
@@ -12,10 +11,7 @@ import Community from './pages/DojoPage/Community/Community';
 import TemplateGallery from './pages/ResumeBuilder/TemplateGallery/TemplateGallery';
 import ResumeEditor from './pages/ResumeBuilder/ResumeEditor/ResumeEditor';
 import ProfileSetup from './pages/ResumeBuilder/ProfileSetup/ProfileSetup';
-import CloudServices from './pages/ServicesPage/CloudServices/CloudServices';
-import WebMobileApp from './pages/ServicesPage/WebMobileApp/WebMobileApp';
-import DigitalMarketing from './pages/ServicesPage/DigitalMarketing/DigitalMarketing';
-import DataAI from './pages/ServicesPage/DataAI/DataAI';
+
 
 const App = () => {
   return (
@@ -32,11 +28,7 @@ const App = () => {
           <Route path="/resume-builder/template-gallery" element={<TemplateGallery />} />
           <Route path="/resume-builder/resume-editor" element={<ResumeEditor />} />
           <Route path="/resume-builder/profile-setup" element={<ProfileSetup />} />
-          <Route path="/services" element={<ServicesPage />} />
-          <Route path="/services/cloud-services" element={<CloudServices />} />
-          <Route path="/services/web-mobile-app" element={<WebMobileApp />} />
-          <Route path="/services/digital-marketing" element={<DigitalMarketing />} />
-          <Route path="/services/data-ai" element={<DataAI />} />
+
           <Route path="/job-board" element={<JobBoard />} />
         </Routes>
       </div>

@@ -1,26 +1,157 @@
+/* Import the Poppins font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
 .homepage {
-  font-family: Arial, sans-serif;
-  text-align: center;
+  font-family: 'Poppins', sans-serif;
   padding: 20px;
+  text-align: center;
 }
 
-.homepage-header {
-  background-color: #4CAF50;
-  color: white;
-  padding: 50px 0;
+.container {
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
 }
 
-.homepage-content {
+.homepage-header,
+.vision-mission,
+.our-team,
+.service-section {
+  background: #f4fdfb; /* Light blend of green and white */
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.homepage-header:hover,
+.vision-mission:hover,
+.our-team:hover,
+.service-section:hover {
+  background-color: #e9fbf7; /* Slightly darker blend for hover */
+}
+
+.homepage-header h1,
+.vision-mission h2,
+.our-team h2,
+.service-section h2 {
+  color: #19B188;
+  font-weight: 600; /* Make headers bold */
+}
+
+.vision-mission p,
+.our-team p,
+.service-section p {
+  margin: 10px 0;
+}
+
+.cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px; /* Reduce the gap */
   margin: 20px 0;
 }
 
-.faq-section {
+.card {
+  width: 150px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.1);
+}
+
+.service-section {
   margin: 40px 0;
-  text-align: left;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow to the service sections */
+}
+
+.feature-image {
+  width: 100%;
+  max-width: 600px;
+  margin: 20px 0;
 }
 
 .home-image {
   width: 100%;
-  max-width: 800px;
-  margin: 20px 0;
+  max-width: 600px;
+  margin-top: 20px;
+}
+
+/* Footer styling */
+.footer {
+  background-color: #f8f8f8; /* Adjust the background color as needed */
+  padding: 10px 20px; /* Reduce padding to make the footer smaller */
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer p {
+  margin: 0;
+  color: #333;
+}
+
+.social-media {
+  display: flex;
+  gap: 15px;
+}
+
+.social-media a {
+  text-decoration: none;
+  color: #19B188; /* Match the color scheme */
+  font-weight: bold;
+}
+
+.social-media a:hover {
+  color: #0073e6;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .container {
+    max-width: 95%;
+    padding: 10px;
+  }
+
+  .cards {
+    flex-direction: column;
+    align-items: center; /* Center the cards */
+  }
+
+  .card {
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 10px; /* Adjust margin to reduce space between cards */
+  }
+
+  .home-image {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .feature-image {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .social-media {
+    margin-top: 10px;
+  }
 }
