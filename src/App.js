@@ -12,7 +12,6 @@ import TemplateGallery from './pages/ResumeBuilder/TemplateGallery/TemplateGalle
 import ResumeEditor from './pages/ResumeBuilder/ResumeEditor/ResumeEditor';
 import ProfileSetup from './pages/ResumeBuilder/ProfileSetup/ProfileSetup';
 
-
 const App = () => {
   return (
     <Router>
@@ -28,7 +27,6 @@ const App = () => {
           <Route path="/resume-builder/template-gallery" element={<TemplateGallery />} />
           <Route path="/resume-builder/resume-editor" element={<ResumeEditor />} />
           <Route path="/resume-builder/profile-setup" element={<ProfileSetup />} />
-
           <Route path="/job-board" element={<JobBoard />} />
         </Routes>
       </div>

@@ -39,6 +39,7 @@ const HomePage = () => {
         </section>
         <section className="homepage-content">
           <h2>Our Services</h2>
+          <p>We offer a range of services to help businesses grow and succeed in the digital world. Explore the options below to learn more about what we can do for you.</p>
           <div className="cards">
             <div onClick={() => scrollToSection(cloudServicesRef)}>
               <img src="/images/Cloud Service Card.svg" alt="Cloud Services" className="card" />
