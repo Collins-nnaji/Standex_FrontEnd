@@ -18,6 +18,12 @@ const Header = () => {
             <li><Link to="/resume-builder">Resume Builder</Link></li>
             <li><Link to="/job-board">Job Board</Link></li>
           </ul>
+          <ul className="breadcrumb-nav">
+            <li className="breadcrumb-item"><Link to="/">Home</Link></li>
+            <li className="breadcrumb-item"><Link to="/dojo">Dojo</Link></li>
+            <li className="breadcrumb-item"><Link to="/resume-builder">Resume Builder</Link></li>
+            <li className="breadcrumb-item"><Link to="/job-board">Job Board</Link></li>
+          </ul>
         </nav>
       </div>
     </header>

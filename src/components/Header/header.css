@@ -52,6 +52,29 @@
   color: #0073e6;
 }
 
+/* Breadcrumb Navigation */
+.breadcrumb-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: none; /* Initially hide the breadcrumb */
+}
+
+.breadcrumb-item {
+  display: inline;
+}
+
+.breadcrumb-item a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  padding: 14px 16px;
+}
+
+.breadcrumb-item a:hover {
+  color: #0073e6;
+}
+
 /* Responsive Styles */
 @media (max-width: 1200px) {
   .nav-container {
@@ -74,12 +97,17 @@
   }
 
   .nav-links {
-    gap: 10px; /* Reduced gap */
+    display: none; /* Hide the regular navigation links on mobile */
+  }
+
+  .breadcrumb-nav {
+    display: flex; /* Show the breadcrumb navigation on mobile */
     flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    gap: 10px; /* Adjust gap */
     justify-content: center; /* Center the items */
   }
 
-  .nav-links a {
+  .breadcrumb-item a {
     font-size: 14px; /* Reduced font size */
     padding: 8px 10px; /* Reduced padding */
   }
