@@ -32,8 +32,8 @@
   gap: 20px;
   margin: 0;
   padding: 0;
-  flex-wrap: nowrap; /* Prevent wrapping */
-  overflow-x: auto; /* Enable horizontal scrolling */
+  flex-wrap: wrap; /* Allow wrapping */
+  overflow: hidden; /* Hide overflow */
 }
 
 .nav-links li {
@@ -61,12 +61,12 @@
 
 @media (max-width: 768px) {
   .header {
-    padding: 5px 10px;
+    padding: 10px 10px; /* Adjust padding to match the site’s container */
   }
 
   .nav-container {
-    max-width: 95%;
-    padding: 0 10px;
+    max-width: 95%; /* Ensure the header container matches the site’s container */
+    padding: 0 10px; /* Adjust padding to match the site’s container */
   }
 
   .logo img {
@@ -75,6 +75,8 @@
 
   .nav-links {
     gap: 10px; /* Reduced gap */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    justify-content: center; /* Center the items */
   }
 
   .nav-links a {
