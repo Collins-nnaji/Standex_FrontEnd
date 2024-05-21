@@ -33,16 +33,15 @@
 /* Responsive Styles */
 @media (max-width: 768px) {
   .navigation ul {
-    flex-direction: column; /* Stack items vertically */
-    align-items: center; /* Center items horizontally */
+    flex-wrap: nowrap; /* Ensure items do not wrap */
+    overflow-x: auto; /* Enable horizontal scrolling if necessary */
   }
 
   .navigation li {
-    width: 100%; /* Ensure each item takes full width */
+    flex-shrink: 0; /* Prevent items from shrinking */
   }
 
   .navigation li a {
-    text-align: left; /* Align text to the left */
-    padding: 14px 20px; /* Add more padding for better touch target */
+    padding: 10px 12px; /* Adjust padding for touch targets */
   }
 }

@@ -32,11 +32,12 @@
   gap: 20px;
   margin: 0;
   padding: 0;
-  flex-wrap: wrap; /* Ensure items wrap if necessary */
+  flex-wrap: nowrap; /* Prevent wrapping */
+  overflow-x: auto; /* Enable horizontal scrolling */
 }
 
 .nav-links li {
-  display: inline;
+  flex-shrink: 0; /* Prevent items from shrinking */
 }
 
 .nav-links a {
@@ -44,6 +45,7 @@
   color: #333;
   font-weight: bold;
   padding: 14px 16px; /* Ensure padding for touch targets */
+  white-space: nowrap; /* Prevent text from wrapping */
 }
 
 .nav-links a:hover {
@@ -73,13 +75,6 @@
 
   .nav-links {
     gap: 10px; /* Reduced gap */
-    flex-wrap: nowrap; /* Prevent wrapping */
-    overflow-x: auto; /* Allow horizontal scrolling */
-    justify-content: space-between; /* Adjust to fit items within the container */
-  }
-
-  .nav-links li {
-    flex-shrink: 0; /* Prevent shrinking */
   }
 
   .nav-links a {
