@@ -16,8 +16,7 @@
 }
 
 .homepage-header,
-.vision-mission,
-.our-team,
+.combined-section,
 .service-section,
 .homepage-content {
   background: #f4fdfb; /* Light blend of green and white */
@@ -28,27 +27,36 @@
 }
 
 .homepage-header:hover,
-.vision-mission:hover,
-.our-team:hover,
+.combined-section:hover,
 .service-section:hover,
 .homepage-content:hover {
   background-color: #e9fbf7; /* Slightly darker blend for hover */
 }
 
+.welcome-section {
+  background-color: #fff; /* Set background color to white */
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
 .homepage-header h1,
-.vision-mission h2,
-.our-team h2,
+.combined-section h2,
 .service-section h2,
 .homepage-content h2 {
-  color: #1ab188;
+  color: #138f71; /* Increase the intensity of the green */
   font-weight: 600; /* Make headers bold */
 }
 
-.vision-mission p,
-.our-team p,
+.combined-section p,
 .service-section p,
-.homepage-content p {
-  margin: 10px 0;
+.homepage-content p,
+.welcome-section p {
+  margin: 20px 0; /* Increase the paragraph spacing */
+  color: #000; /* Set paragraph text color to black for high contrast */
+  line-height: 2; /* Set line height to 2 for equivalent of double spacing */
+  font-size: 1.1rem; /* Increase the font size */
 }
 
 .cards {
@@ -85,6 +93,7 @@
   border-radius: 5px;
   cursor: pointer;
   font-size: 1rem;
+  margin-top: 10px;
 }
 
 .consultation-button:hover {
@@ -102,7 +111,29 @@
   margin: 20px 0;
 }
 
+.service-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.service-content p {
+  text-align: left;
+}
+
 .home-image {
+  width: 100%;
+  max-width: 600px;
+  margin-top: 20px;
+}
+
+.logo {
+  max-width: 200px;
+  margin-bottom: 20px;
+}
+
+.welcome-image {
   width: 100%;
   max-width: 600px;
   margin-top: 20px;
@@ -180,4 +211,84 @@
   .social-media {
     margin-top: 10px;
   }
+}
+
+/* Consultation Section Styling */
+.consultation-section {
+  background: #f4fdfb;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  text-align: center;
+}
+
+.consultation-link {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #1ab188;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  text-decoration: none;
+}
+
+.consultation-link:hover {
+  background-color: #16a085;
+}
+
+.consultation-form {
+  margin-top: 20px;
+  display: none; /* Initially hide the form */
+  max-width: 600px; /* Limit the form's width */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.consultation-form.active {
+  display: block; /* Show the form when active */
+}
+
+.consultation-form input[type="text"],
+.consultation-form input[type="email"] {
+  width: 48%; /* Make the name and email inputs smaller */
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem; /* Adjusted font size for better readability */
+  display: inline-block; /* Display them inline */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.consultation-form input[type="email"] {
+  float: right; /* Align the email input to the right */
+}
+
+.consultation-form textarea {
+  width: 100%; /* Make the message textarea larger */
+  height: 150px; /* Increase the height of the textarea */
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem; /* Adjusted font size for better readability */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.consultation-form button {
+  padding: 10px 20px;
+  background-color: #1ab188;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.consultation-form button:hover {
+  background-color: #16a085;
 }

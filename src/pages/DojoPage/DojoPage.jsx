@@ -9,7 +9,7 @@ const DojoPage = () => {
     <div className="dojo-page">
       <Header />
       <div className="container">
-        <div className="intro-container">
+        <div className="welcome-section">
           <img src="/images/dojo_logo.png" alt="Dojo Logo" className="dojo-logo" />
           <div className="intro-text">
             <h2>Welcome to Standex Dojo</h2>

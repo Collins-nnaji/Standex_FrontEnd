@@ -15,6 +15,14 @@
   background-color: #fff;
 }
 
+.welcome-section {
+  background-color: #fff; /* Set background color to white */
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
 .intro-container,
 .features-container,
 .get-started,

@@ -8,7 +8,7 @@ const Header = () => {
       <div className="nav-container">
         <div className="logo">
           <Link to="/">
-            <img src="/images/logo.png" alt="Standex Digital Logo" />
+            <img src="/images/logo.svg" alt="Standex Digital Logo" />
           </Link>
         </div>
         <nav>
