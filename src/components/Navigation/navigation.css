@@ -1,16 +1,21 @@
+/* Base Styles */
 .navigation {
   background-color: #333;
   overflow: hidden;
+  width: 100%; /* Ensure it takes full width */
+  box-sizing: border-box; /* Include padding in width calculation */
 }
 
 .navigation ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
+  display: flex; /* Use flexbox for layout */
+  justify-content: flex-start; /* Align items to the start */
 }
 
 .navigation li {
-  float: left;
+  float: none; /* Remove float */
 }
 
 .navigation li a {
@@ -23,4 +28,21 @@
 
 .navigation li a:hover {
   background-color: #111;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .navigation ul {
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+  }
+
+  .navigation li {
+    width: 100%; /* Ensure each item takes full width */
+  }
+
+  .navigation li a {
+    text-align: left; /* Align text to the left */
+    padding: 14px 20px; /* Add more padding for better touch target */
+  }
 }
