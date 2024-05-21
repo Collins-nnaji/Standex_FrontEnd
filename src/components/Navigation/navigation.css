@@ -30,18 +30,46 @@
   background-color: #111;
 }
 
+/* Breadcrumb Navigation */
+.breadcrumb-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: none; /* Initially hide the breadcrumb */
+  gap: 10px; /* Adjust gap */
+}
+
+.breadcrumb-item {
+  display: inline;
+}
+
+.breadcrumb-item a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  padding: 8px 10px; /* Adjust padding */
+  white-space: nowrap; /* Prevent text from wrapping */
+}
+
+.breadcrumb-item a:hover {
+  color: #0073e6;
+}
+
 /* Responsive Styles */
 @media (max-width: 768px) {
-  .navigation ul {
+  .nav-links {
+    display: none; /* Hide the regular navigation links on mobile */
+  }
+
+  .breadcrumb-nav {
+    display: flex; /* Show the breadcrumb navigation on mobile */
     flex-wrap: nowrap; /* Ensure items do not wrap */
     overflow-x: auto; /* Enable horizontal scrolling if necessary */
+    justify-content: center; /* Center the items */
   }
 
-  .navigation li {
-    flex-shrink: 0; /* Prevent items from shrinking */
-  }
-
-  .navigation li a {
-    padding: 10px 12px; /* Adjust padding for touch targets */
+  .breadcrumb-item a {
+    font-size: 14px; /* Reduced font size */
+    padding: 8px 10px; /* Adjust padding */
   }
 }

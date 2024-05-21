@@ -58,6 +58,7 @@
   padding: 0;
   margin: 0;
   display: none; /* Initially hide the breadcrumb */
+  gap: 10px; /* Adjust gap */
 }
 
 .breadcrumb-item {
@@ -68,7 +69,8 @@
   text-decoration: none;
   color: #333;
   font-weight: bold;
-  padding: 14px 16px;
+  padding: 8px 10px; /* Adjust padding */
+  white-space: nowrap; /* Prevent text from wrapping */
 }
 
 .breadcrumb-item a:hover {
@@ -76,12 +78,6 @@
 }
 
 /* Responsive Styles */
-@media (max-width: 1200px) {
-  .nav-container {
-    max-width: 90%;
-  }
-}
-
 @media (max-width: 768px) {
   .header {
     padding: 10px 10px; /* Adjust padding to match the site’s container */
@@ -103,12 +99,6 @@
   .breadcrumb-nav {
     display: flex; /* Show the breadcrumb navigation on mobile */
     flex-wrap: wrap; /* Allow wrapping on smaller screens */
-    gap: 10px; /* Adjust gap */
     justify-content: center; /* Center the items */
-  }
-
-  .breadcrumb-item a {
-    font-size: 14px; /* Reduced font size */
-    padding: 8px 10px; /* Reduced padding */
   }
 }
