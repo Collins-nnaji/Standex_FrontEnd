@@ -7,14 +7,6 @@
   text-align: center;
 }
 
-.container {
-  margin: 0 auto;
-  max-width: 1200px;
-  padding: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
-}
-
 .homepage-header,
 .combined-section,
 .service-section,
@@ -215,7 +207,7 @@
 
 /* Consultation Section Styling */
 .consultation-section {
-  background: #f4fdfb;
+  background: #ffffff;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);

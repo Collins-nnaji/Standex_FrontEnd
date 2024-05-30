@@ -1,8 +1,9 @@
 /* App.css */
 .app-container {
-  margin: 0 auto;
-  max-width: 1200px;
+  margin: 20px auto; /* Add top and bottom margin */
   padding: 20px;
+  max-width: 1200px;
+  width: calc(100% - 40px); /* Ensure some margin on the sides */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   background-color: #fff;
   box-sizing: border-box; /* Ensure padding is included in the total width */
@@ -12,6 +13,8 @@
 @media (max-width: 1200px) {
   .app-container {
     max-width: 90%;
+    margin: 20px auto; /* Keep auto margin for centering */
+    width: calc(100% - 40px); /* Ensure some margin on the sides */
   }
 }
 
@@ -19,6 +22,8 @@
   .app-container {
     max-width: 95%;
     padding: 10px;
+    margin: 20px auto; /* Keep auto margin for centering */
+    width: calc(100% - 20px); /* Ensure some margin on the sides */
   }
 
   .cards {

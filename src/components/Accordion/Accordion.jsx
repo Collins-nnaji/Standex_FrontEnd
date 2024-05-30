@@ -1,38 +1,27 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import './accordion.css';
+import './Accordion.css';
 
-const Accordion = ({ items, links }) => {
-  const [activeIndex, setActiveIndex] = useState(null);
-  const navigate = useNavigate();
+const Accordion = ({ title, content }) => {
+  const [isOpen, setIsOpen] = useState(false);
 
-  const onTitleClick = (index) => {
-    setActiveIndex(index === activeIndex ? null : index);
-    if (links && links[index]) {
-      navigate(links[index]);
-    }
+  const toggleAccordion = () => {
+    setIsOpen(!isOpen);
   };
 
-  const renderedItems = items.map((item, index) => {
-    const active = index === activeIndex ? 'active' : '';
-
-    return (
-      <div key={item.title} className="item">
-        <div
-          className={`title ${active}`}
-          onClick={() => onTitleClick(index)}
-        >
-          <i className="dropdown icon"></i>
-          {item.title}
+  return (
+    <div className="accordion-item">
+      <h3 className={`accordion-title ${isOpen ? 'open' : ''}`} onClick={toggleAccordion}>
+        {title}
+      </h3>
+      {isOpen && (
+        <div className="accordion-content">
+          {content.map((paragraph, index) => (
+            <p key={index}>{paragraph}</p>
+          ))}
         </div>
-        <div className={`content ${active}`}>
-          <p>{item.content}</p>
-        </div>
-      </div>
-    );
-  });
-
-  return <div className="ui styled accordion">{renderedItems}</div>;
+      )}
+    </div>
+  );
 };
 
 export default Accordion;
