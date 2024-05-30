@@ -8,7 +8,7 @@ const TechElevate = () => {
   return (
     <div className="tech-elevate">
       <Header />
-      <main>
+      <main className="page-container">
         <h1>Tech Elevate</h1>
         <div className="courses">
           <div className="course">
