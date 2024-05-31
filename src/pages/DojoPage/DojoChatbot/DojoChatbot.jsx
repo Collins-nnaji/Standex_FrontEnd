@@ -21,7 +21,9 @@ const DojoChatbot = () => {
   };
 
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    if (messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
   }, [messages]);
 
   return (
