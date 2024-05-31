@@ -11,7 +11,7 @@
 .combined-section,
 .service-section,
 .homepage-content {
-  background: #ffffff; /* Set background color to white */
+  background: #ffffff; /* Light blend of green and white */
   padding: 20px;
   border-radius: 10px;
   margin-bottom: 20px;
@@ -53,30 +53,24 @@
 
 .cards {
   display: flex;
-  overflow-x: auto; /* Enable horizontal scrolling */
-  scroll-snap-type: x mandatory; /* Enable snapping */
-  -webkit-overflow-scrolling: touch; /* Enable smooth scrolling on iOS */
+  justify-content: center;
+  flex-wrap: wrap;
   gap: 20px; /* Adjust the gap */
-  padding: 20px 0; /* Add some padding for better touch experience */
+  margin: 20px 0;
 }
 
 .card-container {
-  flex: 0 0 auto; /* Prevent cards from shrinking */
-  scroll-snap-align: start; /* Snap each card to the start */
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 10px;
 }
 
 .card {
-  width: 300px; /* Fixed width for each card */
+  width: 200px; /* Adjust the width for smaller cards */
   height: auto; /* Adjust height proportionally */
   cursor: pointer;
   transition: transform 0.2s;
-  background: #fff; /* Background for each card */
-  border-radius: 10px; /* Rounded corners for cards */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow to cards */
-  margin-bottom: 20px; /* Adjust margin to reduce space between cards */
 }
 
 .card:hover {
@@ -181,17 +175,14 @@
   }
 
   .cards {
-    -webkit-overflow-scrolling: touch; /* Enable smooth scrolling on iOS */
-  }
-
-  .cards {
-    flex-direction: row;
-    overflow-x: scroll;
-    -webkit-overflow-scrolling: touch;
+    flex-direction: column;
+    align-items: center; /* Center the cards */
   }
 
   .card {
-    margin-bottom: 0; /* Remove bottom margin for better alignment */
+    width: 100%;
+    max-width: 300px; /* Adjust max-width for smaller cards */
+    margin-bottom: 20px; /* Adjust margin to reduce space between cards */
   }
 
   .home-image {

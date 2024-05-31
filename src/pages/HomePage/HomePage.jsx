@@ -42,16 +42,16 @@ const HomePage = () => {
         <h2>Our Services</h2>
         <p>We offer a range of services to help businesses grow and succeed in the digital world. Explore the options below to learn more about what we can do for you.</p>
         <div className="cards">
-          <div className="card-container" onClick={() => scrollToSection(cloudServicesRef)}>
+          <div onClick={() => scrollToSection(cloudServicesRef)}>
             <img src="/images/Cloud Service Card.svg" alt="Cloud Services" className="card" />
           </div>
-          <div className="card-container" onClick={() => scrollToSection(webMobileAppRef)}>
+          <div onClick={() => scrollToSection(webMobileAppRef)}>
             <img src="/images/Web and Mobile App Card.svg" alt="Web and Mobile App Development" className="card" />
           </div>
-          <div className="card-container" onClick={() => scrollToSection(digitalMarketingRef)}>
+          <div onClick={() => scrollToSection(digitalMarketingRef)}>
             <img src="/images/Digital Marketing Card.svg" alt="Digital Marketing" className="card" />
           </div>
-          <div className="card-container" onClick={() => scrollToSection(dataAIRef)}>
+          <div onClick={() => scrollToSection(dataAIRef)}>
             <img src="/images/Data and Ai Card.svg" alt="Data & AI" className="card" />
           </div>
         </div>
