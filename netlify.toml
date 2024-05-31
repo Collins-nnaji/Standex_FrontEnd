@@ -1,0 +1,7 @@
+[build]
+  node_version = "14.x"
+  command = "npm run build"
+  publish = "build"
+
+[context.production.environment]
+  NODE_VERSION = "14.x"
