@@ -27,9 +27,8 @@ const HomePage = () => {
     <div className="homepage">
       <Header />
       <header className="welcome-section">
-        <img src="/images/logo.svg" alt="Standex Logo" className="logo" />
-        <h1>Welcome to Standex Digital</h1>
-        <p>At Standex Digital, we're driven by the power of digital transformation to redefine the possibilities of tomorrow. As a leading digital transformation company, we empower businesses to excel in a digitally driven world. Our EdTech platform, Standex Dojo, streamlines your tech learning journey. Our Resume Builder offers advanced tools to craft standout resumes, opening doors to new career opportunities. Our Tech Jobs Board connects you with your next opportunity in the tech industry. Join us at Standex Digital, where we turn your digital dreams into reality!</p>
+        <h1>Welcome to Your Digital Evolution</h1>
+        <p>At Standex Digital, we are driven by the power of digital transformation to redefine the possibilities of tomorrow. As a leading digital transformation company, we empower businesses to excel in a digitally driven world. Our EdTech platform, Standex Dojo, streamlines your tech learning journey. Our Tech Elevate training programs on tech courses offer advanced tools to enhance your skills, opening doors to new career opportunities. Our Tech Jobs Board connects you with your next opportunity in the tech industry. Join us at Standex Digital, where we turn your digital dreams into reality!</p>
         <img src="/images/welcomeimage.svg" alt="Welcome" className="welcome-image" />
       </header>
 

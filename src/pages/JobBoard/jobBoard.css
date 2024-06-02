@@ -1,19 +1,106 @@
+/* Import the Poppins font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
 .job-board {
-  font-family: Arial, sans-serif;
   padding: 20px;
   text-align: center;
 }
 
-.job-board h1 {
-  color: #333;
+.header-black {
+  color: #000; /* Change color to black */
+  text-align: center;
+  margin-bottom: 40px;
 }
 
 .job-board p {
-  margin: 10px 0;
+  margin: 20px 0; /* Increase the paragraph spacing */
+  color: #000; /* Set paragraph text color to black for high contrast */
+  line-height: 2; /* Set line height to 2 for equivalent of double spacing */
+  font-size: 1.1rem; /* Increase the font size */
+  text-align: center; /* Center align text */
+  margin-bottom: 30px;
 }
 
 .job-board-image {
   width: 100%;
-  max-width: 600px;
+  height: auto;
   margin-top: 20px;
+  max-width: 600px; /* Limit the maximum width */
+  border-radius: 8px; /* Add rounded corners for consistency */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.job-sections {
+  margin-top: 40px;
+}
+
+.job-section {
+  margin-bottom: 40px;
+  text-align: left;
+}
+
+.job-section h2 {
+  color: #1ab188;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #1ab188;
+  padding-bottom: 10px;
+}
+
+.job-section h2 a {
+  color: #000000;
+  text-decoration: none;
+}
+
+.job-section h2 a:hover {
+  text-decoration: underline;
+}
+
+.job-card {
+  background: #fff;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.job-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.job-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.job-card li {
+  margin-bottom: 10px;
+  font-size: 1rem;
+  color: #333;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+  .job-board {
+    padding: 10px;
+  }
+
+  .job-section h2 {
+    font-size: 1.2rem;
+  }
+
+  .job-card {
+    padding: 15px;
+  }
+
+  .job-card li {
+    font-size: 0.9rem;
+  }
 }

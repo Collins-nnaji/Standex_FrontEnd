@@ -37,7 +37,7 @@
 .combined-section h2,
 .service-section h2,
 .homepage-content h2 {
-  color: #138f71; /* Increase the intensity of the green */
+  color: #050505; /* Increase the intensity of the green */
   font-weight: 600; /* Make headers bold */
 }
 
@@ -159,7 +159,7 @@
 
 .social-media a {
   text-decoration: none;
-  color: #1ab188; /* Match the color scheme */
+  color: #000000; /* Match the color scheme */
   font-weight: bold;
 }
 

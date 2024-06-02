@@ -8,10 +8,12 @@ import DojoChatbot from './pages/DojoPage/DojoChatbot/DojoChatbot';
 import LearningPath from './pages/DojoPage/LearningPath/LearningPath';
 import ProgressTracking from './pages/DojoPage/ProgressTracking/ProgressTracking';
 import Community from './pages/DojoPage/Community/Community';
+import ScrollToTop from './components/ScrollToTop/ScrollToTop';  // Correct import path
 
 const App = () => {
   return (
     <Router>
+      <ScrollToTop />  {/* Place ScrollToTop inside Router */}
       <div className="app">
         <Routes>
           <Route path="/" element={<HomePage />} />
