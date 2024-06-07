@@ -20,8 +20,6 @@ const DojoPage = () => {
         <div className="frames">
           <img src="/images/Frame1.svg" alt="Feature 1" className="frame" />
           <img src="/images/Frame2.svg" alt="Feature 2" className="frame" />
-          <img src="/images/Frame3.svg" alt="Feature 3" className="frame" />
-          <img src="/images/Frame4.svg" alt="Feature 4" className="frame" />
         </div>
       </div>
       <div className="get-started">
@@ -29,27 +27,15 @@ const DojoPage = () => {
         <p>Follow these steps to begin your learning journey:</p>
         <div className="cards">
           <div className="card-container">
-            <Link to="/dojo/chatbot">
+            <a href="https://copilotstudio.microsoft.com/environments/Default-a1bbe8af-2736-4afa-b45e-385e122031a2/bots/cr0d9_sensei/webchat?__version__=2" target="_blank" rel="noopener noreferrer">
               <img src="/images/Chatbot Card.svg" alt="Dojo Chatbot" className="card" />
               <p className="click-instruction">Start your journey with our chatbot.</p>
-            </Link>
+            </a>
           </div>
           <div className="card-container">
             <Link to="/dojo/learning-path">
               <img src="/images/Learning Path Card.svg" alt="Learning Path" className="card" />
               <p className="click-instruction">Discover your personalized learning path.</p>
-            </Link>
-          </div>
-          <div className="card-container">
-            <Link to="/dojo/progress-tracking">
-              <img src="/images/Progress Tracking Card.svg" alt="Progress Tracking" className="card" />
-              <p className="click-instruction">Track your progress and achievements.</p>
-            </Link>
-          </div>
-          <div className="card-container">
-            <Link to="/dojo/community">
-              <img src="/images/Join Community Card.svg" alt="Join Community" className="card" />
-              <p className="click-instruction">Join our community for support and networking.</p>
             </Link>
           </div>
         </div>
