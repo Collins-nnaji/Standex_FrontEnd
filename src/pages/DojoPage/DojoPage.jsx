@@ -27,10 +27,10 @@ const DojoPage = () => {
         <p>Follow these steps to begin your learning journey:</p>
         <div className="cards">
           <div className="card-container">
-            <a href="https://copilotstudio.microsoft.com/environments/Default-a1bbe8af-2736-4afa-b45e-385e122031a2/bots/cr0d9_sensei/webchat?__version__=2" target="_blank" rel="noopener noreferrer">
+            <Link to="/dojo/chatbot">
               <img src="/images/Chatbot Card.svg" alt="Dojo Chatbot" className="card" />
               <p className="click-instruction">Start your journey with our chatbot.</p>
-            </a>
+            </Link>
           </div>
           <div className="card-container">
             <Link to="/dojo/learning-path">
