@@ -61,7 +61,7 @@ const TechElevate = () => {
                 </ul>
               ]}
             />
-            <button onClick={handleCheckout('https://buy.stripe.com/bIY1693YAcFMbx66os')} className="register-link">Register Now</button>
+            <button onClick={handleCheckout('https://buy.stripe.com/bIYaGJeDe0X47gQ5kn')} className="register-link">Register Now</button>
           </div>
 
           <div className="course">
@@ -96,7 +96,7 @@ const TechElevate = () => {
             <img src="/images/PowerPlatform.svg" alt="Power Platform" className="course-img" />
             <h2>Power Platform</h2>
             <Accordion
-              title="Low Code"
+              title="Power Apps"
               content={[
                 <ul>
                   <li>Overview of Power Apps, exploring its ecosystem and capabilities through hands-on projects.</li>
@@ -107,7 +107,7 @@ const TechElevate = () => {
               ]}
             />
             <Accordion
-              title="No Code"
+              title="Power Automate"
               content={[
                 <ul>
                   <li>Introduction to Power Automate, creating and managing basic flows to automate tasks.</li>
@@ -117,7 +117,7 @@ const TechElevate = () => {
                 </ul>
               ]}
             />
-            <button onClick={handleCheckout('https://buy.stripe.com/bIYaGJeDe0X47gQ5kn')} className="register-link">Register Now</button>
+            <button onClick={handleCheckout('https://buy.stripe.com/bIY1693YAcFMbx66os')} className="register-link">Register Now</button>
           </div>
 
           <div className="course">
