@@ -5,24 +5,24 @@ import Footer from '../../components/Footer/Footer';
 import Accordion from '../../components/Accordion/Accordion';
 
 const TechElevate = () => {
-  const handleCheckout = (event) => {
+  const handleCheckout = (url) => (event) => {
     event.preventDefault();
-    window.location.href = 'https://buy.stripe.com/14k8yB2Uw218at26oo';
+    window.location.href = url;
   };
 
   return (
     <div className="tech-elevate">
       <Header />
       <main className="page-container">
-        <h1>Tech Elevate</h1>
-        <p className="intro-paragraph">
-          Welcome to Tech Elevate, your destination for comprehensive and practical technology training programs. Our courses are taught by industry professionals who are currently working with the platforms being taught. This ensures you gain real-world insights and skills directly applicable to the industry. Our training programs are designed to prepare you for immediate job placement by focusing on the practical applications of the tools. Join us and take the first step towards enhancing your career and unlocking new opportunities.
+        <h1 className="stylish-font">Tech Elevate</h1>
+        <p className="sub-text">
+          Welcome to Tech Elevate, your destination for practical technology training programs taught by industry professionals. Gain real-world skills for immediate job placement.
         </p>
         <div className="courses">
           <div className="course">
             <img src="/images/Businessintelligence.svg" alt="Business Intelligence" className="course-img" />
             <h2>Business Intelligence</h2>
-            <Accordion 
+            <Accordion
               title="Power BI"
               content={[
                 <ul>
@@ -33,7 +33,7 @@ const TechElevate = () => {
                 </ul>
               ]}
             />
-            <Accordion 
+            <Accordion
               title="SQL"
               content={[
                 <ul>
@@ -44,13 +44,13 @@ const TechElevate = () => {
                 </ul>
               ]}
             />
-            <button onClick={handleCheckout} className="register-link">Register Now</button>
+            <button onClick={handleCheckout('https://buy.stripe.com/bIY1693YAcFMbx66os')} className="register-link">Register Now</button>
           </div>
 
           <div className="course">
             <img src="/images/Datascience.svg" alt="Data Science" className="course-img" />
             <h2>Data Science</h2>
-            <Accordion 
+            <Accordion
               title="Machine Learning"
               content={[
                 <ul>
@@ -61,7 +61,7 @@ const TechElevate = () => {
                 </ul>
               ]}
             />
-            <Accordion 
+            <Accordion
               title="Large Language Models (LLM) and Prompt Engineering"
               content={[
                 <ul>
@@ -72,14 +72,14 @@ const TechElevate = () => {
                 </ul>
               ]}
             />
-            <button onClick={handleCheckout} className="register-link">Register Now</button>
+            <button onClick={handleCheckout('https://buy.stripe.com/3csaGJeDegW2cBa002')} className="register-link">Register Now</button>
           </div>
 
           <div className="course">
             <img src="/images/PowerPlatform.svg" alt="Power Platform" className="course-img" />
             <h2>Power Platform</h2>
-            <Accordion 
-              title="Power Apps"
+            <Accordion
+              title="Low Code"
               content={[
                 <ul>
                   <li>Overview of Power Apps, exploring its ecosystem and capabilities through hands-on projects.</li>
@@ -89,8 +89,8 @@ const TechElevate = () => {
                 </ul>
               ]}
             />
-            <Accordion 
-              title="Power Automate"
+            <Accordion
+              title="No Code"
               content={[
                 <ul>
                   <li>Introduction to Power Automate, creating and managing basic flows to automate tasks.</li>
@@ -100,13 +100,13 @@ const TechElevate = () => {
                 </ul>
               ]}
             />
-            <button onClick={handleCheckout} className="register-link">Register Now</button>
+            <button onClick={handleCheckout('https://buy.stripe.com/bIYaGJeDe0X47gQ5kn')} className="register-link">Register Now</button>
           </div>
 
           <div className="course">
             <img src="/images/EnterpriseArchitecture.svg" alt="Enterprise Architecture" className="course-img" />
             <h2>Enterprise Architecture</h2>
-            <Accordion 
+            <Accordion
               title="Solution Architecture"
               content={[
                 <ul>
@@ -117,7 +117,7 @@ const TechElevate = () => {
                 </ul>
               ]}
             />
-            <Accordion 
+            <Accordion
               title="Data Architecture"
               content={[
                 <ul>
@@ -128,7 +128,7 @@ const TechElevate = () => {
                 </ul>
               ]}
             />
-            <button onClick={handleCheckout} className="register-link">Register Now</button>
+            <button onClick={handleCheckout('https://buy.stripe.com/cN29CF2Uw5dk30A6op')} className="register-link">Register Now</button>
           </div>
         </div>
       </main>

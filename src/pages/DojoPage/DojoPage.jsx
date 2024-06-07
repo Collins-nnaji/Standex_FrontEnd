@@ -10,10 +10,9 @@ const DojoPage = () => {
       <Header />
       <div className="welcome-section">
         <img src="/images/dojo_logo.png" alt="Dojo Logo" className="dojo-logo" />
-        <div className="intro-text">
-          <h2>Welcome to Standex Dojo</h2>
-          <p>Discover your ideal tech career path with Standex Dojo. Our AI-driven platform filters through options to find the courses that best suit your goals, ensuring you gain valuable, applicable skills quickly. Embark on a tailored learning journey that transforms your curiosity into expertise. Join Standex Dojo and start building real skills today.</p>
-          <img src="/images/Learning.png" alt="Learning" className="learning-image" />
+        <div className="welcome-text">
+          <h1 className="stylish-font">Welcome to Standex Dojo</h1>
+          <p className="sub-text">Discover your ideal tech career path with Standex Dojo. Our AI-driven platform filters through options to find the courses that best suit your goals, ensuring you gain valuable, applicable skills quickly. Embark on a tailored learning journey that transforms your curiosity into expertise. Join Standex Dojo and start building real skills today.</p>
         </div>
       </div>
       <div className="features-container">
@@ -30,31 +29,27 @@ const DojoPage = () => {
         <p>Follow these steps to begin your learning journey:</p>
         <div className="cards">
           <div className="card-container">
-            <div className="step-number">1</div>
             <Link to="/dojo/chatbot">
               <img src="/images/Chatbot Card.svg" alt="Dojo Chatbot" className="card" />
-              <p className="click-instruction">Click here</p>
+              <p className="click-instruction">Start your journey with our chatbot.</p>
             </Link>
           </div>
           <div className="card-container">
-            <div className="step-number">2</div>
             <Link to="/dojo/learning-path">
               <img src="/images/Learning Path Card.svg" alt="Learning Path" className="card" />
-              <p className="click-instruction">Click here</p>
+              <p className="click-instruction">Discover your personalized learning path.</p>
             </Link>
           </div>
           <div className="card-container">
-            <div className="step-number">3</div>
             <Link to="/dojo/progress-tracking">
               <img src="/images/Progress Tracking Card.svg" alt="Progress Tracking" className="card" />
-              <p className="click-instruction">Click here</p>
+              <p className="click-instruction">Track your progress and achievements.</p>
             </Link>
           </div>
           <div className="card-container">
-            <div className="step-number">4</div>
             <Link to="/dojo/community">
               <img src="/images/Join Community Card.svg" alt="Join Community" className="card" />
-              <p className="click-instruction">Click here</p>
+              <p className="click-instruction">Join our community for support and networking.</p>
             </Link>
           </div>
         </div>

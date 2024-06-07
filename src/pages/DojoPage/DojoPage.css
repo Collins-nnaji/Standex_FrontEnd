@@ -9,11 +9,48 @@
 }
 
 .welcome-section {
-  background-color: #fff; /* Set background color to white */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
   padding: 20px;
   border-radius: 10px;
   margin-bottom: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.welcome-text {
+  margin-top: 20px;
+}
+
+.stylish-font {
+  font-size: 3.5rem; /* Significantly increased size */
+  background: linear-gradient(to right, green, black);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.sub-text {
+  font-size: 1.5rem; /* Significantly increased size */
+  background: linear-gradient(to right, green, black);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  margin-top: 10px;
+  font-style: italic;
+}
+
+.dojo-logo {
+  width: 200px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.dojo-logo:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px #1ab188;
 }
 
 .intro-container,
@@ -36,24 +73,23 @@
 .intro-text h2,
 .features-container h2,
 .get-started h2 {
-  color: #050505;
+  color: transparent; /* Match header color with welcome text */
+  background: linear-gradient(to right, green, black);
+  -webkit-background-clip: text;
+  background-clip: text;
   font-weight: 600; /* Make headers bold */
+  font-size: 2.5rem; /* Increased header size */
 }
 
 .intro-text p,
 .get-started p {
-  margin: 10px 0;
-}
-
-.dojo-logo {
-  width: 200px;
-  margin: 20px 0;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.dojo-logo:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 10px #1ab188;
+  margin: 20px 0; /* Increased margin */
+  font-size: 1.5rem; /* Increased font size */
+  line-height: 1.5; /* Improve readability */
+  color: transparent; /* Match text color with supporting text */
+  background: linear-gradient(to right, green, black);
+  -webkit-background-clip: text;
+  background-clip: text;
 }
 
 .frames {
@@ -85,22 +121,16 @@
 .card-container {
   display: flex;
   align-items: center;
-  background-color: #1ab188;
-  padding: 10px;
+  background-color: #fff; /* White background */
+  padding: 20px; /* Increased padding */
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s ease;
+  text-align: left; /* Align text to left */
 }
 
 .card-container:hover {
-  background-color: #e9fbf7; /* Light green for hover */
-}
-
-.step-number {
-  font-size: 24px;
-  font-weight: bold;
-  color: white;
-  margin-right: 10px;
+  background-color: #f0f0f0; /* Light grey for hover */
 }
 
 .card {
@@ -115,8 +145,12 @@
 }
 
 .click-instruction {
-  font-size: 14px;
-  color: #fff; /* White color for Click here text */
+  font-size: 1.2rem; /* Increase font size */
+  color: transparent; /* Match text color with supporting text */
+  background: linear-gradient(to right, green, black);
+  -webkit-background-clip: text;
+  background-clip: text;
+  margin-top: 10px;
 }
 
 .learning-image {

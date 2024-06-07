@@ -10,17 +10,40 @@ body {
   text-align: center;
 }
 
-.header-black {
-  color: #000; /* Change color to black */
+.stylish-font {
+  font-size: 3.5rem; /* Significantly increased size */
+  background: linear-gradient(to right, green, black);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
   text-align: center;
   margin-bottom: 40px;
 }
 
+.sub-text {
+  font-size: 1.5rem; /* Significantly increased size */
+  background: linear-gradient(to right, green, black);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  margin-top: 10px;
+  font-style: italic;
+  text-align: center;
+  line-height: 1.8; /* Increased line height for better spacing */
+  padding: 0 20px; /* Add padding for better spacing */
+}
+
 .job-board p {
   margin: 20px 0; /* Increase the paragraph spacing */
-  color: #000; /* Set paragraph text color to black for high contrast */
+  background: linear-gradient(to right, green, black);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
   line-height: 2; /* Set line height to 2 for equivalent of double spacing */
-  font-size: 1.1rem; /* Increase the font size */
+  font-size: 1.5rem; /* Increase the font size */
   text-align: center; /* Center align text */
   margin-bottom: 30px;
 }
@@ -44,8 +67,12 @@ body {
 }
 
 .job-section h2 {
-  color: #1ab188;
-  font-size: 1.5rem;
+  background: linear-gradient(to right, green, black);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  font-size: 2.5rem; /* Increased header size */
   margin-bottom: 20px;
   border-bottom: 2px solid #1ab188;
   padding-bottom: 10px;
@@ -80,10 +107,38 @@ body {
   margin: 0;
 }
 
-.job-card li {
-  margin-bottom: 10px;
-  font-size: 1rem;
+.job-item {
+  margin-bottom: 20px;
+  font-size: 1.2rem; /* Increased font size */
   color: #333;
+  display: flex;
+  flex-direction: column;
+}
+
+.job-title {
+  font-weight: bold;
+  margin-bottom: 5px; /* Add margin to separate from links */
+}
+
+.job-links {
+  display: flex;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.job-links a {
+  text-decoration: none;
+  font-weight: bold;
+  padding: 5px 10px;
+  background-color: #e9fbf7; /* Highlight background */
+  border-radius: 5px;
+  color: #000;
+  transition: background-color 0.3s ease;
+}
+
+.job-links a:hover {
+  background-color: #d0ffd0; /* Darker highlight on hover */
+  text-decoration: underline;
 }
 
 /* Responsive design */
@@ -93,14 +148,14 @@ body {
   }
 
   .job-section h2 {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
   }
 
   .job-card {
     padding: 15px;
   }
 
-  .job-card li {
-    font-size: 0.9rem;
+  .job-item {
+    font-size: 1rem;
   }
 }

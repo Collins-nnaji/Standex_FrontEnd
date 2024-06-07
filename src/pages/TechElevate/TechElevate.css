@@ -6,17 +6,38 @@
   padding: 20px;
 }
 
-.tech-elevate h1 {
-  color: #000; /* Change color to black */
+.stylish-font {
+  font-size: 3.5rem; /* Significantly increased size */
+  background: linear-gradient(to right, green, black);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
   text-align: center;
   margin-bottom: 40px;
 }
 
+.sub-text {
+  font-size: 1.5rem; /* Significantly increased size */
+  background: linear-gradient(to right, green, black);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  margin-top: 10px;
+  font-style: italic;
+  text-align: center;
+}
+
 .intro-paragraph {
   margin: 20px 0; /* Increase the paragraph spacing */
-  color: #000; /* Set paragraph text color to black for high contrast */
+  background: linear-gradient(to right, green, black);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
   line-height: 2; /* Set line height to 2 for equivalent of double spacing */
-  font-size: 1.1rem; /* Increase the font size */
+  font-size: 1.2rem; /* Increase the font size */
   text-align: center; /* Center align text */
   margin-bottom: 30px;
 }
@@ -42,7 +63,12 @@
 }
 
 .course h2 {
-  color: #000; /* Change color to black */
+  background: linear-gradient(to right, green, black);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  font-size: 2.5rem; /* Increased header size */
 }
 
 .course-img {
@@ -50,12 +76,15 @@
   height: auto;
   margin-bottom: 20px;
 }
-
 .course-details {
   text-align: left;
   text-align: justify;
-  font-size: 1rem;
-  color: #555;
+  font-size: 1.2rem; /* Increased font size */
+  background: linear-gradient(to right, green, black);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
 }
 
 .course-details ul {
@@ -93,7 +122,11 @@
 }
 
 .accordion-title {
-  color: #000; /* Change color to black */
+  background: linear-gradient(to right, green, black);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent; /* Match text color with supporting text */
   font-weight: 600;
   cursor: pointer;
   margin: 10px 0;
@@ -118,10 +151,14 @@
 }
 
 .accordion-content p {
-  color: #333;
+  background: linear-gradient(to right, green, black);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent; /* Match text color with supporting text */
   line-height: 1.6;
   margin: 10px 0;
-  font-size: 1rem;
+  font-size: 1.2rem; /* Increased font size */
   text-align: justify;
 }
 

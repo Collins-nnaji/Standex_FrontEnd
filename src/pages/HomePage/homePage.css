@@ -7,68 +7,121 @@
   text-align: center;
 }
 
-.homepage-header,
-.combined-section,
-.service-section,
-.homepage-content {
-  background: #ffffff; /* Light blend of green and white */
-  padding: 20px;
-  border-radius: 10px;
-  margin-bottom: 20px;
-  transition: background-color 0.3s ease;
-}
-
-.homepage-header:hover,
-.combined-section:hover,
-.service-section:hover,
-.homepage-content:hover {
-  background-color: #e9fbf7; /* Slightly darker blend for hover */
-}
-
 .welcome-section {
-  background-color: #fff; /* Set background color to white */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
   padding: 20px;
   border-radius: 10px;
   margin-bottom: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.homepage-header h1,
-.combined-section h2,
-.service-section h2,
-.homepage-content h2 {
-  color: #050505; /* Increase the intensity of the green */
-  font-weight: 600; /* Make headers bold */
+.welcome-text {
+  margin-bottom: 20px;
 }
 
-.combined-section p,
-.service-section p,
-.homepage-content p,
-.welcome-section p {
-  margin: 20px 0; /* Increase the paragraph spacing */
-  color: #000; /* Set paragraph text color to black for high contrast */
-  line-height: 2; /* Set line height to 2 for equivalent of double spacing */
-  font-size: 1.1rem; /* Increase the font size */
+.stylish-font {
+  font-size: 3.5rem; /* Significantly increased size */
+  background: linear-gradient(to right, green, black);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.sub-text {
+  font-size: 1.5rem; /* Significantly increased size */
+  background: linear-gradient(to right, green, black);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  margin-top: 10px;
+  font-style: italic;
+}
+
+.home-image {
+  width: 100%;
+  max-width: 600px;
+  margin-top: 20px;
+}
+
+.combined-section,
+.service-section,
+.homepage-content {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.combined-section:hover,
+.service-section:hover,
+.homepage-content:hover {
+  background-color: #e9fbf7;
 }
 
 .cards {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 20px; /* Adjust the gap */
+  gap: 20px;
   margin: 20px 0;
 }
 
 .card-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
+  background: #ffffff; /* White background */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 300px;
+  text-align: center;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
+.card-container:hover {
+  background-color: #f0f0f0; /* Light grey background on hover */
+  transform: scale(1.05);
+}
+
+.card-container p {
+  font-size: 1.3rem; /* Increase font size */
+  font-style: italic; /* Make text italic */
+}
+
+.homepage-header h1,
+.combined-section h2,
+.service-section h2,
+.homepage-content h2 {
+  background: linear-gradient(to right, green, black);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent; /* Match header color with welcome text */
+  font-weight: 600;
+  font-size: 2.5rem; /* Increased header size */
+}
+
+.combined-section p,
+.service-section p,
+.homepage-content p,
+.intro-paragraph,
+.service-description {
+  margin: 20px 0;
+  background: linear-gradient(to right, green, black);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent; /* Match text color with supporting text */
+  line-height: 2;
+  font-size: 1.2rem; /* Increased font size */
+}
 .card {
-  width: 200px; /* Adjust the width for smaller cards */
-  height: auto; /* Adjust height proportionally */
+  width: 200px;
+  height: auto;
   cursor: pointer;
   transition: transform 0.2s;
 }
@@ -92,11 +145,6 @@
   background-color: #16a085;
 }
 
-.service-section {
-  margin: 40px 0;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow to the service sections */
-}
-
 .feature-image {
   width: 100%;
   max-width: 600px;
@@ -106,106 +154,14 @@
 .service-content {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Align items to the center */
+  align-items: center;
   gap: 10px;
 }
 
 .service-content p {
-  text-align: center; /* Center-align the paragraphs */
+  text-align: center;
 }
 
-.home-image {
-  width: 100%;
-  max-width: 600px;
-  margin-top: 20px;
-}
-
-.logo {
-  max-width: 200px;
-  margin-bottom: 20px;
-}
-
-.welcome-image {
-  width: 100%;
-  max-width: 600px;
-  margin-top: 20px;
-}
-
-/* Footer styling */
-.footer {
-  background-color: #f8f8f8; /* Adjust the background color as needed */
-  padding: 10px 20px; /* Reduce padding to make the footer smaller */
-  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
-  margin-top: 20px;
-}
-
-.footer-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.footer p {
-  margin: 0;
-  color: #333;
-}
-
-.social-media {
-  display: flex;
-  gap: 15px;
-}
-
-.social-media a {
-  text-decoration: none;
-  color: #000000; /* Match the color scheme */
-  font-weight: bold;
-}
-
-.social-media a:hover {
-  color: #0a3917;
-}
-
-/* Responsive Styles */
-@media (max-width: 768px) {
-  .container {
-    max-width: 95%;
-    padding: 10px;
-  }
-
-  .cards {
-    flex-direction: column;
-    align-items: center; /* Center the cards */
-  }
-
-  .card {
-    width: 100%;
-    max-width: 300px; /* Adjust max-width for smaller cards */
-    margin-bottom: 20px; /* Adjust margin to reduce space between cards */
-  }
-
-  .home-image {
-    width: 100%;
-    max-width: 300px;
-  }
-
-  .feature-image {
-    width: 100%;
-    max-width: 300px;
-  }
-
-  .footer-content {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .social-media {
-    margin-top: 10px;
-  }
-}
-
-/* Consultation Section Styling */
 .consultation-section {
   background: #ffffff;
   padding: 20px;
@@ -283,4 +239,74 @@
 
 .consultation-form button:hover {
   background-color: #16a085;
+}
+
+/* Footer styling */
+.footer {
+  background-color: #f8f8f8;
+  padding: 10px 20px;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer p {
+  margin: 0;
+  color: #333;
+}
+
+.social-media {
+  display: flex;
+  gap: 15px;
+}
+
+.social-media a {
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+}
+
+.social-media a:hover {
+  color: #0a3917;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .container {
+    max-width: 95%;
+    padding: 10px;
+  }
+
+  .cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 20px;
+  }
+
+  .home-image,
+  .feature-image {
+    width: 100%;
+    max-width: 400px; /* Make the home image larger */
+  }
+
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .social-media {
+    margin-top: 10px;
+  }
 }
