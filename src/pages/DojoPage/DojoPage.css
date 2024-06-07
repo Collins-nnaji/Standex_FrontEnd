@@ -119,14 +119,15 @@
 }
 
 .card-container {
-  display: flex;
-  align-items: center;
-  background-color: #fff; /* White background */
+  background: #fff; /* White background */
   padding: 20px; /* Increased padding */
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s ease;
   text-align: left; /* Align text to left */
+  flex: 1 1 300px; /* Make the card responsive */
+  box-sizing: border-box; /* Ensure padding and borders are included in the width/height */
+  max-width: calc(50% - 40px); /* Ensure max-width is less than half of the container's width minus the gap */
+  transition: background-color 0.3s ease;
 }
 
 .card-container:hover {
@@ -134,7 +135,7 @@
 }
 
 .card {
-  width: 300px; /* Double the width for larger cards */
+  width: 100%;
   height: auto; /* Adjust height proportionally */
   cursor: pointer;
   transition: transform 0.2s;
@@ -173,6 +174,7 @@
 
   .card-container {
     margin-bottom: 20px;
+    max-width: 100%; /* Ensure cards take full width on smaller screens */
   }
 
   .learning-image {

@@ -48,7 +48,7 @@ const JobBoard = () => {
         {Object.entries(jobSearchUrls).map(([site, url]) => (
           <li key={site} className={`job-link-${site.toLowerCase().replace(/\s+/g, '-')}`}>
             <a href={`${url}${encodeURIComponent(jobTitle)}`} target="_blank" rel="noopener noreferrer">
-              {site}
+              <em>{site}</em>
             </a>
           </li>
         ))}

@@ -1,5 +1,12 @@
+
 /* Import the Poppins font */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 body {
   font-family: 'Poppins', sans-serif;
@@ -8,6 +15,7 @@ body {
 .job-board {
   padding: 20px;
   text-align: center;
+  box-sizing: border-box;
 }
 
 .stylish-font {
@@ -46,6 +54,7 @@ body {
   font-size: 1.5rem; /* Increase the font size */
   text-align: center; /* Center align text */
   margin-bottom: 30px;
+  padding: 0 20px; /* Add padding for better spacing */
 }
 
 .job-board-image {
@@ -64,6 +73,8 @@ body {
 .job-section {
   margin-bottom: 40px;
   text-align: left;
+  padding: 0 20px; /* Add padding for better spacing */
+  box-sizing: border-box;
 }
 
 .job-section h2 {
@@ -94,6 +105,7 @@ body {
   border-radius: 8px;
   transition: transform 0.2s, box-shadow 0.2s;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
 }
 
 .job-card:hover {
@@ -109,7 +121,7 @@ body {
 
 .job-item {
   margin-bottom: 20px;
-  font-size: 1.2rem; /* Increased font size */
+  font-size: 1.5rem; /* Increased font size */
   color: #333;
   display: flex;
   flex-direction: column;
@@ -117,11 +129,13 @@ body {
 
 .job-title {
   font-weight: bold;
+  text-decoration: underline;
   margin-bottom: 5px; /* Add margin to separate from links */
 }
 
 .job-links {
   display: flex;
+  flex-wrap: wrap; /* Ensure links wrap within the container */
   gap: 10px;
   margin-top: 5px;
 }
@@ -129,6 +143,7 @@ body {
 .job-links a {
   text-decoration: none;
   font-weight: bold;
+  font-style: italic;
   padding: 5px 10px;
   background-color: #e9fbf7; /* Highlight background */
   border-radius: 5px;
@@ -147,6 +162,10 @@ body {
     padding: 10px;
   }
 
+  .job-section {
+    padding: 0 10px; /* Adjust padding for smaller screens */
+  }
+
   .job-section h2 {
     font-size: 1.5rem;
   }
@@ -157,5 +176,10 @@ body {
 
   .job-item {
     font-size: 1rem;
+  }
+
+  .job-links {
+    flex-direction: column; /* Stack links vertically on smaller screens */
+    gap: 5px;
   }
 }

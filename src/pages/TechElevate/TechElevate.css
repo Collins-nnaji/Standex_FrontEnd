@@ -42,6 +42,56 @@
   margin-bottom: 30px;
 }
 
+.why-choose-us {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.why-choose-us h2 {
+  font-size: 2.5rem; /* Increased header size */
+  background: linear-gradient(to right, green, black);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 20px;
+}
+
+.cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.card-container {
+  background: #ffffff; /* White background */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 300px; /* Adjust this value to ensure consistent sizing */
+  max-width: 100%; /* Ensure cards do not exceed the container width */
+}
+
+.card-container:hover {
+  background-color: #f0f0f0; /* Light grey background on hover */
+  transform: scale(1.05);
+}
+
+.card-container p {
+  font-style: italic;
+  font-size: 1.2rem; /* Increased font size */
+  background: linear-gradient(to right, green, black);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
 .courses {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
@@ -76,6 +126,7 @@
   height: auto;
   margin-bottom: 20px;
 }
+
 .course-details {
   text-align: left;
   text-align: justify;
@@ -173,11 +224,11 @@
   }
 
   .course h2 {
-    font-size: 1.5em;
+    font-size: 1.5rem;
   }
 
   .accordion-title {
-    font-size: 1.2em;
+    font-size: 1.2rem;
   }
 
   .accordion-content p {

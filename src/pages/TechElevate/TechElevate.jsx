@@ -14,10 +14,27 @@ const TechElevate = () => {
     <div className="tech-elevate">
       <Header />
       <main className="page-container">
-        <h1 className="stylish-font">Tech Elevate</h1>
+        <h1 className="stylish-font">Get Real Skills with Tech Elevate</h1>
         <p className="sub-text">
           Welcome to Tech Elevate, your destination for practical technology training programs taught by industry professionals. Gain real-world skills for immediate job placement.
         </p>
+        <section className="why-choose-us">
+          <h2>Why Choose Tech Elevate</h2>
+          <div className="cards">
+            <div className="card-container">
+              <p><em>We are proud partners with Microsoft, providing you with the latest tools and resources. This partnership ensures you are learning with the most up-to-date and industry-standard technology, preparing you for the demands of the tech world.</em></p>
+            </div>
+            <div className="card-container">
+              <p><em>Gain access to Microsoft tools like Power BI, Power Platform, Azure, Machine Learning, SQL, and more for one year. These tools are crucial in today's tech environment and having hands-on experience will give you a competitive edge.</em></p>
+            </div>
+            <div className="card-container">
+              <p><em>Get references for job experiences, helping you stand out to potential employers. Our program is designed to simulate real job environments, giving you the experience you need to excel in your career.</em></p>
+            </div>
+            <div className="card-container">
+              <p><em>Receive complimentary textbooks and materials to support your learning journey. We provide all the necessary resources to ensure you have everything you need to succeed in your courses and beyond.</em></p>
+            </div>
+          </div>
+        </section>
         <div className="courses">
           <div className="course">
             <img src="/images/Businessintelligence.svg" alt="Business Intelligence" className="course-img" />

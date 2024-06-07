@@ -11,7 +11,7 @@ const DojoPage = () => {
       <div className="welcome-section">
         <img src="/images/dojo_logo.png" alt="Dojo Logo" className="dojo-logo" />
         <div className="welcome-text">
-          <h1 className="stylish-font">Welcome to Standex Dojo</h1>
+          <h1 className="stylish-font">Discover Your Path</h1>
           <p className="sub-text">Discover your ideal tech career path with Standex Dojo. Our AI-driven platform filters through options to find the courses that best suit your goals, ensuring you gain valuable, applicable skills quickly. Embark on a tailored learning journey that transforms your curiosity into expertise. Join Standex Dojo and start building real skills today.</p>
         </div>
       </div>
