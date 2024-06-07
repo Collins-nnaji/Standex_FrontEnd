@@ -9,6 +9,12 @@ const HomePage = () => {
   const digitalMarketingRef = useRef(null);
   const dataAIRef = useRef(null);
   const [formVisible, setFormVisible] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: '',
+    service: ''
+  });
 
   const scrollToSection = (ref) => {
     ref.current.scrollIntoView({ behavior: 'smooth' });
@@ -18,9 +24,36 @@ const HomePage = () => {
     setFormVisible(!formVisible);
   };
 
-  const handleSubmit = (e) => {
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission logic here
+    // Send form data to the backend endpoint
+    const response = await fetch('https://your-backend-endpoint.com/send-email', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    });
+
+    if (response.ok) {
+      alert('Your message has been sent successfully!');
+      // Clear the form
+      setFormData({
+        name: '',
+        email: '',
+        message: '',
+        service: ''
+      });
+    } else {
+      alert('Failed to send your message. Please try again.');
+    }
   };
 
   return (
@@ -100,9 +133,41 @@ const HomePage = () => {
         <button className="consultation-link" onClick={toggleFormVisibility}>Book a Consultation</button>
         {formVisible && (
           <form className={`consultation-form ${formVisible ? 'active' : ''}`} onSubmit={handleSubmit}>
-            <input type="text" name="name" placeholder="Your Name" required />
-            <input type="email" name="email" placeholder="Your Email" required />
-            <textarea name="message" placeholder="Your Message" required></textarea>
+            <input 
+              type="text" 
+              name="name" 
+              placeholder="Your Name" 
+              value={formData.name} 
+              onChange={handleChange} 
+              required 
+            />
+            <input 
+              type="email" 
+              name="email" 
+              placeholder="Your Email" 
+              value={formData.email} 
+              onChange={handleChange} 
+              required 
+            />
+            <select 
+              name="service" 
+              value={formData.service} 
+              onChange={handleChange} 
+              required
+            >
+              <option value="">Select Service</option>
+              <option value="Cloud Services">Cloud Services</option>
+              <option value="Web & Mobile App Development">Web & Mobile App Development</option>
+              <option value="Digital Marketing">Digital Marketing</option>
+              <option value="Data & AI">Data & AI</option>
+            </select>
+            <textarea 
+              name="message" 
+              placeholder="Your Message" 
+              value={formData.message} 
+              onChange={handleChange} 
+              required
+            ></textarea>
             <button type="submit">Submit</button>
           </form>
         )}
