@@ -27,7 +27,7 @@ const LearningPath = () => {
         setInput('');
 
         try {
-            const response = await fetch('https://backend-7bv3oc5ba-standex-digitals-projects.vercel.app/api/chat', {
+            const response = await fetch('https://backend-pearl-chi.vercel.app/api/chat', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
