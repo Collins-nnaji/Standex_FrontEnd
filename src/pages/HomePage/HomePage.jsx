@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import './homePage.css';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
@@ -172,6 +173,14 @@ const HomePage = () => {
           </form>
         )}
       </div>
+
+      <div className="chatbot-section">
+        <Link to="/dojo/chatbot">
+          <img src="/images/Chatbot Card.svg" alt="Dojo Chatbot" className="chatbot-card" />
+          <p className="chatbot-text">To find out more about us and our services, engage with our chatbot.</p>
+        </Link>
+      </div>
+
       <Footer />
     </div>
   );

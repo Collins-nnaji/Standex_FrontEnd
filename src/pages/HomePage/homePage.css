@@ -243,6 +243,38 @@
   background-color: #16a085;
 }
 
+/* Chatbot Card Section */
+.chatbot-section {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  text-align: center;
+}
+
+.chatbot-card {
+  width: 100%;
+  max-width: 300px;
+  margin: 20px auto;
+  transition: transform 0.2s ease;
+}
+
+.chatbot-card:hover {
+  transform: scale(1.05);
+}
+
+.chatbot-text {
+  font-size: 1.2rem;
+  margin-top: 10px;
+  background: linear-gradient(to right, green, black);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  font-style: italic;
+}
+
 /* Footer styling */
 .footer {
   background-color: #f8f8f8;

@@ -27,12 +27,6 @@ const DojoPage = () => {
         <p>Follow these steps to begin your learning journey:</p>
         <div className="cards">
           <div className="card-container">
-            <Link to="/dojo/chatbot">
-              <img src="/images/Chatbot Card.svg" alt="Dojo Chatbot" className="card" />
-              <p className="click-instruction">Start your journey with our chatbot.</p>
-            </Link>
-          </div>
-          <div className="card-container">
             <Link to="/dojo/learning-path">
               <img src="/images/Learning Path Card.svg" alt="Learning Path" className="card" />
               <p className="click-instruction">Discover your personalized learning path.</p>
