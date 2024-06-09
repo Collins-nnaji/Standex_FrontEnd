@@ -6,6 +6,7 @@ import Footer from '../../../components/Footer/Footer';
 const LearningPath = () => {
     const [messages, setMessages] = useState([]);
     const [input, setInput] = useState('');
+    const [chatHistory, setChatHistory] = useState([]);
 
     useEffect(() => {
         // Dynamically load the Stripe script
@@ -37,7 +38,9 @@ const LearningPath = () => {
 
             if (response.ok) {
                 const data = await response.json();
-                setMessages([...newMessages, { user: 'bot', text: data.response }]);
+                const updatedMessages = [...newMessages, { user: 'bot', text: data.response }];
+                setMessages(updatedMessages);
+                setChatHistory([...chatHistory, { id: chatHistory.length + 1, messages: updatedMessages }]);
             } else {
                 console.error('Error in response from server:', response.statusText);
             }
@@ -46,42 +49,61 @@ const LearningPath = () => {
         }
     };
 
+    const handleChatHistoryClick = (id) => {
+        const selectedChat = chatHistory.find(chat => chat.id === id);
+        if (selectedChat) {
+            setMessages(selectedChat.messages);
+        }
+    };
+
     return (
         <div className="learning-path-page">
             <Header />
-            <div className="content-container">
-                <div className="logo-section">
-                    <img src="/images/dojo_logo.png" alt="Dojo Logo" className="dojo-logo" />
-                    <p className="intro-text">
-                        Welcome to Standex Dojo! Start your journey towards a personalized learning path.
-                    </p>
-                </div>
-                <div className="chat-container">
-                    <div className="chat-window">
-                        {messages.map((message, index) => (
-                            <div key={index} className={`chat-message ${message.user}`}>
-                                {message.text}
-                            </div>
+            <div className="main-container">
+                <div className="chat-history-section">
+                    <h2>Chat History</h2>
+                    <ul>
+                        {chatHistory.map((chat) => (
+                            <li key={chat.id} onClick={() => handleChatHistoryClick(chat.id)}>
+                                Chat {chat.id}
+                            </li>
                         ))}
-                    </div>
-                    <div className="chat-input">
-                        <input
-                            type="text"
-                            value={input}
-                            onChange={(e) => setInput(e.target.value)}
-                            onKeyPress={(e) => e.key === 'Enter' ? handleSendMessage() : null}
-                            placeholder="Type your message here..."
-                        />
-                        <button onClick={handleSendMessage}>Send</button>
-                    </div>
+                    </ul>
                 </div>
-                <div className="learning-path-section">
-                    <h2>Get Your Personalized Learning Path</h2>
-                    <div className="stripe-button">
-                        <stripe-buy-button
-                            buy-button-id="buy_btn_1PPrc5Rt3Wt49gX5TaXcGPFl"
-                            publishable-key="pk_live_51PNIDCRt3Wt49gX54QBZsb623PzO2rPuBZmcs3EvjEUNpIFZFU5EDEhtIA2ROScyYe4M99xWm5DP0O4rpdHeZqtM00ihCT1urk"
-                        ></stripe-buy-button>
+                <div className="content-container">
+                    <div className="logo-section">
+                        <img src="/images/dojo_logo.png" alt="Dojo Logo" className="dojo-logo" />
+                        <p className="intro-text">
+                            Welcome to Standex Dojo! Start your journey towards a personalized learning path.
+                        </p>
+                    </div>
+                    <div className="chat-container">
+                        <div className="chat-window">
+                            {messages.map((message, index) => (
+                                <div key={index} className={`chat-message ${message.user}`}>
+                                    {message.text}
+                                </div>
+                            ))}
+                        </div>
+                        <div className="chat-input">
+                            <input
+                                type="text"
+                                value={input}
+                                onChange={(e) => setInput(e.target.value)}
+                                onKeyPress={(e) => e.key === 'Enter' ? handleSendMessage() : null}
+                                placeholder="Type your message here..."
+                            />
+                            <button onClick={handleSendMessage}>Send</button>
+                        </div>
+                    </div>
+                    <div className="learning-path-section">
+                        <h2>Get Your Personalized Learning Path</h2>
+                        <div className="stripe-button">
+                            <stripe-buy-button
+                                buy-button-id="buy_btn_1PPrc5Rt3Wt49gX5TaXcGPFl"
+                                publishable-key="pk_live_51PNIDCRt3Wt49gX54QBZsb623PzO2rPuBZmcs3EvjEUNpIFZFU5EDEhtIA2ROScyYe4M99xWm5DP0O4rpdHeZqtM00ihCT1urk"
+                            ></stripe-buy-button>
+                        </div>
                     </div>
                 </div>
             </div>
