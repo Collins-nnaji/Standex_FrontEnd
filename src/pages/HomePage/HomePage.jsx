@@ -1,5 +1,4 @@
 import React, { useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
 import './homePage.css';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
@@ -10,12 +9,7 @@ const HomePage = () => {
   const digitalMarketingRef = useRef(null);
   const dataAIRef = useRef(null);
   const [formVisible, setFormVisible] = useState(false);
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
-    service: ''
-  });
+  const [chatbotVisible, setChatbotVisible] = useState(false);
 
   const scrollToSection = (ref) => {
     ref.current.scrollIntoView({ behavior: 'smooth' });
@@ -25,36 +19,8 @@ const HomePage = () => {
     setFormVisible(!formVisible);
   };
 
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    // Send form data to the backend endpoint
-    const response = await fetch('https://your-backend-endpoint.com/send-email', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData),
-    });
-
-    if (response.ok) {
-      alert('Your message has been sent successfully!');
-      // Clear the form
-      setFormData({
-        name: '',
-        email: '',
-        message: '',
-        service: ''
-      });
-    } else {
-      alert('Failed to send your message. Please try again.');
-    }
+  const toggleChatbot = () => {
+    setChatbotVisible(!chatbotVisible);
   };
 
   return (
@@ -72,13 +38,16 @@ const HomePage = () => {
         <h2>About Us</h2>
         <div className="cards">
           <div className="card-container">
-            <p><strong>At Standex Digital, our vision is to lead in digital solutions, pioneering technologies that empower businesses and individuals.</strong></p>
+            <p className="card-title">Our Vision</p>
+            <p>Leading in digital solutions and pioneering technologies that empower businesses and individuals.</p>
           </div>
           <div className="card-container">
-            <p><strong>We deliver superior digital services to optimize efficiency and drive growth. Our mission is to equip businesses and learners with the tools and knowledge for success in the digital age.</strong></p>
+            <p className="card-title">Our Mission</p>
+            <p>Delivering superior digital services to optimize efficiency and drive growth, equipping businesses and learners for success.</p>
           </div>
           <div className="card-container">
-            <p><strong>Our diverse team of experts in cloud computing, web and app development, digital marketing, and AI solutions prioritizes continuous learning and teamwork, transforming innovative ideas into practical digital products and services.</strong></p>
+            <p className="card-title">Our Team</p>
+            <p>Diverse experts in cloud computing, web and app development, digital marketing, and AI solutions, transforming innovative ideas into practical digital products and services.</p>
           </div>
         </div>
       </section>
@@ -136,52 +105,36 @@ const HomePage = () => {
           <p>Our team will get back to you within 24 hours of receiving your request.</p>
           <button className="consultation-link" onClick={toggleFormVisibility}>Book a Session</button>
           {formVisible && (
-            <form className={`consultation-form ${formVisible ? 'active' : ''}`} onSubmit={handleSubmit}>
-              <input 
-                type="text" 
-                name="name" 
-                placeholder="Your Name" 
-                value={formData.name} 
-                onChange={handleChange} 
-                required 
-              />
-              <input 
-                type="email" 
-                name="email" 
-                placeholder="Your Email" 
-                value={formData.email} 
-                onChange={handleChange} 
-                required 
-              />
-              <select 
-                name="service" 
-                value={formData.service} 
-                onChange={handleChange} 
-                required
-              >
-                <option value="">Select Service</option>
-                <option value="Cloud Services">Cloud Services</option>
-                <option value="Web & Mobile App Development">Web & Mobile App Development</option>
-                <option value="Digital Marketing">Digital Marketing</option>
-                <option value="Data & AI">Data & AI</option>
-              </select>
-              <textarea 
-                name="message" 
-                placeholder="Your Message" 
-                value={formData.message} 
-                onChange={handleChange} 
-                required
-              ></textarea>
-              <button type="submit">Submit</button>
-            </form>
+            <div className="google-form-container">
+              <iframe
+                src="https://docs.google.com/forms/d/e/1FAIpQLSfj7frDmNF1_l7jPZeA5r5n9SRBgzoeLFO4ohA77XO-plfZqA/viewform?embedded=true"
+                width="640"
+                height="800"
+                frameBorder="0"
+                marginHeight="0"
+                marginWidth="0"
+                title="Book a Session Form"
+              >Loading…</iframe>
+            </div>
           )}
         </div>
         <div className="chatbot-section">
-          <h2>Explore Our Services</h2>
-          <p>Click the chatbot icon below to learn more about our services, products, and how we can assist you in achieving your goals.</p>
-          <Link to="/dojo/chatbot">
-            <img src="/images/Chatbot.png" alt="Dojo Chatbot" className="chatbot-card" />
-          </Link>
+          <button className="chatbot-toggle" onClick={toggleChatbot}>Chat with Us</button>
+          {chatbotVisible && (
+            <div className="chatbot-popup">
+              <div className="chatbot-header">
+                <h2>Chatbot</h2>
+                <span className="close" onClick={toggleChatbot}>&times;</span>
+              </div>
+              <div className="chatbot-content">
+                <iframe
+                  src="https://copilotstudio.microsoft.com/environments/Default-a1bbe8af-2736-4afa-b45e-385e122031a2/bots/cr0d9_sensei/webchat?__version__=2"
+                  frameBorder="0"
+                  title="Dojo Chatbot"
+                ></iframe>
+              </div>
+            </div>
+          )}
         </div>
       </div>
 

@@ -23,7 +23,7 @@ const DojoPage = () => {
         </div>
       </div>
       <div className="get-started">
-        <h2>Click the Card Below to Get Started</h2>
+        <h2>Get Started</h2>
         <Link to="/dojo/learning-path" className="card-link">
           <img src="/images/Learning Path Card.svg" alt="Learning Path" className="card" />
         </Link>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './jobBoard.css';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
@@ -42,19 +42,32 @@ const JobBoard = () => {
     "CV Library": "https://www.cv-library.co.uk/search-jobs?keywords="
   };
 
+  const [activeAccordions, setActiveAccordions] = useState({});
+
+  const toggleAccordion = (site) => {
+    setActiveAccordions((prev) => ({
+      ...prev,
+      [site]: !prev[site]
+    }));
+  };
+
   const generateJobTitles = (jobTitles, url) => {
     return Object.entries(jobTitles).map(([course, titles]) => (
       <div key={course} className="job-section">
-        <h3>{course} Jobs</h3>
-        <ul className="job-titles">
-          {titles.map((title, index) => (
-            <li key={index} className="job-item">
-              <a href={`${url}${encodeURIComponent(title)}`} target="_blank" rel="noopener noreferrer">
-                {title}
-              </a>
-            </li>
-          ))}
-        </ul>
+        <h3 className="accordion-header" onClick={() => toggleAccordion(`${url}-${course}`)}>
+          {course} Jobs
+        </h3>
+        {activeAccordions[`${url}-${course}`] && (
+          <ul className="job-titles">
+            {titles.map((title, index) => (
+              <li key={index} className="job-item">
+                <a href={`${url}${encodeURIComponent(title)}`} target="_blank" rel="noopener noreferrer">
+                  {title}
+                </a>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
     ));
   };

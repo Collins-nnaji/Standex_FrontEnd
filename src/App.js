@@ -5,7 +5,7 @@ import DojoPage from './pages/DojoPage/DojoPage';
 import JobBoard from './pages/JobBoard/JobBoard';
 import TechElevate from './pages/TechElevate/TechElevate';
 import LearningPath from './pages/DojoPage/LearningPath/LearningPath';
-import ChatbotPage from './pages/DojoPage/ChatbotPage';
+
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';  // Correct import path
 
 const App = () => {
@@ -16,7 +16,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/dojo" element={<DojoPage />} />
-          <Route path="/dojo/chatbot" element={<ChatbotPage />} />
+
           <Route path="/dojo/learning-path" element={<LearningPath />} />
           <Route path="/tech-elevate" element={<TechElevate />} />
           <Route path="/job-board" element={<JobBoard />} />

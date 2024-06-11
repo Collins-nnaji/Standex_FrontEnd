@@ -7,20 +7,27 @@
 
 .footer-content {
   display: flex;
-  justify-content: space-between;
+  justify-content: center; /* Center the content horizontally */
   align-items: center;
   max-width: 1200px;
   margin: 0 auto;
+  flex-direction: column; /* Stack items vertically */
 }
 
 .footer p {
   margin: 0;
   color: #333;
+  margin-bottom: 10px; /* Add space below the text */
 }
 
 .social-media {
   display: flex;
   gap: 15px;
+}
+
+.social-icon {
+  width: 32px; /* Increase size as needed */
+  height: 32px;
 }
 
 .social-media a {
@@ -29,8 +36,8 @@
   font-weight: bold;
 }
 
-.social-media a:hover {
-  color: #0073e6;
+.social-media a:hover .social-icon {
+  filter: brightness(0.8);
 }
 
 /* Responsive Styles */

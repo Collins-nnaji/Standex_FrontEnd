@@ -46,7 +46,7 @@ const TechElevate = () => {
             <Accordion
               title="Power BI"
               content={[
-                <ul>
+                <ul className="custom-bullets">
                   <li>Introduction to Power BI, navigating the interface, and creating simple reports.</li>
                   <li>Importing data from various sources, data transformation techniques, and data cleaning.</li>
                   <li>Creating interactive reports and dashboards with real-world data sets.</li>
@@ -57,7 +57,7 @@ const TechElevate = () => {
             <Accordion
               title="SQL"
               content={[
-                <ul>
+                <ul className="custom-bullets">
                   <li>Understanding SQL syntax and database fundamentals through hands-on exercises.</li>
                   <li>Writing basic SQL queries to retrieve and manipulate data from databases.</li>
                   <li>Performing advanced SQL operations such as complex joins, subqueries, and optimization techniques.</li>
@@ -74,7 +74,7 @@ const TechElevate = () => {
             <Accordion
               title="Machine Learning"
               content={[
-                <ul>
+                <ul className="custom-bullets">
                   <li>Learning the basics of machine learning concepts and algorithms through practical examples.</li>
                   <li>Data preprocessing and feature engineering, including handling missing data and feature scaling.</li>
                   <li>Model selection and evaluation, using techniques to choose and validate the best models.</li>
@@ -85,7 +85,7 @@ const TechElevate = () => {
             <Accordion
               title="Large Language Models (LLM) and Prompt Engineering"
               content={[
-                <ul>
+                <ul className="custom-bullets">
                   <li>Exploring the architectures and capabilities of large language models with practical tasks.</li>
                   <li>Training and fine-tuning LLMs, applying them to various natural language processing tasks.</li>
                   <li>Designing and optimizing prompts for different applications, focusing on real-world use cases.</li>
@@ -102,7 +102,7 @@ const TechElevate = () => {
             <Accordion
               title="Power Apps"
               content={[
-                <ul>
+                <ul className="custom-bullets">
                   <li>Overview of Power Apps, exploring its ecosystem and capabilities through hands-on projects.</li>
                   <li>Designing and building canvas apps, creating user-friendly interfaces connected to data sources.</li>
                   <li>Developing model-driven apps, working on complex applications with sophisticated data models.</li>
@@ -113,7 +113,7 @@ const TechElevate = () => {
             <Accordion
               title="Power Automate"
               content={[
-                <ul>
+                <ul className="custom-bullets">
                   <li>Introduction to Power Automate, creating and managing basic flows to automate tasks.</li>
                   <li>Building complex workflows with conditions, loops, and approval processes.</li>
                   <li>Implementing error handling and optimization techniques for efficient workflow management.</li>
@@ -130,7 +130,7 @@ const TechElevate = () => {
             <Accordion
               title="Solution Architecture"
               content={[
-                <ul>
+                <ul className="custom-bullets">
                   <li>Learning architecture design fundamentals, including key principles and methodologies.</li>
                   <li>Designing scalable and resilient systems using cloud computing and infrastructure best practices.</li>
                   <li>Ensuring security and compliance with industry standards in architecture design.</li>
@@ -141,7 +141,7 @@ const TechElevate = () => {
             <Accordion
               title="Data Architecture"
               content={[
-                <ul>
+                <ul className="custom-bullets">
                   <li>Mastering data architecture fundamentals with practical applications.</li>
                   <li>Creating efficient and scalable data models and designs.</li>
                   <li>Implementing data integration and ETL processes for smooth data flow.</li>

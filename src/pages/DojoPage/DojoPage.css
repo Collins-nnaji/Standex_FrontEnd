@@ -126,12 +126,32 @@
   width: 100%;
   height: auto; /* Adjust height proportionally */
   cursor: pointer;
-  transition: transform 0.2s;
+  transition: transform 0.2s, box-shadow 0.2s;
   border-radius: 10px; /* Add border radius */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add initial box shadow */
+  position: relative; /* Needed for pseudo-element */
 }
 
 .card:hover {
   transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Darker shadow on hover */
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  border: 2px solid #1ab188; /* Green border */
+  border-radius: 10px;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.card:hover::before {
+  opacity: 1;
 }
 
 .click-instruction {
