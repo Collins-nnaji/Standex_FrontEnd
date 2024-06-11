@@ -1,3 +1,16 @@
+/* Import the Poppins font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
 .learning-path-page {
   display: flex;
   flex-direction: column;
@@ -8,14 +21,27 @@
 .main-container {
   display: flex;
   flex: 1;
+  flex-wrap: wrap;
 }
 
 .chat-history-section {
-  width: 250px;
+  width: 300px;
   background-color: #1ab188;
   padding: 20px;
   border-right: 1px solid #e0e0e0;
   color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo-section {
+  margin-bottom: 20px;
+}
+
+.dojo-logo {
+  width: 150px;
+  height: auto;
 }
 
 .chat-history-section h2 {
@@ -27,12 +53,15 @@
 .chat-history-section ul {
   list-style-type: none;
   padding: 0;
+  width: 100%;
 }
 
 .chat-history-section li {
   padding: 10px;
   cursor: pointer;
   transition: background-color 0.3s;
+  text-align: center;
+  border-radius: 10px;
 }
 
 .chat-history-section li:hover {
@@ -47,22 +76,6 @@
   flex: 1;
 }
 
-.logo-section {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.dojo-logo {
-  width: 150px;
-  height: auto;
-}
-
-.intro-text {
-  font-size: 20px; /* Increased font size */
-  color: #333;
-  margin-top: 10px;
-}
-
 .chat-container {
   display: flex;
   flex-direction: column;
@@ -74,7 +87,7 @@
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  background: #1ab188; /* Changed to specified color */
+  background: #fff;
 }
 
 .chat-window {
@@ -90,7 +103,7 @@
   margin: 10px 0;
   padding: 15px;
   border-radius: 10px;
-  font-size: 16px; /* Increased font size */
+  font-size: 16px;
   line-height: 1.6;
   max-width: 75%;
   word-wrap: break-word;
@@ -117,7 +130,7 @@
   display: flex;
   padding: 15px;
   border-top: 1px solid #e0e0e0;
-  background-color: #fff; /* Remain white */
+  background-color: #fff;
   border-radius: 0 0 10px 10px;
   animation: fadeIn 0.5s ease-in-out;
 }
@@ -128,7 +141,7 @@
   border: 1px solid #e0e0e0;
   border-radius: 20px;
   margin-right: 10px;
-  font-size: 18px; /* Increased font size */
+  font-size: 18px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   transition: border-color 0.3s, box-shadow 0.3s;
 }
@@ -146,7 +159,7 @@
   border: none;
   border-radius: 20px;
   cursor: pointer;
-  font-size: 18px; /* Increased font size */
+  font-size: 18px;
   transition: background-color 0.3s, transform 0.3s;
 }
 
@@ -166,11 +179,11 @@
   width: 100%;
   max-width: 800px;
   margin: 20px auto;
-  text-align: center; /* Ensure text is always centered */
+  text-align: center;
 }
 
 .learning-path-section h2 {
-  font-size: 24px; /* Increased font size */
+  font-size: 24px;
   margin-bottom: 20px;
 }
 
@@ -182,6 +195,18 @@
 
 /* Responsive Styles */
 @media (max-width: 768px) {
+  .main-container {
+    flex-direction: column;
+  }
+
+  .chat-history-section {
+    width: 100%;
+    order: 2;
+    border-right: none;
+    border-top: 1px solid #e0e0e0;
+    padding: 10px;
+  }
+
   .chat-container {
     height: 60vh;
   }
@@ -203,6 +228,27 @@
 
   .intro-text {
     font-size: 18px;
+  }
+
+  .chat-history-section h2 {
+    font-size: 16px;
+  }
+
+  .chat-history-section ul {
+    width: 100%;
+  }
+
+  .chat-history-section li {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .learning-path-section h2 {
+    font-size: 20px;
+  }
+
+  .stripe-button {
+    justify-content: center;
   }
 }
 
@@ -228,6 +274,27 @@
 
   .intro-text {
     font-size: 16px;
+  }
+
+  .chat-history-section h2 {
+    font-size: 14px;
+  }
+
+  .chat-history-section ul {
+    width: 100%;
+  }
+
+  .chat-history-section li {
+    font-size: 12px;
+    padding: 6px;
+  }
+
+  .learning-path-section h2 {
+    font-size: 18px;
+  }
+
+  .stripe-button {
+    justify-content: center;
   }
 }
 

@@ -22,16 +22,20 @@ const TechElevate = () => {
           <h2>Why Choose Tech Elevate</h2>
           <div className="cards">
             <div className="card-container">
-              <p><em>We are proud partners with Microsoft, providing you with the latest tools and resources. This partnership ensures you are learning with the most up-to-date and industry-standard technology, preparing you for the demands of the tech world.</em></p>
+              <p className="card-title">Microsoft Partnership</p>
+              <p>Learn with the latest tools and resources, ensuring you're prepared for the tech world.</p>
             </div>
             <div className="card-container">
-              <p><em>Gain access to Microsoft tools like Power BI, Power Platform, Azure, Machine Learning, SQL, and more for one year. These tools are crucial in today's tech environment and having hands-on experience will give you a competitive edge.</em></p>
+              <p className="card-title">Access to Tools</p>
+              <p>Get hands-on experience with Power BI, Azure, SQL, and more for one year.</p>
             </div>
             <div className="card-container">
-              <p><em>Get references for job experiences, helping you stand out to potential employers. Our program is designed to simulate real job environments, giving you the experience you need to excel in your career.</em></p>
+              <p className="card-title">Job References</p>
+              <p>Stand out to employers with real job experience and professional references.</p>
             </div>
             <div className="card-container">
-              <p><em>Receive complimentary textbooks and materials to support your learning journey. We provide all the necessary resources to ensure you have everything you need to succeed in your courses and beyond.</em></p>
+              <p className="card-title">Free Resources</p>
+              <p>Receive textbooks and materials to support your learning journey.</p>
             </div>
           </div>
         </section>

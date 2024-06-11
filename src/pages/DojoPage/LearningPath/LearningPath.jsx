@@ -61,6 +61,9 @@ const LearningPath = () => {
             <Header />
             <div className="main-container">
                 <div className="chat-history-section">
+                    <div className="logo-section">
+                        <img src="/images/dojo_logo.png" alt="Dojo Logo" className="dojo-logo" />
+                    </div>
                     <h2>Chat History</h2>
                     <ul>
                         {chatHistory.map((chat) => (
@@ -71,12 +74,6 @@ const LearningPath = () => {
                     </ul>
                 </div>
                 <div className="content-container">
-                    <div className="logo-section">
-                        <img src="/images/dojo_logo.png" alt="Dojo Logo" className="dojo-logo" />
-                        <p className="intro-text">
-                            Welcome to Standex Dojo! Start your journey towards a personalized learning path.
-                        </p>
-                    </div>
                     <div className="chat-container">
                         <div className="chat-window">
                             {messages.map((message, index) => (
@@ -97,7 +94,7 @@ const LearningPath = () => {
                         </div>
                     </div>
                     <div className="learning-path-section">
-                        <h2>Get Your Personalized Learning Path</h2>
+                        <h2>Purchase Your Learning Plan</h2>
                         <div className="stripe-button">
                             <stripe-buy-button
                                 buy-button-id="buy_btn_1PPrc5Rt3Wt49gX5TaXcGPFl"

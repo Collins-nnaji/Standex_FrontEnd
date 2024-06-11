@@ -130,55 +130,59 @@ const HomePage = () => {
         </div>
       </section>
 
-      <div className="consultation-section">
-        <button className="consultation-link" onClick={toggleFormVisibility}>Book a Consultation</button>
-        {formVisible && (
-          <form className={`consultation-form ${formVisible ? 'active' : ''}`} onSubmit={handleSubmit}>
-            <input 
-              type="text" 
-              name="name" 
-              placeholder="Your Name" 
-              value={formData.name} 
-              onChange={handleChange} 
-              required 
-            />
-            <input 
-              type="email" 
-              name="email" 
-              placeholder="Your Email" 
-              value={formData.email} 
-              onChange={handleChange} 
-              required 
-            />
-            <select 
-              name="service" 
-              value={formData.service} 
-              onChange={handleChange} 
-              required
-            >
-              <option value="">Select Service</option>
-              <option value="Cloud Services">Cloud Services</option>
-              <option value="Web & Mobile App Development">Web & Mobile App Development</option>
-              <option value="Digital Marketing">Digital Marketing</option>
-              <option value="Data & AI">Data & AI</option>
-            </select>
-            <textarea 
-              name="message" 
-              placeholder="Your Message" 
-              value={formData.message} 
-              onChange={handleChange} 
-              required
-            ></textarea>
-            <button type="submit">Submit</button>
-          </form>
-        )}
-      </div>
-
-      <div className="chatbot-section">
-        <Link to="/dojo/chatbot">
-          <img src="/images/Chatbot Card.svg" alt="Dojo Chatbot" className="chatbot-card" />
-          <p className="chatbot-text">To find out more about us and our services, engage with our chatbot.</p>
-        </Link>
+      <div className="interaction-section">
+        <div className="consultation-section">
+          <h2>Book a Session to Discover How We Can Help</h2>
+          <p>Our team will get back to you within 24 hours of receiving your request.</p>
+          <button className="consultation-link" onClick={toggleFormVisibility}>Book a Session</button>
+          {formVisible && (
+            <form className={`consultation-form ${formVisible ? 'active' : ''}`} onSubmit={handleSubmit}>
+              <input 
+                type="text" 
+                name="name" 
+                placeholder="Your Name" 
+                value={formData.name} 
+                onChange={handleChange} 
+                required 
+              />
+              <input 
+                type="email" 
+                name="email" 
+                placeholder="Your Email" 
+                value={formData.email} 
+                onChange={handleChange} 
+                required 
+              />
+              <select 
+                name="service" 
+                value={formData.service} 
+                onChange={handleChange} 
+                required
+              >
+                <option value="">Select Service</option>
+                <option value="Cloud Services">Cloud Services</option>
+                <option value="Web & Mobile App Development">Web & Mobile App Development</option>
+                <option value="Digital Marketing">Digital Marketing</option>
+                <option value="Data & AI">Data & AI</option>
+              </select>
+              <textarea 
+                name="message" 
+                placeholder="Your Message" 
+                value={formData.message} 
+                onChange={handleChange} 
+                required
+              ></textarea>
+              <button type="submit">Submit</button>
+            </form>
+          )}
+        </div>
+        <div className="chatbot-section">
+          <h2>Explore Our Services</h2>
+          <p>Click the chatbot icon below to learn more about our services, products, and how we can assist you in achieving your goals.</p>
+          <Link to="/dojo/chatbot">
+            <img src="/images/Chatbot.png" alt="Dojo Chatbot" className="chatbot-card" />
+          </Link>
+        </div>
       </div>
 
       <Footer />

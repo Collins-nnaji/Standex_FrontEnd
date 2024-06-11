@@ -42,18 +42,21 @@ const JobBoard = () => {
     "CV Library": "https://www.cv-library.co.uk/search-jobs?keywords="
   };
 
-  const generateJobLinks = (jobTitle) => {
-    return (
-      <ul className="job-links">
-        {Object.entries(jobSearchUrls).map(([site, url]) => (
-          <li key={site} className={`job-link-${site.toLowerCase().replace(/\s+/g, '-')}`}>
-            <a href={`${url}${encodeURIComponent(jobTitle)}`} target="_blank" rel="noopener noreferrer">
-              <em>{site}</em>
-            </a>
-          </li>
-        ))}
-      </ul>
-    );
+  const generateJobTitles = (jobTitles, url) => {
+    return Object.entries(jobTitles).map(([course, titles]) => (
+      <div key={course} className="job-section">
+        <h3>{course} Jobs</h3>
+        <ul className="job-titles">
+          {titles.map((title, index) => (
+            <li key={index} className="job-item">
+              <a href={`${url}${encodeURIComponent(title)}`} target="_blank" rel="noopener noreferrer">
+                {title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ));
   };
 
   return (
@@ -61,22 +64,17 @@ const JobBoard = () => {
       <Header />
       <main>
         <h1 className="stylish-font">Job Board</h1>
-        <p className="sub-text">Find your dream job here! Explore opportunities in various tech fields and kickstart your career with the right role. Each section below links to relevant job listings on LinkedIn, Indeed, Glassdoor, Monster, SimplyHired, UK Visa Jobs, Gradcracker, and CV Library, providing you with a curated selection of potential jobs that match the skills and courses we offer. Take the next step towards your career growth and apply for the positions that best fit your aspirations.</p>
+        <p className="sub-text">Find your dream job here! Explore opportunities in various tech fields and kickstart your career with the right role.</p>
         <img src="/images/Careers Page.svg" alt="Careers" className="job-board-image" />
+        <div className="intro-text">
+          <h2>Find Jobs on Trusted Platforms</h2>
+          <p>Below are links to job opportunities available on various trusted platforms. Click on a platform to see available jobs in your desired field.</p>
+        </div>
         <div className="job-sections">
-          {Object.entries(jobTitles).map(([course, titles]) => (
-            <div key={course} className="job-section">
-              <h2>{course} Jobs</h2>
-              <div className="job-card">
-                <ul>
-                  {titles.map((title, index) => (
-                    <li key={index} className="job-item">
-                      <div className="job-title">{title}</div>
-                      {generateJobLinks(title)}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+          {Object.entries(jobSearchUrls).map(([site, url]) => (
+            <div key={site} className="job-search-site">
+              <h2>{site}</h2>
+              {generateJobTitles(jobTitles, url)}
             </div>
           ))}
         </div>

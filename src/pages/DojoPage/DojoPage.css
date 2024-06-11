@@ -117,24 +117,9 @@
   margin: 20px 0;
 }
 
-.card-container {
-  background: #fff; /* White background */
-  padding: 20px; /* Increased padding */
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  text-align: left; /* Align text to left */
-  flex: 1 1 300px; /* Make the card responsive */
-  box-sizing: border-box; /* Ensure padding and borders are included in the width/height */
-  transition: background-color 0.3s ease;
-}
-
-.card-container:hover {
-  background-color: #fff; /* Maintain white background for hover */
-}
-
-.card-container p {
-  font-size: 1.3rem; /* Increase font size */
-  font-style: italic; /* Make text italic */
+.card-link {
+  display: inline-block;
+  text-decoration: none; /* Remove underline */
 }
 
 .card {
@@ -142,6 +127,7 @@
   height: auto; /* Adjust height proportionally */
   cursor: pointer;
   transition: transform 0.2s;
+  border-radius: 10px; /* Add border radius */
 }
 
 .card:hover {
@@ -155,6 +141,7 @@
   -webkit-background-clip: text;
   background-clip: text;
   margin-top: 10px;
+  text-align: center; /* Center align the text */
 }
 
 .learning-image {

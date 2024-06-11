@@ -23,16 +23,10 @@ const DojoPage = () => {
         </div>
       </div>
       <div className="get-started">
-        <h2>Get Started with Standex Dojo</h2>
-        <p>Follow these steps to begin your learning journey:</p>
-        <div className="cards">
-          <div className="card-container">
-            <Link to="/dojo/learning-path">
-              <img src="/images/Learning Path Card.svg" alt="Learning Path" className="card" />
-              <p className="click-instruction">Discover your personalized learning path.</p>
-            </Link>
-          </div>
-        </div>
+        <h2>Click the Card Below to Get Started</h2>
+        <Link to="/dojo/learning-path" className="card-link">
+          <img src="/images/Learning Path Card.svg" alt="Learning Path" className="card" />
+        </Link>
       </div>
       <Footer />
     </div>

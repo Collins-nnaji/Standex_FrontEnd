@@ -102,7 +102,7 @@
   font-weight: 600;
   font-size: 2.5rem; /* Increased header size */
 }
-
+.interaction-section p,
 .combined-section p,
 .service-section p,
 .homepage-content p,
@@ -163,12 +163,8 @@
 }
 
 .consultation-section {
-  background: #ffffff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  margin-top: 20px;
   text-align: center;
+  width: 100%;
 }
 
 .consultation-link {
@@ -245,34 +241,50 @@
 
 /* Chatbot Card Section */
 .chatbot-section {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.chatbot-card {
+  width: 100%;
+  max-width: 150px; /* Make the chatbot image smaller */
+  margin: 10px auto; /* Adjusted margin */
+  cursor: pointer; /* Make it obvious that it's clickable */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.chatbot-card:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Interaction Section */
+.interaction-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background: #ffffff;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   margin-top: 20px;
   text-align: center;
+  transition: background-color 0.3s ease;
 }
 
-.chatbot-card {
-  width: 100%;
-  max-width: 300px;
-  margin: 20px auto;
-  transition: transform 0.2s ease;
+.interaction-section:hover {
+  background-color: #e9fbf7;
 }
 
-.chatbot-card:hover {
-  transform: scale(1.05);
-}
-
-.chatbot-text {
-  font-size: 1.2rem;
-  margin-top: 10px;
+.interaction-section h2 {
+  margin-bottom: 20px;
   background: linear-gradient(to right, green, black);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   color: transparent;
-  font-style: italic;
+  font-weight: 600;
+  font-size: 2.5rem;
 }
 
 /* Footer styling */
@@ -341,6 +353,24 @@
 
   .social-media {
     margin-top: 10px;
+  }
+
+  .interaction-section {
+    flex-direction: column;
+  }
+
+  .chatbot-section,
+  .consultation-section {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .interaction-section h2 {
+    text-align: center;
+  }
+
+  .chatbot-link {
+    width: 100%;
   }
 }
 
