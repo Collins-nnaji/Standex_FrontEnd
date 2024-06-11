@@ -12,7 +12,17 @@ const HomePage = () => {
   const [chatbotVisible, setChatbotVisible] = useState(false);
 
   const scrollToSection = (ref) => {
-    ref.current.scrollIntoView({ behavior: 'smooth' });
+    const headerElement = ref.current.querySelector('h2');
+    const offset = 100; // Adjust this value to set the offset from the top
+    const bodyRect = document.body.getBoundingClientRect().top;
+    const elementRect = headerElement.getBoundingClientRect().top;
+    const elementPosition = elementRect - bodyRect;
+    const offsetPosition = elementPosition - offset;
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: 'smooth'
+    });
   };
 
   const toggleFormVisibility = () => {
@@ -56,17 +66,17 @@ const HomePage = () => {
         <h2>Our Services</h2>
         <p className="intro-paragraph">We offer a comprehensive range of services to help businesses grow and succeed in the digital world. From cloud services to digital marketing, explore the options below to learn more about what we can do for you and how we can transform your business for the digital age.</p>
         <div className="cards">
-          <div onClick={() => scrollToSection(cloudServicesRef)}>
-            <img src="/images/Cloud Service Card.svg" alt="Cloud Services" className="card" />
+          <div onClick={() => scrollToSection(cloudServicesRef)} className="card cloud-card">
+            <img src="/images/Cloud Service Card.svg" alt="Cloud Services" />
           </div>
-          <div onClick={() => scrollToSection(webMobileAppRef)}>
-            <img src="/images/Web and Mobile App Card.svg" alt="Web and Mobile App Development" className="card" />
+          <div onClick={() => scrollToSection(webMobileAppRef)} className="card web-card">
+            <img src="/images/Web and Mobile App Card.svg" alt="Web and Mobile App Development" />
           </div>
-          <div onClick={() => scrollToSection(digitalMarketingRef)}>
-            <img src="/images/Digital Marketing Card.svg" alt="Digital Marketing" className="card" />
+          <div onClick={() => scrollToSection(digitalMarketingRef)} className="card marketing-card">
+            <img src="/images/Digital Marketing Card.svg" alt="Digital Marketing" />
           </div>
-          <div onClick={() => scrollToSection(dataAIRef)}>
-            <img src="/images/Data and Ai Card.svg" alt="Data & AI" className="card" />
+          <div onClick={() => scrollToSection(dataAIRef)} className="card ai-card">
+            <img src="/images/Data and Ai Card.svg" alt="Data & AI" />
           </div>
         </div>
       </section>

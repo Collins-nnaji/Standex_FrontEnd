@@ -71,6 +71,33 @@
   justify-items: center;
 }
 
+.card {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.2s;
+  background: none; /* Remove background */
+  box-shadow: none; /* Remove shadow */
+}
+
+.cloud-card,
+.web-card,
+.marketing-card,
+.ai-card {
+  background: none;
+  box-shadow: none;
+}
+
+.card:hover {
+  transform: scale(1.1);
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+}
+
 .card-container,
 .service-card {
   background: #ffffff;
@@ -128,18 +155,6 @@
   color: transparent;
   line-height: 2;
   font-size: 1.2rem;
-}
-
-.card {
-  width: 100%;
-  max-width: 200px;
-  height: auto;
-  cursor: pointer;
-  transition: transform 0.2s;
-}
-
-.card:hover {
-  transform: scale(1.1);
 }
 
 .consultation-button {
