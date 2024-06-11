@@ -5,7 +5,6 @@ const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-content">
-        <p>&copy; 2024 Standex Digital. All rights reserved.</p>
         <div className="social-media">
           <a href="https://www.instagram.com/standexdigital/" target="_blank" rel="noopener noreferrer">
             <img src="/icons/instagram.png" alt="Instagram" className="social-icon" />
@@ -20,6 +19,7 @@ const Footer = () => {
             <img src="/icons/whatsapp.png" alt="WhatsApp" className="social-icon" />
           </a>
         </div>
+        <p>&copy; 2024 Standex Digital. All rights reserved.</p>
       </div>
     </footer>
   );

@@ -7,22 +7,24 @@
 
 .footer-content {
   display: flex;
-  justify-content: center; /* Center the content horizontally */
+  justify-content: space-between; /* Space out the elements */
   align-items: center;
   max-width: 1200px;
   margin: 0 auto;
-  flex-direction: column; /* Stack items vertically */
+  flex-direction: row; /* Arrange items in a row */
 }
 
 .footer p {
   margin: 0;
   color: #333;
-  margin-bottom: 10px; /* Add space below the text */
+  flex: 1; /* Allow the text to take available space */
+  text-align: center; /* Center the footer text */
 }
 
 .social-media {
   display: flex;
   gap: 15px;
+  flex: 0; /* Keep the social media icons on the left */
 }
 
 .social-icon {
@@ -49,5 +51,6 @@
 
   .social-media {
     margin-top: 10px;
+    justify-content: center;
   }
 }
