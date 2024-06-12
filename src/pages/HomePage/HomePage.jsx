@@ -113,20 +113,7 @@ const HomePage = () => {
         <div className="consultation-section">
           <h2>Book a Session to Discover How We Can Help</h2>
           <p>Our team will get back to you within 24 hours of receiving your request.</p>
-          <button className="consultation-link" onClick={toggleFormVisibility}>Book a Session</button>
-          {formVisible && (
-            <div className="google-form-container">
-              <iframe
-                src="https://docs.google.com/forms/d/e/1FAIpQLSfj7frDmNF1_l7jPZeA5r5n9SRBgzoeLFO4ohA77XO-plfZqA/viewform?embedded=true"
-                width="640"
-                height="800"
-                frameBorder="0"
-                marginHeight="0"
-                marginWidth="0"
-                title="Book a Session Form"
-              >Loading…</iframe>
-            </div>
-          )}
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSfj7frDmNF1_l7jPZeA5r5n9SRBgzoeLFO4ohA77XO-plfZqA/viewform" target="_blank" rel="noopener noreferrer" className="consultation-link">Book a Session</a>
         </div>
         <div className="chatbot-section">
           <button className="chatbot-toggle" onClick={toggleChatbot}>Chat with Us</button>
