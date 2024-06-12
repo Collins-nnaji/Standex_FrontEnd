@@ -125,11 +125,13 @@
 .card {
   width: 100%;
   height: auto; /* Adjust height proportionally */
+  max-width: 300px; /* Set a maximum width for larger screens */
   cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s;
   border-radius: 10px; /* Add border radius */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add initial box shadow */
   position: relative; /* Needed for pseudo-element */
+  margin: 0 auto; /* Center the card horizontally */
 }
 
 .card:hover {

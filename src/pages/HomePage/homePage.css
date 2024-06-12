@@ -480,8 +480,20 @@
 }
 
 @media (max-width: 480px) {
+  .image-cards {
+    justify-content: center; /* Ensure the cards are centered horizontally */
+    align-items: center; /* Ensure the cards are centered vertically */
+    padding: 0 10px; /* Add padding to ensure equal margins */
+  }
+
   .image-card {
-    flex: 1 1 100%; /* Each card takes full width on very small screens */
-    max-width: 100%; /* Ensure cards take the full width on mobile */
+    flex: 1 1 auto; /* Allow each card to take its natural width */
+    max-width: 300px; /* Set a reasonable max width for the card */
+    display: flex;
+    justify-content: center; /* Center the card content horizontally */
+  }
+
+  .image-card img {
+    max-width: 100%; /* Ensure images do not exceed the card width */
   }
 }
