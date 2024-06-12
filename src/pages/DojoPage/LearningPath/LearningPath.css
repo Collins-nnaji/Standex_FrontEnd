@@ -20,52 +20,8 @@ body {
 
 .main-container {
   display: flex;
-  flex: 1;
-  flex-wrap: wrap;
-}
-
-.chat-history-section {
-  width: 300px;
-  background-color: #1ab188;
-  padding: 20px;
-  border-right: 1px solid #e0e0e0;
-  color: #fff;
-  display: flex;
   flex-direction: column;
-  align-items: center;
-}
-
-.logo-section {
-  margin-bottom: 20px;
-}
-
-.dojo-logo {
-  width: 150px;
-  height: auto;
-}
-
-.chat-history-section h2 {
-  font-size: 18px;
-  margin-bottom: 10px;
-  color: #fff;
-}
-
-.chat-history-section ul {
-  list-style-type: none;
-  padding: 0;
-  width: 100%;
-}
-
-.chat-history-section li {
-  padding: 10px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  text-align: center;
-  border-radius: 10px;
-}
-
-.chat-history-section li:hover {
-  background-color: #148f6d;
+  flex: 1;
 }
 
 .content-container {
@@ -168,7 +124,54 @@ body {
   transform: scale(1.05);
 }
 
-.learning-path-section {
+.guided-questions-section {
+  width: 100%;
+  max-width: 800px;
+  margin: 20px auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.guided-questions-section h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.question {
+  margin-bottom: 20px;
+}
+
+.question label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.question input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #1ab188;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+button:hover {
+  background-color: #148f6d;
+  transform: scale(1.05);
+}
+
+.learning-plan-section {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -182,7 +185,7 @@ body {
   text-align: center;
 }
 
-.learning-path-section h2 {
+.learning-plan-section h2 {
   font-size: 24px;
   margin-bottom: 20px;
 }
@@ -197,14 +200,6 @@ body {
 @media (max-width: 768px) {
   .main-container {
     flex-direction: column;
-  }
-
-  .chat-history-section {
-    width: 100%;
-    order: 2;
-    border-right: none;
-    border-top: 1px solid #e0e0e0;
-    padding: 10px;
   }
 
   .chat-container {
@@ -226,24 +221,12 @@ body {
     padding: 10px;
   }
 
-  .intro-text {
-    font-size: 18px;
-  }
-
-  .chat-history-section h2 {
-    font-size: 16px;
-  }
-
-  .chat-history-section ul {
+  .guided-questions-section, .learning-plan-section, .payment-section {
     width: 100%;
+    padding: 10px;
   }
 
-  .chat-history-section li {
-    font-size: 14px;
-    padding: 8px;
-  }
-
-  .learning-path-section h2 {
+  .guided-questions-section h2, .learning-plan-section h2 {
     font-size: 20px;
   }
 
@@ -272,24 +255,7 @@ body {
     padding: 8px;
   }
 
-  .intro-text {
-    font-size: 16px;
-  }
-
-  .chat-history-section h2 {
-    font-size: 14px;
-  }
-
-  .chat-history-section ul {
-    width: 100%;
-  }
-
-  .chat-history-section li {
-    font-size: 12px;
-    padding: 6px;
-  }
-
-  .learning-path-section h2 {
+  .guided-questions-section h2, .learning-plan-section h2 {
     font-size: 18px;
   }
 

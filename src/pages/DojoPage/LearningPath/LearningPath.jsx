@@ -2,14 +2,29 @@ import React, { useState, useEffect } from 'react';
 import './LearningPath.css';
 import Header from '../../../components/Header/Header';
 import Footer from '../../../components/Footer/Footer';
+import Chatbot from './Chatbot';
+import GuidedQuestions from './GuidedQuestions';
+import LearningPlan from './LearningPlan';
+import Payment from './Payment';
+import PDFGenerator from './PDFGenerator';
+
+const questions = [
+    { id: 1, text: "What are your career goals?" },
+    { id: 2, text: "What is your current level of experience?" },
+    { id: 3, text: "What topics are you interested in learning?" },
+    { id: 4, text: "How much time can you dedicate weekly to learning?" },
+    { id: 5, text: "Do you prefer video lessons or written content?" },
+];
 
 const LearningPath = () => {
     const [messages, setMessages] = useState([]);
     const [input, setInput] = useState('');
-    const [chatHistory, setChatHistory] = useState([]);
+    const [guidedResponses, setGuidedResponses] = useState({});
+    const [isPaymentCompleted, setIsPaymentCompleted] = useState(false);
+    const [pdfData, setPdfData] = useState(null);
+    const [questionsAnswered, setQuestionsAnswered] = useState(false);
 
     useEffect(() => {
-        // Dynamically load the Stripe script
         const script = document.createElement('script');
         script.src = "https://js.stripe.com/v3/buy-button.js";
         script.async = true;
@@ -20,12 +35,11 @@ const LearningPath = () => {
         };
     }, []);
 
-    const handleSendMessage = async () => {
-        if (input.trim() === '') return;
+    const handleSendMessage = async (message) => {
+        if (message.trim() === '') return;
 
-        const newMessages = [...messages, { user: 'user', text: input }];
+        const newMessages = [...messages, { user: 'user', text: message }];
         setMessages(newMessages);
-        setInput('');
 
         try {
             const response = await fetch('https://backend-pearl-chi.vercel.app/api/chat', {
@@ -33,14 +47,13 @@ const LearningPath = () => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ message: input }),
+                body: JSON.stringify({ message }),
             });
 
             if (response.ok) {
                 const data = await response.json();
                 const updatedMessages = [...newMessages, { user: 'bot', text: data.response }];
                 setMessages(updatedMessages);
-                setChatHistory([...chatHistory, { id: chatHistory.length + 1, messages: updatedMessages }]);
             } else {
                 console.error('Error in response from server:', response.statusText);
             }
@@ -49,59 +62,58 @@ const LearningPath = () => {
         }
     };
 
-    const handleChatHistoryClick = (id) => {
-        const selectedChat = chatHistory.find(chat => chat.id === id);
-        if (selectedChat) {
-            setMessages(selectedChat.messages);
-        }
+    const handleInput = async () => {
+        if (input.trim() === '') return;
+        await handleSendMessage(input);
+        setInput('');
+    };
+
+    const handleGuidedResponseChange = (questionId, response) => {
+        setGuidedResponses({ ...guidedResponses, [questionId]: response });
+    };
+
+    const handleGuidedQuestionsSubmit = async () => {
+        const formattedMessage = Object.entries(guidedResponses)
+            .map(([questionId, response]) => {
+                const questionText = questions.find(q => q.id === parseInt(questionId))?.text || '';
+                return `${questionText}\n${response}`;
+            })
+            .join('\n\n'); // Add double newlines between each question-answer pair
+
+        await handleSendMessage(formattedMessage);
+        setQuestionsAnswered(true);
+    };
+
+    const handlePaymentSuccess = () => {
+        setIsPaymentCompleted(true);
+        const learningPlan = generateLearningPlan(messages);
+        const pdf = PDFGenerator(learningPlan);
+        setPdfData(pdf);
+    };
+
+    const generateLearningPlan = (messages) => {
+        // Generate the learning plan based on chatbot messages
+        return { /* learning plan data */ };
     };
 
     return (
         <div className="learning-path-page">
             <Header />
             <div className="main-container">
-                <div className="chat-history-section">
-                    <div className="logo-section">
-                        <img src="/images/dojo_logo.png" alt="Dojo Logo" className="dojo-logo" />
-                    </div>
-                    <h2>Chat History</h2>
-                    <ul>
-                        {chatHistory.map((chat) => (
-                            <li key={chat.id} onClick={() => handleChatHistoryClick(chat.id)}>
-                                Chat {chat.id}
-                            </li>
-                        ))}
-                    </ul>
-                </div>
                 <div className="content-container">
-                    <div className="chat-container">
-                        <div className="chat-window">
-                            {messages.map((message, index) => (
-                                <div key={index} className={`chat-message ${message.user}`}>
-                                    {message.text}
-                                </div>
-                            ))}
-                        </div>
-                        <div className="chat-input">
-                            <input
-                                type="text"
-                                value={input}
-                                onChange={(e) => setInput(e.target.value)}
-                                onKeyPress={(e) => e.key === 'Enter' ? handleSendMessage() : null}
-                                placeholder="Type your message here..."
-                            />
-                            <button onClick={handleSendMessage}>Send</button>
-                        </div>
-                    </div>
-                    <div className="learning-path-section">
-                        <h2>Purchase Your Learning Plan</h2>
-                        <div className="stripe-button">
-                            <stripe-buy-button
-                                buy-button-id="buy_btn_1PPrc5Rt3Wt49gX5TaXcGPFl"
-                                publishable-key="pk_live_51PNIDCRt3Wt49gX54QBZsb623PzO2rPuBZmcs3EvjEUNpIFZFU5EDEhtIA2ROScyYe4M99xWm5DP0O4rpdHeZqtM00ihCT1urk"
-                            ></stripe-buy-button>
-                        </div>
-                    </div>
+                    {!questionsAnswered ? (
+                        <GuidedQuestions
+                            responses={guidedResponses}
+                            onResponseChange={handleGuidedResponseChange}
+                            onSubmit={handleGuidedQuestionsSubmit}
+                        />
+                    ) : (
+                        <>
+                            <Chatbot messages={messages} input={input} setInput={setInput} onSendMessage={handleInput} />
+                            <LearningPlan pdfData={pdfData} />
+                            {!isPaymentCompleted && <Payment onPaymentSuccess={handlePaymentSuccess} />}
+                        </>
+                    )}
                 </div>
             </div>
             <Footer />
