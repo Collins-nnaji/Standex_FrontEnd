@@ -8,7 +8,7 @@ const HomePage = () => {
   const webMobileAppRef = useRef(null);
   const digitalMarketingRef = useRef(null);
   const dataAIRef = useRef(null);
-  const [formVisible, setFormVisible] = useState(false);
+
   const [chatbotVisible, setChatbotVisible] = useState(false);
 
   const scrollToSection = (ref) => {
@@ -23,10 +23,6 @@ const HomePage = () => {
       top: offsetPosition,
       behavior: 'smooth'
     });
-  };
-
-  const toggleFormVisibility = () => {
-    setFormVisible(!formVisible);
   };
 
   const toggleChatbot = () => {
@@ -45,41 +41,42 @@ const HomePage = () => {
       </header>
 
       <section className="combined-section">
-        <h2>About Us</h2>
-        <div className="cards">
-          <div className="card-container">
-            <p className="card-title">Our Vision</p>
-            <p>Leading in digital solutions and pioneering technologies that empower businesses and individuals.</p>
-          </div>
-          <div className="card-container">
-            <p className="card-title">Our Mission</p>
-            <p>Delivering superior digital services to optimize efficiency and drive growth, equipping businesses and learners for success.</p>
-          </div>
-          <div className="card-container">
-            <p className="card-title">Our Team</p>
-            <p>Diverse experts in cloud computing, web and app development, digital marketing, and AI solutions, transforming innovative ideas into practical digital products and services.</p>
-          </div>
-        </div>
-      </section>
+  <h2>About Us</h2>
+  <div className="cards">
+    <div className="card-container">
+      <p className="card-title">Our Vision</p>
+      <p>Leading in digital solutions and pioneering technologies that empower businesses and individuals.</p>
+    </div>
+    <div className="card-container">
+      <p className="card-title">Our Mission</p>
+      <p>Delivering superior digital services to optimize efficiency and drive growth, equipping businesses and learners for success.</p>
+    </div>
+    <div className="card-container">
+      <p className="card-title">Our Team</p>
+      <p>Diverse experts in cloud computing, web and app development, digital marketing, and AI solutions, transforming innovative ideas into practical digital products and services.</p>
+    </div>
+  </div>
+</section>
 
-      <section className="homepage-content">
-        <h2>Our Services</h2>
-        <p className="intro-paragraph">We offer a comprehensive range of services to help businesses grow and succeed in the digital world. From cloud services to digital marketing, explore the options below to learn more about what we can do for you and how we can transform your business for the digital age.</p>
-        <div className="cards">
-          <div onClick={() => scrollToSection(cloudServicesRef)} className="card cloud-card">
-            <img src="/images/Cloud Service Card.svg" alt="Cloud Services" />
-          </div>
-          <div onClick={() => scrollToSection(webMobileAppRef)} className="card web-card">
-            <img src="/images/Web and Mobile App Card.svg" alt="Web and Mobile App Development" />
-          </div>
-          <div onClick={() => scrollToSection(digitalMarketingRef)} className="card marketing-card">
-            <img src="/images/Digital Marketing Card.svg" alt="Digital Marketing" />
-          </div>
-          <div onClick={() => scrollToSection(dataAIRef)} className="card ai-card">
-            <img src="/images/Data and Ai Card.svg" alt="Data & AI" />
-          </div>
-        </div>
-      </section>
+<section className="homepage-content">
+  <h2>Our Services</h2>
+  <p className="intro-paragraph">We offer a comprehensive range of services to help businesses grow and succeed in the digital world. From cloud services to digital marketing, explore the options below to learn more about what we can do for you and how we can transform your business for the digital age.</p>
+  <div className="image-cards">
+    <div onClick={() => scrollToSection(cloudServicesRef)} className="image-card">
+      <img src="/images/Cloud Service Card.svg" alt="Cloud Services" />
+    </div>
+    <div onClick={() => scrollToSection(webMobileAppRef)} className="image-card">
+      <img src="/images/Web and Mobile App Card.svg" alt="Web and Mobile App Development" />
+    </div>
+    <div onClick={() => scrollToSection(digitalMarketingRef)} className="image-card">
+      <img src="/images/Digital Marketing Card.svg" alt="Digital Marketing" />
+    </div>
+    <div onClick={() => scrollToSection(dataAIRef)} className="image-card">
+      <img src="/images/Data and Ai Card.svg" alt="Data & AI" />
+    </div>
+  </div>
+</section>
+
       <section ref={cloudServicesRef} className="service-section">
         <h2>Cloud Services</h2>
         <img src="/images/Cloud Services.svg" alt="Cloud Services" className="feature-image" />
