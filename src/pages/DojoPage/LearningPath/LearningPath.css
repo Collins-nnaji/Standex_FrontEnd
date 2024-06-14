@@ -108,11 +108,17 @@ button:hover:enabled {
   padding: 20px;
   margin-top: 20px;
   background-color: #fff;
-  border-radius: 10px;
+  border-radius: 15px;
   width: 100%;
   max-width: 800px;
   margin: 20px auto;
-  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.learning-plan-section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
 }
 
 .learning-plan-section h2 {
@@ -120,10 +126,20 @@ button:hover:enabled {
   margin-bottom: 20px;
 }
 
-.stripe-button {
-  width: 100%;
-  display: flex;
-  justify-content: center;
+.learning-plan-section a {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 18px;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.learning-plan-section a:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
 }
 
 .error-message {
@@ -156,13 +172,14 @@ button:hover:enabled {
   .learning-plan-section h2 {
     font-size: 20px;
   }
+
+  .learning-plan-section a {
+    font-size: 16px;
+    padding: 8px 16px;
+  }
 }
 
 @media (max-width: 768px) {
-  .main-container {
-    flex-direction: column;
-  }
-
   .guided-questions-section {
     padding: 15px;
   }
@@ -185,6 +202,11 @@ button:hover:enabled {
 
   .learning-plan-section h2 {
     font-size: 18px;
+  }
+
+  .learning-plan-section a {
+    font-size: 14px;
+    padding: 6px 12px;
   }
 }
 
@@ -212,15 +234,9 @@ button:hover:enabled {
   .learning-plan-section h2 {
     font-size: 16px;
   }
-}
 
-/* Animations */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes slideIn {
-  from { transform: translateY(20px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
+  .learning-plan-section a {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
 }

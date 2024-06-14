@@ -42,7 +42,7 @@ const GuidedQuestions = ({ responses, onResponseChange, onSubmit }) => {
                     )}
                 </div>
             ))}
-            <button onClick={onSubmit}>Submit</button>
+            <button onClick={onSubmit}>Generate Learning Path</button>
         </div>
     );
 };

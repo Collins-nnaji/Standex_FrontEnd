@@ -38,6 +38,9 @@ const LearningPath = () => {
             })
             .join('\n\n'); // Add double newlines between each question-answer pair
 
+        // Extract the topic-related answer (e.g., question ID 3)
+        const topic = guidedResponses[3] || 'Your Learning Plan';
+
         setLoading(true);
         setError(null);
 
@@ -52,7 +55,7 @@ const LearningPath = () => {
 
             if (response.ok) {
                 const data = await response.json();
-                const pdf = PDFGenerator(data.response);
+                const pdf = PDFGenerator(formattedMessage, data.response, topic);
                 setPdfData(pdf);
             } else {
                 console.error('Error in response from server:', response.statusText);
@@ -75,6 +78,7 @@ const LearningPath = () => {
                         responses={guidedResponses}
                         onResponseChange={handleGuidedResponseChange}
                         onSubmit={handleGuidedQuestionsSubmit}
+                        buttonText="Generate Learning Path"
                     />
                     {loading && <p>Loading...</p>}
                     {pdfData && (

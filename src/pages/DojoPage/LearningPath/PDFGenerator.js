@@ -1,10 +1,22 @@
 import jsPDF from 'jspdf';
 
-const PDFGenerator = (learningPlan) => {
+const PDFGenerator = (prompt, learningPlan, topic) => {
     const doc = new jsPDF();
 
-    doc.text('Learning Plan', 10, 10);
-    doc.text(learningPlan, 10, 20);
+    // Set the title font and size
+    doc.setFontSize(18);
+    doc.text(topic, 10, 10);
+
+    // Set a smaller font size for the body text
+    doc.setFontSize(12);
+
+    // Add the full prompt section
+    doc.text('Full Prompt:', 10, 30);
+    doc.text(prompt, 10, 40);
+
+    // Add the generated learning plan section
+    doc.text('Generated Learning Plan:', 10, 80);
+    doc.text(learningPlan, 10, 90);
 
     return doc.output('blob');
 };
