@@ -109,7 +109,7 @@ button:hover:enabled {
   padding: 20px;
   border-radius: 15px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  text-align: center;
+  text-align: left;
 }
 
 .gpt-response-section h2 {
@@ -120,6 +120,8 @@ button:hover:enabled {
 .gpt-response-section p {
   font-size: 16px;
   color: #333;
+  margin-bottom: 20px;
+  white-space: pre-wrap; /* Preserve formatting */
 }
 
 .learning-plan-section {

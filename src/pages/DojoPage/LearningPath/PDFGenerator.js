@@ -12,11 +12,14 @@ const PDFGenerator = (prompt, learningPlan, topic) => {
 
     // Add the full prompt section
     doc.text('Full Prompt:', 10, 30);
-    doc.text(prompt, 10, 40, { maxWidth: 180 });
+    const splitPrompt = doc.splitTextToSize(prompt, 180);
+    doc.text(splitPrompt, 10, 40);
 
-    // Add the generated learning plan section
-    doc.text('Generated Learning Plan:', 10, 80);
-    doc.text(learningPlan, 10, 90, { maxWidth: 180 });
+    // Add some space before the learning plan
+    doc.addPage();
+    doc.text('Generated Learning Plan:', 10, 10);
+    const splitLearningPlan = doc.splitTextToSize(learningPlan, 180);
+    doc.text(splitLearningPlan, 10, 20);
 
     return doc.output('blob');
 };
