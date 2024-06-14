@@ -78,7 +78,6 @@ const LearningPath = () => {
                         responses={guidedResponses}
                         onResponseChange={handleGuidedResponseChange}
                         onSubmit={handleGuidedQuestionsSubmit}
-                        buttonText="Generate Learning Path"
                     />
                     {loading && <p>Loading...</p>}
                     {pdfData && (
