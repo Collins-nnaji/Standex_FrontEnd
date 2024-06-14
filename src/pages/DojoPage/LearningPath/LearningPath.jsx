@@ -1,11 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './LearningPath.css';
 import Header from '../../../components/Header/Header';
 import Footer from '../../../components/Footer/Footer';
-import Chatbot from './Chatbot';
 import GuidedQuestions from './GuidedQuestions';
-import LearningPlan from './LearningPlan';
-import Payment from './Payment';
 import PDFGenerator from './PDFGenerator';
 
 const questions = [
@@ -13,60 +10,21 @@ const questions = [
     { id: 2, text: "What is your current level of experience?" },
     { id: 3, text: "What topics are you interested in learning?" },
     { id: 4, text: "How much time can you dedicate weekly to learning?" },
-    { id: 5, text: "Do you prefer video lessons or written content?" },
+    { id: 5, text: "Do you prefer video lessons or written content?", type: 'dropdown', options: ['Video Lessons', 'Written Content'] },
+    { id: 6, text: "What are your preferred learning formats (e.g., videos, articles, interactive exercises)?", type: 'dropdown', options: ['Videos', 'Articles', 'Interactive Exercises'] },
+    { id: 7, text: "What is your availability for learning (days of the week, specific hours)?", type: 'dropdown', options: ['Weekdays', 'Weekends', 'Both'] },
+    { id: 8, text: "What are your preferred languages for learning materials?", type: 'dropdown', options: ['English', 'Spanish', 'French', 'German', 'Chinese'] },
+    { id: 9, text: "What is your budget for learning resources (if any)?", type: 'dropdown', options: ['Free', 'Under $50', 'Under $100', 'No Limit'] },
+    { id: 10, text: "Are there any specific courses or topics you want to prioritize?" },
+    { id: 11, text: "Do you have any learning disabilities or preferences that we should be aware of?" },
+    { id: 12, text: "What is your current proficiency level in the topics you want to learn?" },
 ];
 
 const LearningPath = () => {
-    const [messages, setMessages] = useState([]);
-    const [input, setInput] = useState('');
     const [guidedResponses, setGuidedResponses] = useState({});
-    const [isPaymentCompleted, setIsPaymentCompleted] = useState(false);
     const [pdfData, setPdfData] = useState(null);
-    const [questionsAnswered, setQuestionsAnswered] = useState(false);
-
-    useEffect(() => {
-        const script = document.createElement('script');
-        script.src = "https://js.stripe.com/v3/buy-button.js";
-        script.async = true;
-        document.body.appendChild(script);
-
-        return () => {
-            document.body.removeChild(script);
-        };
-    }, []);
-
-    const handleSendMessage = async (message) => {
-        if (message.trim() === '') return;
-
-        const newMessages = [...messages, { user: 'user', text: message }];
-        setMessages(newMessages);
-
-        try {
-            const response = await fetch('https://backend-pearl-chi.vercel.app/api/chat', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ message }),
-            });
-
-            if (response.ok) {
-                const data = await response.json();
-                const updatedMessages = [...newMessages, { user: 'bot', text: data.response }];
-                setMessages(updatedMessages);
-            } else {
-                console.error('Error in response from server:', response.statusText);
-            }
-        } catch (error) {
-            console.error('Error sending message:', error);
-        }
-    };
-
-    const handleInput = async () => {
-        if (input.trim() === '') return;
-        await handleSendMessage(input);
-        setInput('');
-    };
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
 
     const handleGuidedResponseChange = (questionId, response) => {
         setGuidedResponses({ ...guidedResponses, [questionId]: response });
@@ -80,20 +38,32 @@ const LearningPath = () => {
             })
             .join('\n\n'); // Add double newlines between each question-answer pair
 
-        await handleSendMessage(formattedMessage);
-        setQuestionsAnswered(true);
-    };
+        setLoading(true);
+        setError(null);
 
-    const handlePaymentSuccess = () => {
-        setIsPaymentCompleted(true);
-        const learningPlan = generateLearningPlan(messages);
-        const pdf = PDFGenerator(learningPlan);
-        setPdfData(pdf);
-    };
+        try {
+            const response = await fetch('https://backend-pearl-chi.vercel.app/api/chat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ message: formattedMessage }),
+            });
 
-    const generateLearningPlan = (messages) => {
-        // Generate the learning plan based on chatbot messages
-        return { /* learning plan data */ };
+            if (response.ok) {
+                const data = await response.json();
+                const pdf = PDFGenerator(data.response);
+                setPdfData(pdf);
+            } else {
+                console.error('Error in response from server:', response.statusText);
+                setError('Failed to generate the learning plan.');
+            }
+        } catch (error) {
+            console.error('Error sending message:', error);
+            setError('Failed to generate the learning plan.');
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
@@ -101,19 +71,19 @@ const LearningPath = () => {
             <Header />
             <div className="main-container">
                 <div className="content-container">
-                    {!questionsAnswered ? (
-                        <GuidedQuestions
-                            responses={guidedResponses}
-                            onResponseChange={handleGuidedResponseChange}
-                            onSubmit={handleGuidedQuestionsSubmit}
-                        />
-                    ) : (
-                        <>
-                            <Chatbot messages={messages} input={input} setInput={setInput} onSendMessage={handleInput} />
-                            <LearningPlan pdfData={pdfData} />
-                            {!isPaymentCompleted && <Payment onPaymentSuccess={handlePaymentSuccess} />}
-                        </>
+                    <GuidedQuestions
+                        responses={guidedResponses}
+                        onResponseChange={handleGuidedResponseChange}
+                        onSubmit={handleGuidedQuestionsSubmit}
+                    />
+                    {loading && <p>Loading...</p>}
+                    {pdfData && (
+                        <div className="learning-plan-section">
+                            <h2>Your Learning Plan</h2>
+                            <a href={URL.createObjectURL(pdfData)} download="learning_plan.pdf">Download Learning Plan</a>
+                        </div>
                     )}
+                    {error && <p className="error-message">{error}</p>}
                 </div>
             </div>
             <Footer />

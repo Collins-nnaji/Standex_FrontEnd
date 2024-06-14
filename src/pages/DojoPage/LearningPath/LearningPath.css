@@ -32,111 +32,27 @@ body {
   flex: 1;
 }
 
-.chat-container {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  max-width: 800px;
-  height: 70vh;
-  margin: 20px auto;
-  border: 1px solid #e0e0e0;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  background: #fff;
-}
-
-.chat-window {
-  flex: 1;
-  padding: 20px;
-  overflow-y: auto;
-  background-color: #f7f7f7;
-  border-radius: 10px 10px 0 0;
-  animation: fadeIn 0.5s ease-in-out;
-}
-
-.chat-message {
-  margin: 10px 0;
-  padding: 15px;
-  border-radius: 10px;
-  font-size: 16px;
-  line-height: 1.6;
-  max-width: 75%;
-  word-wrap: break-word;
-  animation: slideIn 0.3s ease-in-out;
-  display: flex;
-  align-items: center;
-}
-
-.chat-message.user {
-  background-color: #007bff;
-  color: #fff;
-  align-self: flex-end;
-  text-align: right;
-}
-
-.chat-message.bot {
-  background-color: #f0f0f0;
-  color: #333;
-  align-self: flex-start;
-  text-align: left;
-}
-
-.chat-input {
-  display: flex;
-  padding: 15px;
-  border-top: 1px solid #e0e0e0;
-  background-color: #fff;
-  border-radius: 0 0 10px 10px;
-  animation: fadeIn 0.5s ease-in-out;
-}
-
-.chat-input input {
-  flex: 1;
-  padding: 15px;
-  border: 1px solid #e0e0e0;
-  border-radius: 20px;
-  margin-right: 10px;
-  font-size: 18px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-  transition: border-color 0.3s, box-shadow 0.3s;
-}
-
-.chat-input input:focus {
-  outline: none;
-  border-color: #007bff;
-  box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
-}
-
-.chat-input button {
-  padding: 15px 25px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 20px;
-  cursor: pointer;
-  font-size: 18px;
-  transition: background-color 0.3s, transform 0.3s;
-}
-
-.chat-input button:hover {
-  background-color: #0056b3;
-  transform: scale(1.05);
-}
-
 .guided-questions-section {
   width: 100%;
   max-width: 800px;
   margin: 20px auto;
-  background: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background: #f9f9f9;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.guided-questions-section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
 }
 
 .guided-questions-section h2 {
   margin-bottom: 20px;
-  font-size: 24px;
+  font-size: 28px;
+  color: #333;
+  text-align: center;
 }
 
 .question {
@@ -146,27 +62,41 @@ body {
 .question label {
   display: block;
   margin-bottom: 5px;
+  font-size: 18px;
+  color: #555;
 }
 
-.question input {
+.question input, .question select {
   width: 100%;
-  padding: 10px;
-  border: 1px solid #e0e0e0;
-  border-radius: 5px;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.question input:focus, .question select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
 }
 
 button {
-  padding: 10px 20px;
+  padding: 12px 24px;
   background-color: #1ab188;
   color: #fff;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 18px;
   transition: background-color 0.3s, transform 0.3s;
 }
 
-button:hover {
+button:disabled {
+  background-color: #999;
+  cursor: not-allowed;
+}
+
+button:hover:enabled {
   background-color: #148f6d;
   transform: scale(1.05);
 }
@@ -196,71 +126,91 @@ button:hover {
   justify-content: center;
 }
 
+.error-message {
+  color: red;
+  margin-top: 20px;
+}
+
 /* Responsive Styles */
+@media (max-width: 1024px) {
+  .guided-questions-section {
+    padding: 20px;
+  }
+
+  .guided-questions-section h2 {
+    font-size: 24px;
+  }
+
+  .question label {
+    font-size: 16px;
+  }
+
+  .question input, .question select {
+    font-size: 14px;
+  }
+
+  button {
+    font-size: 16px;
+  }
+
+  .learning-plan-section h2 {
+    font-size: 20px;
+  }
+}
+
 @media (max-width: 768px) {
   .main-container {
     flex-direction: column;
   }
 
-  .chat-container {
-    height: 60vh;
+  .guided-questions-section {
+    padding: 15px;
   }
 
-  .chat-input input {
-    font-size: 16px;
-    padding: 10px;
+  .guided-questions-section h2 {
+    font-size: 22px;
   }
 
-  .chat-input button {
-    font-size: 16px;
-    padding: 10px 20px;
+  .question label {
+    font-size: 15px;
   }
 
-  .chat-message {
-    font-size: 14px;
-    padding: 10px;
+  .question input, .question select {
+    font-size: 13px;
   }
 
-  .guided-questions-section, .learning-plan-section, .payment-section {
-    width: 100%;
-    padding: 10px;
+  button {
+    font-size: 15px;
   }
 
-  .guided-questions-section h2, .learning-plan-section h2 {
-    font-size: 20px;
-  }
-
-  .stripe-button {
-    justify-content: center;
+  .learning-plan-section h2 {
+    font-size: 18px;
   }
 }
 
 @media (max-width: 480px) {
-  .chat-container {
-    height: 50vh;
+  .guided-questions-section {
+    padding: 10px;
   }
 
-  .chat-input input {
+  .guided-questions-section h2 {
+    font-size: 20px;
+  }
+
+  .question label {
     font-size: 14px;
-    padding: 8px;
   }
 
-  .chat-input button {
-    font-size: 14px;
-    padding: 8px 15px;
-  }
-
-  .chat-message {
+  .question input, .question select {
     font-size: 12px;
-    padding: 8px;
   }
 
-  .guided-questions-section h2, .learning-plan-section h2 {
-    font-size: 18px;
+  button {
+    font-size: 14px;
   }
 
-  .stripe-button {
-    justify-content: center;
+  .learning-plan-section h2 {
+    font-size: 16px;
   }
 }
 
