@@ -101,6 +101,27 @@ button:hover:enabled {
   transform: scale(1.05);
 }
 
+.gpt-response-section {
+  width: 100%;
+  max-width: 800px;
+  margin: 20px auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.gpt-response-section h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.gpt-response-section p {
+  font-size: 16px;
+  color: #333;
+}
+
 .learning-plan-section {
   display: flex;
   flex-direction: column;
@@ -169,6 +190,14 @@ button:hover:enabled {
     font-size: 16px;
   }
 
+  .gpt-response-section h2 {
+    font-size: 20px;
+  }
+
+  .gpt-response-section p {
+    font-size: 14px;
+  }
+
   .learning-plan-section h2 {
     font-size: 20px;
   }
@@ -200,6 +229,14 @@ button:hover:enabled {
     font-size: 15px;
   }
 
+  .gpt-response-section h2 {
+    font-size: 18px;
+  }
+
+  .gpt-response-section p {
+    font-size: 13px;
+  }
+
   .learning-plan-section h2 {
     font-size: 18px;
   }
@@ -229,6 +266,14 @@ button:hover:enabled {
 
   button {
     font-size: 14px;
+  }
+
+  .gpt-response-section h2 {
+    font-size: 16px;
+  }
+
+  .gpt-response-section p {
+    font-size: 12px;
   }
 
   .learning-plan-section h2 {

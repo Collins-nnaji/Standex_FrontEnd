@@ -22,6 +22,7 @@ const questions = [
 
 const LearningPath = () => {
     const [guidedResponses, setGuidedResponses] = useState({});
+    const [gptResponse, setGptResponse] = useState('');
     const [pdfData, setPdfData] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -38,8 +39,7 @@ const LearningPath = () => {
             })
             .join('\n\n'); // Add double newlines between each question-answer pair
 
-        // Extract the topic-related answer (e.g., question ID 3)
-        const topic = guidedResponses[3] || 'Your Learning Plan';
+        const prompt = `Create a learning plan with these details:\n\n${formattedMessage}`;
 
         setLoading(true);
         setError(null);
@@ -50,13 +50,12 @@ const LearningPath = () => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ message: formattedMessage }),
+                body: JSON.stringify({ message: prompt }),
             });
 
             if (response.ok) {
                 const data = await response.json();
-                const pdf = PDFGenerator(formattedMessage, data.response, topic);
-                setPdfData(pdf);
+                setGptResponse(data.response);
             } else {
                 console.error('Error in response from server:', response.statusText);
                 setError('Failed to generate the learning plan.');
@@ -69,6 +68,21 @@ const LearningPath = () => {
         }
     };
 
+    const handleGeneratePDF = () => {
+        const formattedMessage = Object.entries(guidedResponses)
+            .map(([questionId, response]) => {
+                const questionText = questions.find(q => q.id === parseInt(questionId))?.text || '';
+                return `${questionText}\n${response}`;
+            })
+            .join('\n\n'); // Add double newlines between each question-answer pair
+
+        // Extract the topic-related answer (e.g., question ID 3)
+        const topic = guidedResponses[3] || 'Your Learning Plan';
+
+        const pdf = PDFGenerator(formattedMessage, gptResponse, topic);
+        setPdfData(pdf);
+    };
+
     return (
         <div className="learning-path-page">
             <Header />
@@ -78,8 +92,16 @@ const LearningPath = () => {
                         responses={guidedResponses}
                         onResponseChange={handleGuidedResponseChange}
                         onSubmit={handleGuidedQuestionsSubmit}
+                        buttonText="Generate Learning Path"
                     />
                     {loading && <p>Loading...</p>}
+                    {gptResponse && (
+                        <div className="gpt-response-section">
+                            <h2>Generated Learning Plan</h2>
+                            <p>{gptResponse}</p>
+                            <button onClick={handleGeneratePDF}>Download as PDF</button>
+                        </div>
+                    )}
                     {pdfData && (
                         <div className="learning-plan-section">
                             <h2>Your Learning Plan</h2>
