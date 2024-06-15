@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useEffect } from 'react';
 import './homePage.css';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
@@ -8,8 +8,6 @@ const HomePage = () => {
   const webMobileAppRef = useRef(null);
   const digitalMarketingRef = useRef(null);
   const dataAIRef = useRef(null);
-
-  const [chatbotVisible, setChatbotVisible] = useState(false);
 
   const scrollToSection = (ref) => {
     const headerElement = ref.current.querySelector('h2');
@@ -25,8 +23,20 @@ const HomePage = () => {
     });
   };
 
-  const toggleChatbot = () => {
-    setChatbotVisible(!chatbotVisible);
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://assets.calendly.com/assets/external/widget.js';
+    script.async = true;
+    document.body.appendChild(script);
+
+    const link = document.createElement('link');
+    link.href = 'https://assets.calendly.com/assets/external/widget.css';
+    link.rel = 'stylesheet';
+    document.head.appendChild(link);
+  }, []);
+
+  const openCalendlyPopup = () => {
+    window.Calendly.initPopupWidget({ url: 'https://calendly.com/standexdigital/30min' });
   };
 
   return (
@@ -41,41 +51,41 @@ const HomePage = () => {
       </header>
 
       <section className="combined-section">
-  <h2>About Us</h2>
-  <div className="cards">
-    <div className="card-container">
-      <p className="card-title">Our Vision</p>
-      <p>Leading in digital solutions and pioneering technologies that empower businesses and individuals.</p>
-    </div>
-    <div className="card-container">
-      <p className="card-title">Our Mission</p>
-      <p>Delivering superior digital services to optimize efficiency and drive growth, equipping businesses and learners for success.</p>
-    </div>
-    <div className="card-container">
-      <p className="card-title">Our Team</p>
-      <p>Diverse experts in cloud computing, web and app development, digital marketing, and AI solutions, transforming innovative ideas into practical digital products and services.</p>
-    </div>
-  </div>
-</section>
+        <h2>About Us</h2>
+        <div className="cards">
+          <div className="card-container">
+            <p className="card-title">Our Vision</p>
+            <p>Leading in digital solutions and pioneering technologies that empower businesses and individuals.</p>
+          </div>
+          <div className="card-container">
+            <p className="card-title">Our Mission</p>
+            <p>Delivering superior digital services to optimize efficiency and drive growth, equipping businesses and learners for success.</p>
+          </div>
+          <div className="card-container">
+            <p className="card-title">Our Team</p>
+            <p>Diverse experts in cloud computing, web and app development, digital marketing, and AI solutions, transforming innovative ideas into practical digital products and services.</p>
+          </div>
+        </div>
+      </section>
 
-<section className="homepage-content">
-  <h2>Our Services</h2>
-  <p className="intro-paragraph">We offer a comprehensive range of services to help businesses grow and succeed in the digital world. From cloud services to digital marketing, explore the options below to learn more about what we can do for you and how we can transform your business for the digital age.</p>
-  <div className="image-cards">
-    <div onClick={() => scrollToSection(cloudServicesRef)} className="image-card">
-      <img src="/images/Cloud Service Card.svg" alt="Cloud Services" />
-    </div>
-    <div onClick={() => scrollToSection(webMobileAppRef)} className="image-card">
-      <img src="/images/Web and Mobile App Card.svg" alt="Web and Mobile App Development" />
-    </div>
-    <div onClick={() => scrollToSection(digitalMarketingRef)} className="image-card">
-      <img src="/images/Digital Marketing Card.svg" alt="Digital Marketing" />
-    </div>
-    <div onClick={() => scrollToSection(dataAIRef)} className="image-card">
-      <img src="/images/Data and Ai Card.svg" alt="Data & AI" />
-    </div>
-  </div>
-</section>
+      <section className="homepage-content">
+        <h2>Our Services</h2>
+        <p className="intro-paragraph">We offer a comprehensive range of services to help businesses grow and succeed in the digital world. From cloud services to digital marketing, explore the options below to learn more about what we can do for you and how we can transform your business for the digital age.</p>
+        <div className="image-cards">
+          <div onClick={() => scrollToSection(cloudServicesRef)} className="image-card">
+            <img src="/images/Cloud Service Card.svg" alt="Cloud Services" />
+          </div>
+          <div onClick={() => scrollToSection(webMobileAppRef)} className="image-card">
+            <img src="/images/Web and Mobile App Card.svg" alt="Web and Mobile App Development" />
+          </div>
+          <div onClick={() => scrollToSection(digitalMarketingRef)} className="image-card">
+            <img src="/images/Digital Marketing Card.svg" alt="Digital Marketing" />
+          </div>
+          <div onClick={() => scrollToSection(dataAIRef)} className="image-card">
+            <img src="/images/Data and Ai Card.svg" alt="Data & AI" />
+          </div>
+        </div>
+      </section>
 
       <section ref={cloudServicesRef} className="service-section">
         <h2>Cloud Services</h2>
@@ -110,25 +120,9 @@ const HomePage = () => {
         <div className="consultation-section">
           <h2>Book a Session to Discover How We Can Help</h2>
           <p>Our team will get back to you within 24 hours of receiving your request.</p>
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSfj7frDmNF1_l7jPZeA5r5n9SRBgzoeLFO4ohA77XO-plfZqA/viewform" target="_blank" rel="noopener noreferrer" className="consultation-link">Book a Session</a>
-        </div>
-        <div className="chatbot-section">
-          <button className="chatbot-toggle" onClick={toggleChatbot}>Chat with Us</button>
-          {chatbotVisible && (
-            <div className="chatbot-popup">
-              <div className="chatbot-header">
-                <h2>Chatbot</h2>
-                <span className="close" onClick={toggleChatbot}>&times;</span>
-              </div>
-              <div className="chatbot-content">
-                <iframe
-                  src="https://copilotstudio.microsoft.com/environments/Default-a1bbe8af-2736-4afa-b45e-385e122031a2/bots/cr0d9_sensei/webchat?__version__=2"
-                  frameBorder="0"
-                  title="Dojo Chatbot"
-                ></iframe>
-              </div>
-            </div>
-          )}
+          <p>For general inquiries, send an email to <a href="mailto:admin@standexdigital.tech">admin@standexdigital.tech</a>.</p>
+          <p>For urgent requests, book a meeting below:</p>
+          <button onClick={openCalendlyPopup} className="calendly-button">Schedule time with me</button>
         </div>
       </div>
 

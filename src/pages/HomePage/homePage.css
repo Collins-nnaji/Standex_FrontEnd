@@ -80,6 +80,7 @@
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   max-width: 300px;
+  margin: 10px;
 }
 
 .card-container:hover {
@@ -238,6 +239,11 @@
   margin-top: 20px;
 }
 
+.chatbot-icon {
+  width: 50px;
+  height: 50px;
+}
+
 .chatbot-card {
   width: 100%;
   max-width: 150px;
@@ -333,19 +339,21 @@
   position: fixed;
   bottom: 90px; /* Adjusted to shift up */
   right: 20px;
-  padding: 10px 20px;
-  background-color: #1ab188;
-  color: #fff;
+  padding: 10px;
+  background-color: transparent;
   border: none;
-  border-radius: 5px;
   cursor: pointer;
-  font-size: 1.2rem;
   z-index: 1000;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: none;
+}
+
+.chatbot-toggle img {
+  width: 50px;
+  height: 50px;
 }
 
 .chatbot-toggle:hover {
-  background-color: #16a085;
+  transform: scale(1.1);
 }
 
 /* Footer styling */
@@ -454,6 +462,24 @@
     right: 20px;
   }
 }
+/* ... other styles ... */
+
+.calendly-button {
+  padding: 10px 20px;
+  background-color: #0069ff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+.calendly-button:hover {
+  background-color: #0056cc;
+}
+
+/* ... other styles ... */
 
 @media (min-width: 769px) and (max-width: 1024px) {
   .cards {
@@ -466,6 +492,7 @@
     grid-template-columns: repeat(4, 1fr);
   }
 }
+
 /* Responsive Styles */
 @media (max-width: 1024px) {
   .image-card {

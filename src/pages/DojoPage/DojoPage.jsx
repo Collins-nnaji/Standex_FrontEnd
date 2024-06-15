@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './DojoPage.css';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 
 const DojoPage = () => {
+  const [chatbotVisible, setChatbotVisible] = useState(false);
+
+  const toggleChatbot = () => {
+    setChatbotVisible(!chatbotVisible);
+  };
+
   return (
     <div className="dojo-page">
       <Header />
@@ -24,10 +30,32 @@ const DojoPage = () => {
       </div>
       <div className="get-started">
         <h2>Get Started</h2>
-        <Link to="/dojo/learning-path" className="card-link">
-          <img src="/images/Learning Path Card.svg" alt="Learning Path" className="card" />
-        </Link>
+        <div className="cards">
+          <Link to="/dojo/learning-path" className="card-link">
+            <img src="/images/Learning Path Card.svg" alt="Learning Path" className="card" />
+          </Link>
+          <div className="card-link" onClick={toggleChatbot}>
+            <img src="/images/Interactive Dojo Card.svg" alt="Interactive Dojo" className="card" />
+          </div>
+        </div>
       </div>
+
+      {chatbotVisible && (
+        <div className="chatbot-popup">
+          <div className="chatbot-header">
+            <h2>Chatbot</h2>
+            <span className="close" onClick={toggleChatbot}>&times;</span>
+          </div>
+          <div className="chatbot-content">
+            <iframe
+              src="https://copilotstudio.microsoft.com/environments/Default-a1bbe8af-2736-4afa-b45e-385e122031a2/bots/cr0d9_sensei/webchat?__version__=2"
+              frameBorder="0"
+              title="Dojo Chatbot"
+            ></iframe>
+          </div>
+        </div>
+      )}
+
       <Footer />
     </div>
   );
