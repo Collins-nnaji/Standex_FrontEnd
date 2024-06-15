@@ -122,7 +122,7 @@ const HomePage = () => {
     <p>Our team will get back to you within 24 hours of receiving your request.</p>
     <p>For general inquiries, send an email to <a href="mailto:admin@standexdigital.tech"><strong>admin@standexdigital.tech</strong></a>.</p>
     <p>For urgent requests, book a meeting below:</p>
-    <button onClick={openCalendlyPopup} className="calendly-button">Schedule time with me</button>
+    <button onClick={openCalendlyPopup} className="calendly-button">Book a Session with One of Our Experts</button>
   </div>
 </div>
 

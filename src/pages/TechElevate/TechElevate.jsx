@@ -1,13 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './TechElevate.css';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import Accordion from '../../components/Accordion/Accordion';
 
 const TechElevate = () => {
+  const [chatbotVisible, setChatbotVisible] = useState(false);
+
   const handleCheckout = (url) => (event) => {
     event.preventDefault();
     window.location.href = url;
+  };
+
+  const toggleChatbot = () => {
+    setChatbotVisible(!chatbotVisible);
   };
 
   return (
@@ -152,7 +158,29 @@ const TechElevate = () => {
             <button onClick={handleCheckout('https://buy.stripe.com/cN29CF2Uw5dk30A6op')} className="register-link">Register Now</button>
           </div>
         </div>
+        <div className="chatbot-card-container">
+          <div className="card-link" onClick={toggleChatbot}>
+            <img src="/images/Chatbot.png" alt="Chatbot" className="card" />
+            <p className="card-text">Find out more about our training programs</p>
+          </div>
+        </div>
       </main>
+
+      {chatbotVisible && (
+        <div className="chatbot-popup">
+          <div className="chatbot-header">
+            <h2>Chatbot</h2>
+            <span className="close" onClick={toggleChatbot}>&times;</span>
+          </div>
+          <div className="chatbot-content">
+            <iframe
+              src="https://copilotstudio.microsoft.com/environments/Default-a1bbe8af-2736-4afa-b45e-385e122031a2/bots/cr0d9_sensei/webchat?__version__=2"
+              frameBorder="0"
+              title="Tech Elevate Chatbot"
+            ></iframe>
+          </div>
+        </div>
+      )}
       <Footer />
     </div>
   );

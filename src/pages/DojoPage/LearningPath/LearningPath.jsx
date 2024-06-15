@@ -23,7 +23,6 @@ const questions = [
 const LearningPath = () => {
     const [guidedResponses, setGuidedResponses] = useState({});
     const [gptResponse, setGptResponse] = useState('');
-    const [pdfData, setPdfData] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
@@ -68,7 +67,7 @@ const LearningPath = () => {
         }
     };
 
-    const handleGeneratePDF = () => {
+    const handleDownloadPDF = () => {
         const formattedMessage = Object.entries(guidedResponses)
             .map(([questionId, response]) => {
                 const questionText = questions.find(q => q.id === parseInt(questionId))?.text || '';
@@ -80,7 +79,12 @@ const LearningPath = () => {
         const topic = guidedResponses[3] || 'Your Learning Plan';
 
         const pdf = PDFGenerator(formattedMessage, gptResponse, topic);
-        setPdfData(pdf);
+        const pdfBlob = new Blob([pdf], { type: 'application/pdf' });
+        const pdfURL = URL.createObjectURL(pdfBlob);
+        const link = document.createElement('a');
+        link.href = pdfURL;
+        link.download = 'learning_plan.pdf';
+        link.click();
     };
 
     return (
@@ -99,13 +103,7 @@ const LearningPath = () => {
                         <div className="gpt-response-section">
                             <h2>Generated Learning Plan</h2>
                             <p>{gptResponse}</p>
-                            <button onClick={handleGeneratePDF}>Download as PDF</button>
-                        </div>
-                    )}
-                    {pdfData && (
-                        <div className="learning-plan-section">
-                            <h2>Your Learning Plan</h2>
-                            <a href={URL.createObjectURL(pdfData)} download="learning_plan.pdf">Download Learning Plan</a>
+                            <button onClick={handleDownloadPDF}>Download as PDF</button>
                         </div>
                     )}
                     {error && <p className="error-message">{error}</p>}
