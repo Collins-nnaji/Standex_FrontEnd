@@ -29,22 +29,23 @@ const TechElevate = () => {
           <div className="cards">
             <div className="card-container">
               <p className="card-title">Microsoft Partnership</p>
-              <p>Learn with the latest tools and resources, ensuring you're prepared for the tech world.</p>
+              <p className="card-content">Learn with the latest tools and resources, ensuring you're prepared for the tech world.</p>
             </div>
             <div className="card-container">
               <p className="card-title">Access to Tools</p>
-              <p>Get hands-on experience with Power BI, Azure, SQL, and more for one year.</p>
+              <p className="card-content">Get hands-on experience with Power BI, Azure, SQL, and more for one year.</p>
             </div>
             <div className="card-container">
               <p className="card-title">Job References</p>
-              <p>Stand out to employers with real job experience and professional references.</p>
+              <p className="card-content">Stand out to employers with real job experience and professional references.</p>
             </div>
             <div className="card-container">
               <p className="card-title">Free Resources</p>
-              <p>Receive textbooks and materials to support your learning journey.</p>
+              <p className="card-content">Receive textbooks and materials to support your learning journey.</p>
             </div>
           </div>
         </section>
+
         <div className="courses">
           <div className="course">
             <img src="/images/Businessintelligence.svg" alt="Business Intelligence" className="course-img" />
@@ -159,10 +160,8 @@ const TechElevate = () => {
           </div>
         </div>
         <div className="chatbot-card-container">
-          <div className="card-link" onClick={toggleChatbot}>
-            <img src="/images/Chatbot.png" alt="Chatbot" className="card" />
-            <p className="card-text">Find out more about our training programs</p>
-          </div>
+          <img src="/images/Chatbot.png" alt="Chatbot" className="card" onClick={toggleChatbot} />
+          <p className="card-text">Find out more about our training programs</p>
         </div>
       </main>
 

@@ -37,9 +37,11 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
   color: transparent;
-  margin-top: 10px;
-  font-style: italic;
+  margin-top: 5px; /* Reduced margin */
+  font-weight: 300; /* Changed to semi-bold */
+  font-style: normal; /* Ensure text is not italic */text-align: center;
 }
+
 
 .home-image {
   width: 100%;
@@ -227,36 +229,6 @@
   display: block;
 }
 
-.google-form-container iframe {
-  width: 100%;
-  height: 800px;
-  border: none;
-  margin: 20px 0;
-}
-
-.chatbot-section {
-  text-align: center;
-  margin-top: 20px;
-}
-
-.chatbot-icon {
-  width: 50px;
-  height: 50px;
-}
-
-.chatbot-card {
-  width: 100%;
-  max-width: 150px;
-  margin: 10px auto;
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.chatbot-card:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-
 .interaction-section {
   display: flex;
   flex-direction: column;
@@ -283,77 +255,6 @@
   color: transparent;
   font-weight: 600;
   font-size: 2.5rem;
-}
-
-.chatbot-popup {
-  position: fixed;
-  bottom: 70px; /* Adjusted to shift up */
-  right: 20px;
-  width: 400px;
-  max-width: 100%;
-  height: 500px;
-  max-height: 80%;
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-  display: flex;
-  flex-direction: column;
-}
-
-.chatbot-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-  background-color: #1ab188;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  color: #fff;
-}
-
-.chatbot-header h2 {
-  margin: 0;
-  font-size: 1.5rem;
-}
-
-.chatbot-header .close {
-  cursor: pointer;
-  font-size: 1.5rem;
-}
-
-.chatbot-content {
-  flex: 1;
-  padding: 0;
-}
-
-.chatbot-content iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-}
-
-.chatbot-toggle {
-  position: fixed;
-  bottom: 90px; /* Adjusted to shift up */
-  right: 20px;
-  padding: 10px;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  z-index: 1000;
-  box-shadow: none;
-}
-
-.chatbot-toggle img {
-  width: 50px;
-  height: 50px;
-}
-
-.chatbot-toggle:hover {
-  transform: scale(1.1);
 }
 
 /* Footer styling */
@@ -435,7 +336,6 @@
     flex-direction: column;
   }
 
-  .chatbot-section,
   .consultation-section {
     width: 100%;
     margin-top: 10px;
@@ -444,24 +344,8 @@
   .interaction-section h2 {
     text-align: center;
   }
-
-  .chatbot-link {
-    width: 100%;
-  }
-
-  .chatbot-popup {
-    width: 100%;
-    height: 100%;
-    bottom: 0;
-    right: 0;
-    border-radius: 0;
-  }
-
-  .chatbot-toggle {
-    bottom: 90px;
-    right: 20px;
-  }
 }
+
 /* ... other styles ... */
 
 .calendly-button {

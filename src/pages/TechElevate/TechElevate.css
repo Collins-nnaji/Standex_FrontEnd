@@ -18,14 +18,15 @@
 }
 
 .sub-text {
-  font-size: 1.5rem; /* Significantly increased size */
+  font-size: 1.5rem;
   background: linear-gradient(to right, green, black);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   color: transparent;
-  margin-top: 10px;
-  font-style: italic;
+  margin-top: 5px; /* Reduced margin */
+  font-weight: 400; /* Changed to regular weight */
+  font-style: normal; /* Ensure text is not italic */
   text-align: center;
 }
 
@@ -48,7 +49,7 @@
 }
 
 .why-choose-us h2 {
-  font-size: 2.5rem; /* Increased header size */
+  font-size: 2.5rem;
   background: linear-gradient(to right, green, black);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -65,13 +66,17 @@
 }
 
 .card-container {
-  background: #ffffff; /* White background */
+  background: #ffffff;
   padding: 30px;
   border-radius: 15px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  max-width: 300px; /* Ensure cards do not exceed the container width */
+  max-width: 300px;
+  min-height: 250px; /* Ensure uniform height */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .card-container:hover {
@@ -79,16 +84,17 @@
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-.card-container p {
-  font-size: 1.2rem; /* Increase font size */
-  margin: 10px 0;
-}
-
 .card-title {
   font-weight: 600;
-  font-size: 1.5rem; /* Increased font size for title */
+  font-size: 1.5rem;
   margin-bottom: 10px;
-  color: #1ab188; /* Green color for title */
+  color: #1ab188;
+}
+
+.card-content {
+  font-size: 1.2rem;
+  margin: 10px 0;
+  flex-grow: 1;
 }
 
 .courses {
@@ -177,19 +183,21 @@
 .chatbot-card-container {
   margin-top: 20px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .card {
-  width: 100%;
-  height: auto;
-  max-width: 300px;
+  width: 50%; /* Reduce the width to half */
+  height: auto; /* Maintain the aspect ratio */
+  max-width: 150px; /* Ensure it doesn't exceed a reasonable width */
   cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   position: relative;
   border: 2px solid #1ab188;
-  margin: 0 auto;
 }
 
 .card:hover {
@@ -218,6 +226,7 @@
   font-size: 1.2rem;
   color: #1ab188;
   margin-top: 10px;
+  text-align: center;
 }
 
 .chatbot-popup {

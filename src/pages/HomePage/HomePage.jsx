@@ -45,7 +45,7 @@ const HomePage = () => {
       <header className="welcome-section">
         <div className="welcome-text">
           <h1 className="stylish-font">Welcome to Your Digital Evolution</h1>
-          <p className="sub-text">Experience cutting-edge digital transformation services along with our Dojo Learning platform and Tech Elevate training programs.</p>
+          <p className="sub-text">Enhance your journey with digital services, Dojo , and Tech Elevate training.</p>
         </div>
         <img src="/images/Home Page.svg" alt="Home" className="home-image" />
       </header>
@@ -55,15 +55,15 @@ const HomePage = () => {
         <div className="cards">
           <div className="card-container">
             <p className="card-title">Our Vision</p>
-            <p>Leading in digital solutions and pioneering technologies that empower businesses and individuals.</p>
+            <p>Leading in digital solutions and pioneering technologies that empower businesses and individuals worldwide.</p>
           </div>
           <div className="card-container">
             <p className="card-title">Our Mission</p>
-            <p>Delivering superior digital services to optimize efficiency and drive growth, equipping businesses and learners for success.</p>
+            <p>Delivering superior digital services to optimize efficiency, drive growth, and equip businesses and learners for success.</p>
           </div>
           <div className="card-container">
             <p className="card-title">Our Team</p>
-            <p>Diverse experts in cloud computing, web and app development, digital marketing, and AI solutions, transforming innovative ideas into practical digital products and services.</p>
+            <p>Experts in cloud computing, web and app development, digital marketing, and AI, transforming innovative ideas into products.</p>
           </div>
         </div>
       </section>
@@ -117,15 +117,14 @@ const HomePage = () => {
       </section>
 
       <div className="interaction-section">
-  <div className="consultation-section">
-    <h2>Book a Session to Discover How We Can Help</h2>
-    <p>Our team will get back to you within 24 hours of receiving your request.</p>
-    <p>For general inquiries, send an email to <a href="mailto:admin@standexdigital.tech"><strong>admin@standexdigital.tech</strong></a>.</p>
-    <p>For urgent requests, book a meeting below:</p>
-    <button onClick={openCalendlyPopup} className="calendly-button">Book a Session with One of Our Experts</button>
-  </div>
-</div>
-
+        <div className="consultation-section">
+          <h2>Book a Session to Discover How We Can Help</h2>
+          <p>Our team will get back to you within 24 hours of receiving your request.</p>
+          <p>For general inquiries, send an email to <a href="mailto:admin@standexdigital.tech"><strong>admin@standexdigital.tech</strong></a>.</p>
+          <p>For urgent requests, book a meeting below:</p>
+          <button onClick={openCalendlyPopup} className="calendly-button">Book a Session with One of Our Experts</button>
+        </div>
+      </div>
 
       <Footer />
     </div>
