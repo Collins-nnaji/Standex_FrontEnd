@@ -117,14 +117,15 @@ const HomePage = () => {
       </section>
 
       <div className="interaction-section">
-        <div className="consultation-section">
-          <h2>Book a Session to Discover How We Can Help</h2>
-          <p>Our team will get back to you within 24 hours of receiving your request.</p>
-          <p>For general inquiries, send an email to <a href="mailto:admin@standexdigital.tech">admin@standexdigital.tech</a>.</p>
-          <p>For urgent requests, book a meeting below:</p>
-          <button onClick={openCalendlyPopup} className="calendly-button">Schedule time with me</button>
-        </div>
-      </div>
+  <div className="consultation-section">
+    <h2>Book a Session to Discover How We Can Help</h2>
+    <p>Our team will get back to you within 24 hours of receiving your request.</p>
+    <p>For general inquiries, send an email to <a href="mailto:admin@standexdigital.tech"><strong>admin@standexdigital.tech</strong></a>.</p>
+    <p>For urgent requests, book a meeting below:</p>
+    <button onClick={openCalendlyPopup} className="calendly-button">Schedule time with me</button>
+  </div>
+</div>
+
 
       <Footer />
     </div>
