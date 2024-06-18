@@ -6,6 +6,11 @@ const GuidedQuestions = ({ questions, responses, onResponseChange, onSubmit, but
     onResponseChange(questionId, value);
   };
 
+  const allQuestionsAnswered = questions.every((question) => {
+    const response = responses[question.id];
+    return response && (response !== 'Other' || responses[`${question.id}_other`]);
+  });
+
   return (
     <div className="guided-questions-section">
       <h2>Guided Questions</h2>
@@ -40,7 +45,9 @@ const GuidedQuestions = ({ questions, responses, onResponseChange, onSubmit, but
           )}
         </div>
       ))}
-      <button onClick={onSubmit}>{buttonText}</button>
+      <button onClick={onSubmit} disabled={!allQuestionsAnswered}>
+        {buttonText}
+      </button>
     </div>
   );
 };

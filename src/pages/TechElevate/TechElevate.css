@@ -186,6 +186,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: fixed;
+  bottom: 100px; /* Position the card above the footer */
+  right: 20px; /* Position it slightly from the right edge */
+  z-index: 1000;
 }
 
 .card {
@@ -231,7 +235,7 @@
 
 .chatbot-popup {
   position: fixed;
-  bottom: 70px;
+  bottom: 170px;
   right: 20px;
   width: 400px;
   max-width: 100%;
@@ -302,7 +306,7 @@
   }
 
   .chatbot-popup {
-    bottom: 20px;
+    bottom: 60px;
     right: 20px;
     width: calc(100% - 40px);
     height: 80vh;

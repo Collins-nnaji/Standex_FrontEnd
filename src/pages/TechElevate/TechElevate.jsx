@@ -161,7 +161,7 @@ const TechElevate = () => {
         </div>
         <div className="chatbot-card-container">
           <img src="/images/Chatbot.png" alt="Chatbot" className="card" onClick={toggleChatbot} />
-          <p className="card-text">Find out more about our training programs</p>
+       
         </div>
       </main>
 

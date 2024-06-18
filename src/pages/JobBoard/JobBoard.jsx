@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import './jobBoard.css';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
@@ -11,6 +11,7 @@ const JobBoard = () => {
     resume: null,
   });
   const [submissionStatus, setSubmissionStatus] = useState('');
+  const applicationFormRef = useRef(null);
 
   const jobs = [
     { title: 'Business Data Analyst', location: 'Remote', type: 'Full-Time' },
@@ -27,6 +28,12 @@ const JobBoard = () => {
     setSelectedJob(job);
     setSubmissionStatus('');
   };
+
+  useEffect(() => {
+    if (selectedJob && applicationFormRef.current) {
+      applicationFormRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [selectedJob]);
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
@@ -54,7 +61,8 @@ const JobBoard = () => {
       if (response.ok) {
         setSubmissionStatus('Application submitted successfully!');
       } else {
-        setSubmissionStatus('Failed to submit application.');
+        const errorData = await response.json();
+        setSubmissionStatus(`Failed to submit application: ${errorData.message}`);
       }
     } catch (error) {
       console.error('Error submitting application:', error);
@@ -84,7 +92,7 @@ const JobBoard = () => {
           ))}
         </div>
         {selectedJob && (
-          <div className="application-form">
+          <div className="application-form" ref={applicationFormRef}>
             <h2 className="stylish-font">Apply for {selectedJob.title}</h2>
             <form onSubmit={handleSubmit}>
               <div className="form-group">
