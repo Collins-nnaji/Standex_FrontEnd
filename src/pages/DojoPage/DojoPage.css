@@ -8,6 +8,11 @@
   background-color: #fff; /* Set the entire background to white */
 }
 
+.dojo-logo {
+  width: 250px; /* Increased size */
+  margin: 20px auto;
+}
+
 .welcome-section {
   display: flex;
   flex-direction: column;
@@ -42,14 +47,12 @@
   text-align: center;
 }
 
-.features-container,
-.get-started {
+.features-container {
   padding: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 40px; /* Increased margin for space */
 }
 
-.features-container h2,
-.get-started h2 {
+.features-container h2 {
   color: transparent;
   background: linear-gradient(to right, green, black);
   -webkit-background-clip: text;
@@ -76,59 +79,33 @@
   transform: scale(1.1);
 }
 
-.card-link {
-  display: inline-block;
-  text-decoration: none;
-}
-
-.card {
-  width: 100%;
-  height: auto;
-  max-width: 400px; /* Increased max width */
-  cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  position: relative;
-  border: 2px solid #1ab188;
-}
-
-.card:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-}
-
-.card::before {
-  content: "";
-  position: absolute;
-  top: -10px;
-  left: -10px;
-  right: -10px;
-  bottom: -10px;
-  border: 2px solid #1ab188;
-  border-radius: 10px;
-  opacity: 0;
-  transition: opacity 0.2s;
-}
-
-.card:hover::before {
-  opacity: 1;
-}
-
-.click-instruction {
-  font-size: 1.2rem;
-  color: transparent;
-  background: linear-gradient(to right, green, black);
-  -webkit-background-clip: text;
-  background-clip: text;
-  margin-top: 10px;
-  text-align: center;
-}
-
 .learning-image {
   width: 100%;
-  max-width: 600px;
-  margin-top: 20px;
+  max-width: 800px;
+  margin: 20px 0;
+}
+
+.get-started {
+  margin-top: 40px; /* Increased margin for space */
+  padding: 20px;
+}
+
+.get-started-button {
+  display: inline-block;
+  padding: 20px 40px;
+  background-color: #1ab188;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.5rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.get-started-button:hover {
+  background-color: #148f6d;
+  transform: scale(1.05);
 }
 
 /* Responsive Styles */
@@ -144,12 +121,37 @@
   }
 
   .learning-image {
-    max-width: 300px;
+    max-width: 100%;
+  }
+
+  .dojo-logo {
+    width: 200px; /* Adjusted for smaller screens */
+  }
+
+  .get-started-button {
+    font-size: 1.2rem;
+    padding: 15px 30px;
   }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
+  .dojo-logo {
+    width: 225px; /* Adjusted for medium screens */
+  }
+
+  .get-started-button {
+    font-size: 1.4rem;
+    padding: 18px 36px;
+  }
 }
 
 @media (min-width: 1025px) {
+  .dojo-logo {
+    width: 250px; /* Ensuring the largest size for larger screens */
+  }
+
+  .get-started-button {
+    font-size: 1.5rem;
+    padding: 20px 40px;
+  }
 }

@@ -8,11 +8,12 @@ const DojoPage = () => {
   return (
     <div className="dojo-page">
       <Header />
+      <img src="/images/DojoLogo.svg" alt="Dojo Logo" className="dojo-logo" />
       <div className="welcome-section">
         <div className="welcome-text">
           <h1 className="stylish-font">Discover Your Path</h1>
           <p className="sub-text">
-            Discover your ideal tech career with Dojo. Our AI-driven platform matches you with courses tailored to your goals, ensuring you gain valuable skills quickly. Start building real skills today with Dojo.
+            Unlock Your Tech Potential with Dojo. Our AI-driven platform crafts personalized learning paths, skill assessments, project builders, and career advice to accelerate your journey. Start mastering real skills today with Dojo.
           </p>
         </div>
       </div>
@@ -22,11 +23,11 @@ const DojoPage = () => {
           <img src="/images/Frame1.svg" alt="Feature 1" className="frame" />
           <img src="/images/Frame2.svg" alt="Feature 2" className="frame" />
         </div>
+        <img src="/images/Learning.png" alt="Learning" className="learning-image" />
       </div>
       <div className="get-started">
-        <h2>Get Started</h2>
-        <Link to="/dojo/learning-path" className="card-link">
-          <img src="/images/Learning Path Card.svg" alt="Learning Path" className="card" />
+        <Link to="/dojo/learning-path" className="get-started-button">
+          Get Started
         </Link>
       </div>
       <Footer />

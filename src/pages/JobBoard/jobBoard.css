@@ -9,7 +9,7 @@
 
 .stylish-font {
   font-size: 3rem;
-  background: linear-gradient(to right, green, black);
+  background: linear-gradient(to right, #4caf50, #1b5e20);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -20,11 +20,7 @@
 
 .sub-text {
   font-size: 1.3rem;
-  background: linear-gradient(to right, green, black);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: transparent;
+  color: #666;
   margin-top: 10px;
   font-style: italic;
   text-align: center;
@@ -48,7 +44,7 @@
 
 .intro-text h2 {
   font-size: 2rem;
-  background: linear-gradient(to right, green, black);
+  background: linear-gradient(to right, #4caf50, #1b5e20);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -58,11 +54,7 @@
 
 .intro-text p {
   font-size: 1.1rem;
-  background: linear-gradient(to right, green, black);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: transparent;
+  color: #777;
   margin-bottom: 30px;
 }
 
@@ -76,7 +68,7 @@
 .job-card {
   background: #fff;
   padding: 20px;
-  border: 1px solid #ccc;
+  border: 1px solid #ddd;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s, box-shadow 0.2s;
@@ -89,18 +81,23 @@
 
 .job-card h3 {
   font-size: 1.5rem;
+  background: linear-gradient(to right, #4caf50, #1b5e20);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
   margin-bottom: 10px;
 }
 
 .job-card p {
   font-size: 1.1rem;
-  color: #333;
+  color: #555;
   margin-bottom: 15px;
 }
 
 .apply-link {
   padding: 10px 20px;
-  background-color: #1ab188;
+  background-color: #4caf50;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -111,8 +108,64 @@
 }
 
 .apply-link:hover {
-  background-color: #16a085;
+  background-color: #388e3c;
   transform: scale(1.05);
+}
+
+.application-form {
+  margin-top: 30px;
+  text-align: left;
+}
+
+.application-form h2 {
+  font-size: 2rem;
+  background: linear-gradient(to right, #4caf50, #1b5e20);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.submit-button {
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.submit-button:hover {
+  background-color: #388e3c;
+  transform: scale(1.05);
+}
+
+.submission-status {
+  margin-top: 15px;
+  font-size: 1.2rem;
+  color: #4caf50;
 }
 
 /* Responsive design */
@@ -181,5 +234,9 @@
 
   .apply-link {
     padding: 3px;
+  }
+
+  .submit-button {
+    padding: 8px 16px;
   }
 }
