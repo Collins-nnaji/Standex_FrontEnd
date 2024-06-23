@@ -27,7 +27,12 @@ const PDFGenerator = (name, prompt, learningPlan, topic) => {
   doc.setFontSize(12);
   const splitPrompt = doc.splitTextToSize(prompt, 180);
   let verticalOffset = 58;
+
   splitPrompt.forEach(line => {
+    if (verticalOffset > 280) { // Check if the vertical offset exceeds the page height
+      doc.addPage();
+      verticalOffset = 20; // Reset vertical offset for new page
+    }
     doc.text(line, 10, verticalOffset);
     verticalOffset += 10;
   });
@@ -44,7 +49,12 @@ const PDFGenerator = (name, prompt, learningPlan, topic) => {
   doc.setFontSize(12);
   const splitLearningPlan = doc.splitTextToSize(learningPlan, 180);
   verticalOffset = 30;
+
   splitLearningPlan.forEach(line => {
+    if (verticalOffset > 280) { // Check if the vertical offset exceeds the page height
+      doc.addPage();
+      verticalOffset = 20; // Reset vertical offset for new page
+    }
     doc.text(line, 10, verticalOffset);
     verticalOffset += 10;
   });
