@@ -1,63 +1,80 @@
 const { CosmosClient } = require("@azure/cosmos");
 const { FormRecognizerClient, AzureKeyCredential } = require("@azure/ai-form-recognizer");
+const multiparty = require('multiparty');
+const fs = require('fs');
 
 module.exports = async function (context, req) {
     context.log('JavaScript HTTP trigger function processed a request.');
 
-    // Validate request body
-    if (!req.body || !req.body.name || !req.body.email || !req.body.jobTitle || !req.body.resume) {
-        context.res = {
-            status: 400,
-            body: "Please pass all required fields in the request body: name, email, jobTitle, and resume."
-        };
-        return;
-    }
+    const form = new multiparty.Form();
 
-    try {
-        // Parse the form data
-        const { name, email, jobTitle, resume } = req.body;
+    form.parse(req, async (err, fields, files) => {
+        if (err) {
+            context.res = {
+                status: 400,
+                body: "Invalid form data"
+            };
+            return;
+        }
 
-        // Process the resume using Form Recognizer
-        const formRecognizerClient = new FormRecognizerClient(
-            process.env.FORM_RECOGNIZER_ENDPOINT,
-            new AzureKeyCredential(process.env.FORM_RECOGNIZER_KEY)
-        );
+        const name = fields.name[0];
+        const email = fields.email[0];
+        const jobTitle = fields.jobTitle[0];
+        const resumeFile = files.resume[0];
 
-        const poller = await formRecognizerClient.beginRecognizeContent(resume);
-        const pages = await poller.pollUntilDone();
+        if (!name || !email || !jobTitle || !resumeFile) {
+            context.res = {
+                status: 400,
+                body: "Please pass all required fields in the request body"
+            };
+            return;
+        }
 
-        // Extract relevant information from the resume
-        const resumeText = pages.map(page => page.lines.map(line => line.text).join(" ")).join("\n");
+        try {
+            const resumeFileStream = fs.createReadStream(resumeFile.path);
 
-        // Store the application in Cosmos DB
-        const cosmosClient = new CosmosClient({
-            endpoint: process.env.COSMOS_DB_ENDPOINT,
-            key: process.env.COSMOS_DB_KEY,
-        });
+            // Process the resume using Form Recognizer
+            const formRecognizerClient = new FormRecognizerClient(
+                process.env.FORM_RECOGNIZER_ENDPOINT,
+                new AzureKeyCredential(process.env.FORM_RECOGNIZER_KEY)
+            );
 
-        const { database } = await cosmosClient.databases.createIfNotExists({ id: "JobApplicationsDB" });
-        const { container } = await database.containers.createIfNotExists({ id: "Applications" });
+            const poller = await formRecognizerClient.beginRecognizeContent(resumeFileStream);
+            const pages = await poller.pollUntilDone();
 
-        const newApplication = {
-            id: new Date().toISOString(),
-            name,
-            email,
-            jobTitle,
-            resumeText,
-            submissionDate: new Date().toISOString()
-        };
+            // Extract relevant information from the resume
+            const resumeText = pages.map(page => page.lines.map(line => line.text).join(" ")).join("\n");
 
-        await container.items.create(newApplication);
+            // Store the application in Cosmos DB
+            const cosmosClient = new CosmosClient({
+                endpoint: process.env.COSMOS_DB_ENDPOINT,
+                key: process.env.COSMOS_DB_KEY,
+            });
 
-        context.res = {
-            status: 200,
-            body: "Application submitted successfully"
-        };
-    } catch (error) {
-        context.log.error('Error processing application:', error);
-        context.res = {
-            status: 500,
-            body: "An error occurred while processing your application"
-        };
-    }
+            const { database } = await cosmosClient.databases.createIfNotExists({ id: "JobApplicationsDB" });
+            const { container } = await database.containers.createIfNotExists({ id: "Applications" });
+
+            const newApplication = {
+                id: new Date().toISOString(),
+                name,
+                email,
+                jobTitle,
+                resumeText,
+                submissionDate: new Date().toISOString()
+            };
+
+            await container.items.create(newApplication);
+
+            context.res = {
+                status: 200,
+                body: "Application submitted successfully"
+            };
+        } catch (error) {
+            context.log.error('Error processing application:', error);
+            context.res = {
+                status: 500,
+                body: "An error occurred while processing your application"
+            };
+        }
+    });
 };

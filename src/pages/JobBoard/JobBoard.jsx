@@ -13,6 +13,8 @@ const JobBoard = () => {
   const [submissionStatus, setSubmissionStatus] = useState('');
   const applicationFormRef = useRef(null);
 
+  const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
+
   const jobs = [
     { title: 'Business Data Analyst', location: 'Remote', type: 'Full-Time' },
     { title: 'Web Applications Developer', location: 'Remote', type: 'Contract' },
@@ -53,7 +55,7 @@ const JobBoard = () => {
     formData.append('jobTitle', selectedJob.title);
 
     try {
-      const response = await fetch('https://job-backend-sable.vercel.app/api/apply', {
+      const response = await fetch(`${apiBaseUrl}/apply`, {
         method: 'POST',
         body: formData,
       });
@@ -94,7 +96,7 @@ const JobBoard = () => {
         {selectedJob && (
           <div className="application-form" ref={applicationFormRef}>
             <h2 className="stylish-font">Apply for {selectedJob.title}</h2>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} encType="multipart/form-data">
               <div className="form-group">
                 <label>Name</label>
                 <input type="text" name="name" value={applicant.name} onChange={handleChange} required />
@@ -105,7 +107,7 @@ const JobBoard = () => {
               </div>
               <div className="form-group">
                 <label>Resume</label>
-                <input type="file" name="resume" onChange={handleChange} required />
+                <input type="file" name="resume" onChange={handleChange} required accept=".pdf" />
               </div>
               <button type="submit" className="submit-button">Submit Application</button>
             </form>
