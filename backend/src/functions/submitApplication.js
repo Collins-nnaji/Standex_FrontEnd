@@ -10,6 +10,7 @@ module.exports = async function (context, req) {
 
     form.parse(req, async (err, fields, files) => {
         if (err) {
+            context.log.error('Error parsing form data:', err);
             context.res = {
                 status: 400,
                 body: "Invalid form data"
@@ -17,12 +18,13 @@ module.exports = async function (context, req) {
             return;
         }
 
-        const name = fields.name[0];
-        const email = fields.email[0];
-        const jobTitle = fields.jobTitle[0];
-        const resumeFile = files.resume[0];
+        const name = fields.name && fields.name[0];
+        const email = fields.email && fields.email[0];
+        const jobTitle = fields.jobTitle && fields.jobTitle[0];
+        const resumeFile = files.resume && files.resume[0];
 
         if (!name || !email || !jobTitle || !resumeFile) {
+            context.log.warn('Missing required fields:', { name, email, jobTitle, resumeFile });
             context.res = {
                 status: 400,
                 body: "Please pass all required fields in the request body"
@@ -39,8 +41,10 @@ module.exports = async function (context, req) {
                 new AzureKeyCredential(process.env.FORM_RECOGNIZER_KEY)
             );
 
+            context.log('Starting Form Recognizer process');
             const poller = await formRecognizerClient.beginRecognizeContent(resumeFileStream);
             const pages = await poller.pollUntilDone();
+            context.log('Form Recognizer process completed');
 
             // Extract relevant information from the resume
             const resumeText = pages.map(page => page.lines.map(line => line.text).join(" ")).join("\n");
@@ -51,6 +55,7 @@ module.exports = async function (context, req) {
                 key: process.env.COSMOS_DB_KEY,
             });
 
+            context.log('Connecting to Cosmos DB');
             const { database } = await cosmosClient.databases.createIfNotExists({ id: "JobApplicationsDB" });
             const { container } = await database.containers.createIfNotExists({ id: "Applications" });
 
@@ -63,6 +68,7 @@ module.exports = async function (context, req) {
                 submissionDate: new Date().toISOString()
             };
 
+            context.log('Inserting application into Cosmos DB');
             await container.items.create(newApplication);
 
             context.res = {
@@ -73,7 +79,7 @@ module.exports = async function (context, req) {
             context.log.error('Error processing application:', error);
             context.res = {
                 status: 500,
-                body: "An error occurred while processing your application"
+                body: `An error occurred while processing your application: ${error.message}`
             };
         }
     });

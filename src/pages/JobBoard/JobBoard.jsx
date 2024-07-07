@@ -15,6 +15,8 @@ const JobBoard = () => {
 
   const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
 
+  console.log("API Base URL:", apiBaseUrl);  // Add this line to check the environment variable
+
   const jobs = [
     { title: 'Business Data Analyst', location: 'Remote', type: 'Full-Time' },
     { title: 'Web Applications Developer', location: 'Remote', type: 'Contract' },
