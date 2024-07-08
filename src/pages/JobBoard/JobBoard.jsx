@@ -57,7 +57,7 @@ const JobBoard = () => {
     formData.append('jobTitle', selectedJob.title);
 
     try {
-      const response = await fetch(`${apiBaseUrl}/apply`, {
+      const response = await fetch(`${apiBaseUrl}/submitApplication`, {
         method: 'POST',
         body: formData,
       });
