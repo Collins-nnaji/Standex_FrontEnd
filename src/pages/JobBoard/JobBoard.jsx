@@ -2,6 +2,9 @@ import React, { useState, useRef, useEffect } from 'react';
 import './jobBoard.css';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
+import SearchBar from '../../components/SearchBar/SearchBar';
+import JobFilters from '../../components/JobFilters/JobFilters';
+import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
 
 const JobBoard = () => {
   const [selectedJob, setSelectedJob] = useState(null);
@@ -11,22 +14,51 @@ const JobBoard = () => {
     resume: null,
   });
   const [submissionStatus, setSubmissionStatus] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
+  const [filters, setFilters] = useState({ type: '', location: '' });
+  const [loading, setLoading] = useState(false);
   const applicationFormRef = useRef(null);
 
   const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
 
-  console.log("API Base URL:", apiBaseUrl);  // Add this line to check the environment variable
+  console.log("API Base URL:", apiBaseUrl);
 
   const jobs = [
-    { title: 'Business Data Analyst', location: 'Remote', type: 'Full-Time' },
-    { title: 'Web Applications Developer', location: 'Remote', type: 'Contract' },
+    { title: 'Product Manager', location: 'Remote', type: 'Contract' },
     { title: 'Software Engineer', location: 'Remote', type: 'Full-Time' },
-    { title: 'Power Platform Developer', location: 'Remote', type: 'Contract' },
-    { title: 'Project Manager', location: 'Remote', type: 'Full-Time' },
-    { title: 'Data Scientist', location: 'Remote', type: 'Full-Time' },
+    { title: 'Frontend Developer', location: 'Remote', type: 'Full-Time' },
+    { title: 'Backend Developer', location: 'Remote', type: 'Full-Time' },
+    { title: 'Full Stack Developer', location: 'Remote', type: 'Contract' },
+    { title: 'DevOps Engineer', location: 'Remote', type: 'Full-Time' },
+    { title: 'Cloud Solutions Architect', location: 'Remote', type: 'Contract' },
+    { title: 'Data Scientist', location: 'Remote', type: 'Part-Time' },
+    { title: 'Machine Learning Engineer', location: 'Remote', type: 'Contract' },
+    { title: 'AI Research Scientist', location: 'Remote', type: 'Part-Time' },
+    { title: 'UX/UI Designer', location: 'Remote', type: 'Contract' },
+    { title: 'Product Marketing Manager', location: 'Remote', type: 'Full-Time' },
+    { title: 'Scrum Master', location: 'Remote', type: 'Contract' },
+    { title: 'Data Engineer', location: 'Remote', type: 'Full-Time' },
+    { title: 'Business Intelligence Analyst', location: 'Remote', type: 'Full-Time' },
+    { title: 'Cybersecurity Specialist', location: 'Remote', type: 'Full-Time' },
+    { title: 'Network Engineer', location: 'Remote', type: 'Full-Time' },
+    { title: 'Mobile App Developer', location: 'Remote', type: 'Full-Time' },
+    { title: 'Blockchain Developer', location: 'Remote', type: 'Full-Time' },
+    { title: 'Technical Writer', location: 'Remote', type: 'Part-Time' },
     { title: 'Digital Marketing Specialist', location: 'Remote', type: 'Part-Time' },
-    { title: 'Human Resources Executive', location: 'Remote', type: 'Full-Time' },
+    { title: 'Customer Success Manager', location: 'Remote', type: 'Full-Time' },
+    { title: 'IT Support Specialist', location: 'Remote', type: 'Part-Time' },
+    { title: 'Database Administrator', location: 'Remote', type: 'Part-Time' },
+    { title: 'Sales Representative', location: 'Remote', type: 'Full-Time' },
   ];
+  
+
+  const filteredJobs = jobs.filter(job => {
+    return (
+      job.title.toLowerCase().includes(searchTerm.toLowerCase()) &&
+      (filters.type === '' || job.type === filters.type) &&
+      (filters.location === '' || job.location === filters.location)
+    );
+  });
 
   const handleApply = (job) => {
     setSelectedJob(job);
@@ -49,6 +81,7 @@ const JobBoard = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     const formData = new FormData();
     formData.append('name', applicant.name);
@@ -71,7 +104,20 @@ const JobBoard = () => {
     } catch (error) {
       console.error('Error submitting application:', error);
       setSubmissionStatus('An error occurred. Please try again.');
+    } finally {
+      setLoading(false);
     }
+  };
+
+  const handleSearchChange = (value) => {
+    setSearchTerm(value);
+  };
+
+  const handleFilterChange = (filterType, value) => {
+    setFilters(prevFilters => ({
+      ...prevFilters,
+      [filterType]: value
+    }));
   };
 
   return (
@@ -85,8 +131,10 @@ const JobBoard = () => {
           <h2 className="stylish-font">Current Job Openings</h2>
           <p className="sub-text">Find the perfect role that suits your skills and interests.</p>
         </div>
+        <SearchBar searchTerm={searchTerm} onSearchChange={handleSearchChange} />
+        <JobFilters filters={filters} onFilterChange={handleFilterChange} />
         <div className="job-listings">
-          {jobs.map((job, index) => (
+          {filteredJobs.map((job, index) => (
             <div key={index} className="job-card">
               <h3 className="stylish-font">{job.title}</h3>
               <p>{job.location}</p>
@@ -100,19 +148,33 @@ const JobBoard = () => {
             <h2 className="stylish-font">Apply for {selectedJob.title}</h2>
             <form onSubmit={handleSubmit} encType="multipart/form-data">
               <div className="form-group">
-                <label>Name</label>
-                <input type="text" name="name" value={applicant.name} onChange={handleChange} required />
+                <label htmlFor="name">Name</label>
+                <input type="text" id="name" name="name" value={applicant.name} onChange={handleChange} required />
               </div>
               <div className="form-group">
-                <label>Email</label>
-                <input type="email" name="email" value={applicant.email} onChange={handleChange} required />
+                <label htmlFor="email">Email</label>
+                <input type="email" id="email" name="email" value={applicant.email} onChange={handleChange} required />
               </div>
               <div className="form-group">
-                <label>Resume</label>
-                <input type="file" name="resume" onChange={handleChange} required accept=".pdf" />
-              </div>
-              <button type="submit" className="submit-button">Submit Application</button>
+  <label htmlFor="resume">Resume</label>
+  <div className="custom-file-input">
+    <input
+      type="file"
+      id="resume"
+      name="resume"
+      onChange={handleChange}
+      required
+      accept=".pdf"
+    />
+    <label htmlFor="resume">Choose file</label>
+    <span>{applicant.resume ? applicant.resume.name : 'No file chosen'}</span>
+  </div>
+</div>
+              <button type="submit" className="submit-button" disabled={loading}>
+                {loading ? 'Submitting...' : 'Submit Application'}
+              </button>
             </form>
+            {loading && <LoadingSpinner />}
             {submissionStatus && <p className="submission-status">{submissionStatus}</p>}
           </div>
         )}
