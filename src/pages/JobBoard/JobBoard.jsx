@@ -11,7 +11,8 @@ const JobBoard = () => {
   const [applicant, setApplicant] = useState({
     name: '',
     email: '',
-    resume: null,
+    linkedin: '',
+    github: '',
   });
   const [submissionStatus, setSubmissionStatus] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
@@ -50,7 +51,6 @@ const JobBoard = () => {
     { title: 'Database Administrator', location: 'Remote', type: 'Part-Time' },
     { title: 'Sales Representative', location: 'Remote', type: 'Full-Time' },
   ];
-  
 
   const filteredJobs = jobs.filter(job => {
     return (
@@ -72,10 +72,10 @@ const JobBoard = () => {
   }, [selectedJob]);
 
   const handleChange = (e) => {
-    const { name, value, files } = e.target;
+    const { name, value } = e.target;
     setApplicant({
       ...applicant,
-      [name]: files ? files[0] : value,
+      [name]: value,
     });
   };
 
@@ -83,16 +83,21 @@ const JobBoard = () => {
     e.preventDefault();
     setLoading(true);
 
-    const formData = new FormData();
-    formData.append('name', applicant.name);
-    formData.append('email', applicant.email);
-    formData.append('resume', applicant.resume);
-    formData.append('jobTitle', selectedJob.title);
+    const applicationData = {
+      name: applicant.name,
+      email: applicant.email,
+      linkedin: applicant.linkedin,
+      github: applicant.github,
+      jobTitle: selectedJob.title
+    };
 
     try {
       const response = await fetch(`${apiBaseUrl}/submitApplication`, {
         method: 'POST',
-        body: formData,
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(applicationData),
       });
 
       if (response.ok) {
@@ -146,7 +151,7 @@ const JobBoard = () => {
         {selectedJob && (
           <div className="application-form" ref={applicationFormRef}>
             <h2 className="stylish-font">Apply for {selectedJob.title}</h2>
-            <form onSubmit={handleSubmit} encType="multipart/form-data">
+            <form onSubmit={handleSubmit}>
               <div className="form-group">
                 <label htmlFor="name">Name</label>
                 <input type="text" id="name" name="name" value={applicant.name} onChange={handleChange} required />
@@ -156,20 +161,13 @@ const JobBoard = () => {
                 <input type="email" id="email" name="email" value={applicant.email} onChange={handleChange} required />
               </div>
               <div className="form-group">
-  <label htmlFor="resume">Resume</label>
-  <div className="custom-file-input">
-    <input
-      type="file"
-      id="resume"
-      name="resume"
-      onChange={handleChange}
-      required
-      accept=".pdf"
-    />
-    <label htmlFor="resume">Choose file</label>
-    <span>{applicant.resume ? applicant.resume.name : 'No file chosen'}</span>
-  </div>
-</div>
+                <label htmlFor="linkedin">LinkedIn Profile URL</label>
+                <input type="url" id="linkedin" name="linkedin" value={applicant.linkedin} onChange={handleChange} required />
+              </div>
+              <div className="form-group">
+                <label htmlFor="github">GitHub Profile URL</label>
+                <input type="url" id="github" name="github" value={applicant.github} onChange={handleChange} required />
+              </div>
               <button type="submit" className="submit-button" disabled={loading}>
                 {loading ? 'Submitting...' : 'Submit Application'}
               </button>
