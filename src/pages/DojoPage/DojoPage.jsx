@@ -5,6 +5,7 @@ import Footer from '../../components/Footer/Footer';
 import GuidedQuestions from './GuidedQuestions';
 import PDFGenerator from './PDFGenerator';
 import { questions } from './Questions';
+import ButtonComponent from '../../components/Button/ButtonComponent'; // Import the new ButtonComponent
 
 const DojoPage = () => {
   const [showLearningPath, setShowLearningPath] = useState(false);
@@ -105,9 +106,7 @@ const DojoPage = () => {
         <div className="learning-path-section">
           <div className="main-container">
             <div className="content-container">
-              <button onClick={() => setShowLearningPath(false)} className="back-button">
-                Back
-              </button>
+              <ButtonComponent onClick={() => setShowLearningPath(false)} text="Back" />
               <h2>{selectedFeature && selectedFeature.replace(/([A-Z])/g, ' $1')}</h2>
               <div className="user-info">
                 <label>
@@ -126,7 +125,7 @@ const DojoPage = () => {
                 <div className="gpt-response-section">
                   <h2>Generated {selectedFeature && selectedFeature.replace(/([A-Z])/g, ' $1')}</h2>
                   <p>{gptResponse}</p>
-                  <button onClick={handleDownloadPDF}>Download as PDF</button>
+                  <ButtonComponent onClick={handleDownloadPDF} text="Download as PDF" />
                 </div>
               )}
               {error && <p className="error-message">{error}</p>}
@@ -153,11 +152,11 @@ const DojoPage = () => {
             <img src="/images/Learning.png" alt="Learning" className="learning-image" />
           </div>
           <div className="feature-buttons">
-            <button onClick={() => handleFeatureSelection('learningPath')}>Generate Learning Path</button>
-            <button onClick={() => handleFeatureSelection('skillAssessment')}>Skill Assessment Quiz</button>
-            <button onClick={() => handleFeatureSelection('projectBuilder')}>Project Builder</button>
-            <button onClick={() => handleFeatureSelection('resourceLibrary')}>Resource Library</button>
-            <button onClick={() => handleFeatureSelection('careerAdvice')}>Career Advice</button>
+            <ButtonComponent onClick={() => handleFeatureSelection('learningPath')} text="Generate Learning Path" />
+            <ButtonComponent onClick={() => handleFeatureSelection('skillAssessment')} text="Skill Assessment Quiz" />
+            <ButtonComponent onClick={() => handleFeatureSelection('projectBuilder')} text="Project Builder" />
+            <ButtonComponent onClick={() => handleFeatureSelection('resourceLibrary')} text="Resource Library" />
+            <ButtonComponent onClick={() => handleFeatureSelection('careerAdvice')} text="Career Advice" />
           </div>
         </>
       )}

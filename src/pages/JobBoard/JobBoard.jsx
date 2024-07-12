@@ -1,12 +1,11 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useMemo } from 'react';
 import './jobBoard.css';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import JobFilters from '../../components/JobFilters/JobFilters';
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
-import { collection, getDocs, addDoc } from 'firebase/firestore';
-import { db } from '../../firebaseConfig';
+import axios from 'axios';
 
 const JobBoard = () => {
   const [selectedJob, setSelectedJob] = useState(null);
@@ -20,10 +19,10 @@ const JobBoard = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [filters, setFilters] = useState({ type: '', location: '' });
   const [loading, setLoading] = useState(false);
-  const [jobs, setJobs] = useState([]); // <-- Add this line
+  const [jobs, setJobs] = useState([]);
   const applicationFormRef = useRef(null);
 
-  const staticJobs = [
+  const staticJobs = useMemo(() => [
     { title: 'Product Manager', location: 'Remote', type: 'Contract' },
     { title: 'Software Engineer', location: 'Remote', type: 'Full-Time' },
     { title: 'Frontend Developer', location: 'Remote', type: 'Full-Time' },
@@ -49,25 +48,24 @@ const JobBoard = () => {
     { title: 'IT Support Specialist', location: 'Remote', type: 'Part-Time' },
     { title: 'Database Administrator', location: 'Remote', type: 'Part-Time' },
     { title: 'Sales Representative', location: 'Remote', type: 'Full-Time' },
-  ];
-
-  const fetchJobs = async () => {
-    setLoading(true);
-    try {
-      const querySnapshot = await getDocs(collection(db, 'jobs'));
-      const fetchedJobs = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-      setJobs([...staticJobs, ...fetchedJobs]);
-    } catch (error) {
-      console.error('Error fetching jobs:', error);
-      setJobs(staticJobs);  // Use static jobs if there's an error
-    } finally {
-      setLoading(false);
-    }
-  };
+  ], []);
 
   useEffect(() => {
+    const fetchJobs = async () => {
+      setLoading(true);
+      try {
+        const response = await axios.get('https://standexjob.azurewebsites.net/jobs');
+        setJobs([...staticJobs, ...response.data]);
+      } catch (error) {
+        console.error('Error fetching jobs:', error);
+        setJobs(staticJobs);  // Use static jobs if there's an error
+      } finally {
+        setLoading(false);
+      }
+    };
+
     fetchJobs();
-  }, []);
+  }, [staticJobs]);
 
   const filteredJobs = jobs.filter(job => {
     return (
@@ -110,8 +108,14 @@ const JobBoard = () => {
     };
 
     try {
-      await addDoc(collection(db, 'applications'), applicationData);
+      await axios.post('https://standexjob.azurewebsites.net/applications', applicationData);
       setSubmissionStatus('Application submitted successfully!');
+      setApplicant({
+        name: '',
+        email: '',
+        linkedin: '',
+        github: '',
+      });
     } catch (error) {
       console.error('Error submitting application:', error);
       setSubmissionStatus('An error occurred. Please try again.');

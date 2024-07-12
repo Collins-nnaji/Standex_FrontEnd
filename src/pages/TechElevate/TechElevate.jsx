@@ -72,7 +72,10 @@ const TechElevate = () => {
                 </ul>
               ]}
             />
-            <button onClick={handleCheckout('https://buy.stripe.com/bIYaGJeDe0X47gQ5kn')} className="register-link">Register Now</button>
+            <div className="button-group">
+              <button onClick={handleCheckout('https://buy.stripe.com/bIYaGJeDe0X47gQ5kn')} className="register-link">Register Now</button>
+              <a href="https://teams.live.com/l/community/FEAMvjBvDFf94sroAI" target="_blank" rel="noopener noreferrer" className="enquiry-link">Enquiry</a>
+            </div>
           </div>
 
           <div className="course">
@@ -100,7 +103,10 @@ const TechElevate = () => {
                 </ul>
               ]}
             />
-            <button onClick={handleCheckout('https://buy.stripe.com/3csaGJeDegW2cBa002')} className="register-link">Register Now</button>
+            <div className="button-group">
+              <button onClick={handleCheckout('https://buy.stripe.com/3csaGJeDegW2cBa002')} className="register-link">Register Now</button>
+              <a href="https://teams.live.com/l/community/FEA6KyxOLpqI-JlggI" target="_blank" rel="noopener noreferrer" className="enquiry-link">Enquiry</a>
+            </div>
           </div>
 
           <div className="course">
@@ -128,7 +134,10 @@ const TechElevate = () => {
                 </ul>
               ]}
             />
-            <button onClick={handleCheckout('https://buy.stripe.com/bIY1693YAcFMbx66os')} className="register-link">Register Now</button>
+            <div className="button-group">
+              <button onClick={handleCheckout('https://buy.stripe.com/bIY1693YAcFMbx66os')} className="register-link">Register Now</button>
+              <a href="https://teams.live.com/l/community/FEAvyQ9o0YnEisLOgI" target="_blank" rel="noopener noreferrer" className="enquiry-link">Enquiry</a>
+            </div>
           </div>
 
           <div className="course">
@@ -156,30 +165,48 @@ const TechElevate = () => {
                 </ul>
               ]}
             />
-            <button onClick={handleCheckout('https://buy.stripe.com/cN29CF2Uw5dk30A6op')} className="register-link">Register Now</button>
+            <div className="button-group">
+              <button onClick={handleCheckout('https://buy.stripe.com/cN29CF2Uw5dk30A6op')} className="register-link">Register Now</button>
+              <a href="https://teams.live.com/l/community/FEA4z3tHlusqz0UBAI" target="_blank" rel="noopener noreferrer" className="enquiry-link">Enquiry</a>
+            </div>
           </div>
         </div>
-        <div className="chatbot-card-container">
-          <img src="/images/Chatbot.png" alt="Chatbot" className="card" onClick={toggleChatbot} />
-       
+
+        <section className="join-community">
+          <div className="community-card">
+            <h2 className="community-title">Join the TechElevate Community</h2>
+            <p className="community-content">
+              TechElevate is a vibrant community dedicated to empowering individuals interested in getting digital skills. Our mission is to provide guidance, share knowledge, and foster a collaborative environment where members can enhance their technical skills and achieve their career goals.
+            </p>
+            <a href="https://teams.live.com/l/community/FDAOeGTjNExdVTcUwI" target="_blank" rel="noopener noreferrer" className="community-link">
+              Join Now
+            </a>
+          </div>
+        </section>
+
+        <div className="chatbot-container">
+          {!chatbotVisible && (
+            <div className="chatbot-button" onClick={toggleChatbot}>
+              <img src="/images/Chatbot.png" alt="Chatbot" className="chatbot-icon" />
+            </div>
+          )}
+          {chatbotVisible && (
+            <div className="chatbot-popup">
+              <div className="chatbot-header">
+                <h2>Chatbot</h2>
+                <span className="close" onClick={toggleChatbot}>&times;</span>
+              </div>
+              <div className="chatbot-content">
+                <iframe
+                  src="https://copilotstudio.microsoft.com/environments/Default-a1bbe8af-2736-4afa-b45e-385e122031a2/bots/cr0d9_sensei/webchat?__version__=2"
+                  frameBorder="0"
+                  title="Tech Elevate Chatbot"
+                ></iframe>
+              </div>
+            </div>
+          )}
         </div>
       </main>
-
-      {chatbotVisible && (
-        <div className="chatbot-popup">
-          <div className="chatbot-header">
-            <h2>Chatbot</h2>
-            <span className="close" onClick={toggleChatbot}>&times;</span>
-          </div>
-          <div className="chatbot-content">
-            <iframe
-              src="https://copilotstudio.microsoft.com/environments/Default-a1bbe8af-2736-4afa-b45e-385e122031a2/bots/cr0d9_sensei/webchat?__version__=2"
-              frameBorder="0"
-              title="Tech Elevate Chatbot"
-            ></iframe>
-          </div>
-        </div>
-      )}
       <Footer />
     </div>
   );

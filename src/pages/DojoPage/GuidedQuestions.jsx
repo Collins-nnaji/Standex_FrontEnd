@@ -1,5 +1,6 @@
 import React from 'react';
 import './GuidedQuestions.css';
+import ButtonComponent from '../../components/Button/ButtonComponent';
 
 const GuidedQuestions = ({ questions, responses, onResponseChange, onSubmit, buttonText }) => {
   const handleChange = (questionId, value) => {
@@ -26,7 +27,6 @@ const GuidedQuestions = ({ questions, responses, onResponseChange, onSubmit, but
               {question.options.map((option, index) => (
                 <option key={index} value={option}>{option}</option>
               ))}
-              <option value="Other">Other (please specify)</option>
             </select>
           ) : (
             <input
@@ -45,9 +45,7 @@ const GuidedQuestions = ({ questions, responses, onResponseChange, onSubmit, but
           )}
         </div>
       ))}
-      <button onClick={onSubmit} disabled={!allQuestionsAnswered}>
-        {buttonText}
-      </button>
+      <ButtonComponent onClick={onSubmit} text={buttonText} disabled={!allQuestionsAnswered} />
     </div>
   );
 };

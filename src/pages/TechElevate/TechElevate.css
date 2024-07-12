@@ -1,4 +1,3 @@
-/* Import the Poppins font */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
 .tech-elevate {
@@ -165,6 +164,17 @@
   font-size: 1.5rem; /* Adjust bullet size */
 }
 
+.custom-bullets {
+  list-style: disc inside; /* Proper bullet points */
+  padding-left: 20px;
+  margin: 10px 0; /* Ensure spacing around the list */
+}
+
+.custom-bullets li {
+  margin-bottom: 10px; /* Ensure spacing between items */
+  line-height: 1.5; /* Improve readability */
+}
+
 .register-link {
   display: inline-block;
   margin-top: 20px;
@@ -180,62 +190,39 @@
   background-color: #17a077;
 }
 
-.chatbot-card-container {
-  margin-top: 20px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.chatbot-container {
   position: fixed;
-  bottom: 100px; /* Position the card above the footer */
-  right: 20px; /* Position it slightly from the right edge */
+  bottom: 20px;
+  right: 20px;
   z-index: 1000;
 }
 
-.card {
-  width: 50%; /* Reduce the width to half */
-  height: auto; /* Maintain the aspect ratio */
-  max-width: 150px; /* Ensure it doesn't exceed a reasonable width */
+.chatbot-button {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #1ab188;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s, box-shadow 0.2s;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  position: relative;
-  border: 2px solid #1ab188;
 }
 
-.card:hover {
+.chatbot-button:hover {
   transform: scale(1.1);
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-.card::before {
-  content: "";
-  position: absolute;
-  top: -10px;
-  left: -10px;
-  right: -10px;
-  bottom: -10px;
-  border: 2px solid #1ab188;
-  border-radius: 10px;
-  opacity: 0;
-  transition: opacity 0.2s;
-}
-
-.card:hover::before {
-  opacity: 1;
-}
-
-.card-text {
-  font-size: 1.2rem;
-  color: #1ab188;
-  margin-top: 10px;
-  text-align: center;
+.chatbot-icon {
+  width: 35px;
+  height: 35px;
 }
 
 .chatbot-popup {
   position: fixed;
-  bottom: 170px;
+  bottom: 90px;
   right: 20px;
   width: 400px;
   max-width: 100%;
@@ -283,6 +270,74 @@
   border-bottom-right-radius: 10px;
 }
 
+.join-community {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.community-card {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.community-title {
+  font-size: 2rem;
+  background: linear-gradient(to right, green, black);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 20px;
+}
+
+.community-content {
+  font-size: 1.2rem;
+  margin: 10px 0;
+  flex-grow: 1;
+}
+
+.community-link {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  color: #fff;
+  background-color: #1ab188;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.community-link:hover {
+  background-color: #17a077;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.enquiry-link {
+  display: inline-block;
+  padding: 10px 20px;
+  color: #fff;
+  background-color: #1ab188;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.enquiry-link:hover {
+  background-color: #17a077;
+}
+
 /* Responsive design */
 @media (max-width: 600px) {
   .tech-elevate {
@@ -306,7 +361,7 @@
   }
 
   .chatbot-popup {
-    bottom: 60px;
+    bottom: 90px;
     right: 20px;
     width: calc(100% - 40px);
     height: 80vh;
@@ -321,5 +376,14 @@
 
   .chatbot-header .close {
     font-size: 1.2rem;
+  }
+
+  .button-group {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .enquiry-link {
+    margin-top: 10px;
   }
 }
