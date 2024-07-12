@@ -104,7 +104,7 @@ const JobBoard = () => {
       linkedin: applicant.linkedin,
       github: applicant.github,
       jobTitle: selectedJob.title,
-      timestamp: new Date()
+      timestamp: new Date().toISOString()
     };
 
     try {
