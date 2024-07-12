@@ -22,6 +22,8 @@ const JobBoard = () => {
   const [jobs, setJobs] = useState([]);
   const applicationFormRef = useRef(null);
 
+  const apiUrl = process.env.REACT_APP_API_URL;
+
   const staticJobs = useMemo(() => [
     { title: 'Product Manager', location: 'Remote', type: 'Contract' },
     { title: 'Software Engineer', location: 'Remote', type: 'Full-Time' },
@@ -54,7 +56,7 @@ const JobBoard = () => {
     const fetchJobs = async () => {
       setLoading(true);
       try {
-        const response = await axios.get('https://standexjob.azurewebsites.net/jobs');
+        const response = await axios.get(`${apiUrl}/jobs`);
         setJobs([...staticJobs, ...response.data]);
       } catch (error) {
         console.error('Error fetching jobs:', error);
@@ -65,7 +67,7 @@ const JobBoard = () => {
     };
 
     fetchJobs();
-  }, [staticJobs]);
+  }, [apiUrl, staticJobs]);
 
   const filteredJobs = jobs.filter(job => {
     return (
@@ -104,11 +106,11 @@ const JobBoard = () => {
       linkedin: applicant.linkedin,
       github: applicant.github,
       jobTitle: selectedJob.title,
-      timestamp: new Date().toISOString()
+      timestamp: new Date()
     };
 
     try {
-      await axios.post('https://standexjob.azurewebsites.net/applications', applicationData);
+      await axios.post(`${apiUrl}/applications`, applicationData);
       setSubmissionStatus('Application submitted successfully!');
       setApplicant({
         name: '',
