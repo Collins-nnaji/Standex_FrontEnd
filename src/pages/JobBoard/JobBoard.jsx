@@ -5,6 +5,8 @@ import Footer from '../../components/Footer/Footer';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import JobFilters from '../../components/JobFilters/JobFilters';
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
+import { collection, getDocs, addDoc } from 'firebase/firestore';
+import { db } from '../../firebaseConfig';
 
 const JobBoard = () => {
   const [selectedJob, setSelectedJob] = useState(null);
@@ -18,13 +20,10 @@ const JobBoard = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [filters, setFilters] = useState({ type: '', location: '' });
   const [loading, setLoading] = useState(false);
+  const [jobs, setJobs] = useState([]); // <-- Add this line
   const applicationFormRef = useRef(null);
 
-  const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
-
-  console.log("API Base URL:", apiBaseUrl);
-
-  const jobs = [
+  const staticJobs = [
     { title: 'Product Manager', location: 'Remote', type: 'Contract' },
     { title: 'Software Engineer', location: 'Remote', type: 'Full-Time' },
     { title: 'Frontend Developer', location: 'Remote', type: 'Full-Time' },
@@ -51,6 +50,24 @@ const JobBoard = () => {
     { title: 'Database Administrator', location: 'Remote', type: 'Part-Time' },
     { title: 'Sales Representative', location: 'Remote', type: 'Full-Time' },
   ];
+
+  const fetchJobs = async () => {
+    setLoading(true);
+    try {
+      const querySnapshot = await getDocs(collection(db, 'jobs'));
+      const fetchedJobs = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      setJobs([...staticJobs, ...fetchedJobs]);
+    } catch (error) {
+      console.error('Error fetching jobs:', error);
+      setJobs(staticJobs);  // Use static jobs if there's an error
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchJobs();
+  }, []);
 
   const filteredJobs = jobs.filter(job => {
     return (
@@ -88,24 +105,13 @@ const JobBoard = () => {
       email: applicant.email,
       linkedin: applicant.linkedin,
       github: applicant.github,
-      jobTitle: selectedJob.title
+      jobTitle: selectedJob.title,
+      timestamp: new Date()
     };
 
     try {
-      const response = await fetch(`${apiBaseUrl}/submitApplication`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(applicationData),
-      });
-
-      if (response.ok) {
-        setSubmissionStatus('Application submitted successfully!');
-      } else {
-        const errorData = await response.json();
-        setSubmissionStatus(`Failed to submit application: ${errorData.message}`);
-      }
+      await addDoc(collection(db, 'applications'), applicationData);
+      setSubmissionStatus('Application submitted successfully!');
     } catch (error) {
       console.error('Error submitting application:', error);
       setSubmissionStatus('An error occurred. Please try again.');
