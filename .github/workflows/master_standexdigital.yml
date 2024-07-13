@@ -58,5 +58,5 @@ jobs:
         with:
           app-name: 'standexdigital'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_F1DEE89B1D994209808F4F033C9E78D4 }}
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
           package: .
