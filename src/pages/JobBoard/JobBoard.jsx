@@ -110,7 +110,8 @@ const JobBoard = () => {
     };
 
     try {
-      await axios.post(`${apiUrl}/applications`, applicationData);
+      const response = await axios.post(`${apiUrl}/applications`, applicationData);
+      console.log('Application submitted:', response.data);
       setSubmissionStatus('Application submitted successfully!');
       setApplicant({
         name: '',
@@ -119,7 +120,7 @@ const JobBoard = () => {
         github: '',
       });
     } catch (error) {
-      console.error('Error submitting application:', error);
+      console.error('Error submitting application:', error.response ? error.response.data : error.message);
       setSubmissionStatus('An error occurred. Please try again.');
     } finally {
       setLoading(false);
