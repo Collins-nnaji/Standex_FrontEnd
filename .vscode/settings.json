@@ -5,5 +5,11 @@
     "azureFunctions.projectRuntime": "~4",
     "debug.internalConsoleOptions": "neverOpen",
     "azureFunctions.projectLanguageModel": 4,
-    "azureFunctions.preDeployTask": "npm prune (functions)"
+    "azureFunctions.preDeployTask": "npm prune (functions)",
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/b475b3c8-1712-4d40-bd41-17b23ded1a87/resourceGroups/standexdigital_group/providers/Microsoft.Web/sites/standexdigital",
+    "appService.deploySubpath": "."
 }

@@ -70,8 +70,9 @@ const JobBoard = () => {
   }, [apiUrl, staticJobs]);
 
   const filteredJobs = jobs.filter(job => {
+    const jobTitle = job.title || ''; // Ensure job.title is defined
     return (
-      job.title.toLowerCase().includes(searchTerm.toLowerCase()) &&
+      jobTitle.toLowerCase().includes(searchTerm.toLowerCase()) &&
       (filters.type === '' || job.type === filters.type) &&
       (filters.location === '' || job.location === filters.location)
     );
