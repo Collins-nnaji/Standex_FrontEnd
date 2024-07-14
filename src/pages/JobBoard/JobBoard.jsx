@@ -14,6 +14,7 @@ const JobBoard = () => {
     email: '',
     linkedin: '',
     github: '',
+    cv: null // Add cv field to the state
   });
   const [submissionStatus, setSubmissionStatus] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
@@ -90,10 +91,10 @@ const JobBoard = () => {
   }, [selectedJob]);
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value, files } = e.target;
     setApplicant({
       ...applicant,
-      [name]: value,
+      [name]: files ? files[0] : value,
     });
   };
 
@@ -101,23 +102,30 @@ const JobBoard = () => {
     e.preventDefault();
     setLoading(true);
 
-    const applicationData = {
-      name: applicant.name,
-      email: applicant.email,
-      linkedin: applicant.linkedin,
-      github: applicant.github,
-      jobTitle: selectedJob.title,
-      timestamp: new Date()
-    };
+    const formData = new FormData();
+    formData.append('name', applicant.name);
+    formData.append('email', applicant.email);
+    formData.append('linkedin', applicant.linkedin);
+    if (applicant.github) {
+      formData.append('github', applicant.github);
+    }
+    formData.append('cv', applicant.cv);
+    formData.append('jobTitle', selectedJob.title);
+    formData.append('timestamp', new Date().toISOString());
 
     try {
-      await axios.post(`${apiUrl}/applications`, applicationData);
+      await axios.post(`${apiUrl}/applications`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      });
       setSubmissionStatus('Application submitted successfully!');
       setApplicant({
         name: '',
         email: '',
         linkedin: '',
         github: '',
+        cv: null
       });
     } catch (error) {
       console.error('Error submitting application:', error);
@@ -178,8 +186,12 @@ const JobBoard = () => {
                 <input type="url" id="linkedin" name="linkedin" value={applicant.linkedin} onChange={handleChange} required />
               </div>
               <div className="form-group">
-                <label htmlFor="github">GitHub Profile URL</label>
-                <input type="url" id="github" name="github" value={applicant.github} onChange={handleChange} required />
+                <label htmlFor="github">GitHub Profile URL (Optional)</label>
+                <input type="url" id="github" name="github" value={applicant.github} onChange={handleChange} />
+              </div>
+              <div className="form-group">
+                <label htmlFor="cv">Upload CV</label>
+                <input type="file" id="cv" name="cv" onChange={handleChange} required />
               </div>
               <button type="submit" className="submit-button" disabled={loading}>
                 {loading ? 'Submitting...' : 'Submit Application'}
