@@ -152,11 +152,26 @@ const DojoPage = () => {
             <img src="/images/Learning.png" alt="Learning" className="learning-image" />
           </div>
           <div className="feature-buttons">
-            <ButtonComponent onClick={() => handleFeatureSelection('learningPath')} text="Generate Learning Path" />
-            <ButtonComponent onClick={() => handleFeatureSelection('skillAssessment')} text="Skill Assessment Quiz" />
-            <ButtonComponent onClick={() => handleFeatureSelection('projectBuilder')} text="Project Builder" />
-            <ButtonComponent onClick={() => handleFeatureSelection('resourceLibrary')} text="Resource Library" />
-            <ButtonComponent onClick={() => handleFeatureSelection('careerAdvice')} text="Career Advice" />
+            <div className="feature-button-card">
+              <ButtonComponent onClick={() => handleFeatureSelection('learningPath')} text="Generate Learning Path" />
+              <p>Generate a tailored learning path based on your goals and preferences.</p>
+            </div>
+            <div className="feature-button-card">
+              <ButtonComponent onClick={() => handleFeatureSelection('skillAssessment')} text="Skill Assessment Quiz" />
+              <p>Assess your current skills and identify areas for improvement.</p>
+            </div>
+            <div className="feature-button-card">
+              <ButtonComponent onClick={() => handleFeatureSelection('projectBuilder')} text="Project Builder" />
+              <p>Build and manage projects to apply your skills in real-world scenarios.</p>
+            </div>
+            <div className="feature-button-card">
+              <ButtonComponent onClick={() => handleFeatureSelection('resourceLibrary')} text="Resource Library" />
+              <p>Access a curated library of resources to support your learning.</p>
+            </div>
+            <div className="feature-button-card">
+              <ButtonComponent onClick={() => handleFeatureSelection('careerAdvice')} text="Career Advice" />
+              <p>Get personalized career advice to advance your professional journey.</p>
+            </div>
           </div>
         </>
       )}

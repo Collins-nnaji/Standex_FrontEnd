@@ -73,8 +73,8 @@ const TechElevate = () => {
               ]}
             />
             <div className="button-group">
-              <button onClick={handleCheckout('https://buy.stripe.com/bIYaGJeDe0X47gQ5kn')} className="register-link">Register Now</button>
-              <a href="https://teams.live.com/l/community/FEAMvjBvDFf94sroAI" target="_blank" rel="noopener noreferrer" className="enquiry-link">Enquiry</a>
+              <button onClick={handleCheckout('https://buy.stripe.com/bIYaGJeDe0X47gQ5kn')} className="button-common">Register Now</button>
+              <a href="https://teams.live.com/l/community/FEAMvjBvDFf94sroAI" target="_blank" rel="noopener noreferrer" className="button-common">Enquiry</a>
             </div>
           </div>
 
@@ -104,8 +104,8 @@ const TechElevate = () => {
               ]}
             />
             <div className="button-group">
-              <button onClick={handleCheckout('https://buy.stripe.com/3csaGJeDegW2cBa002')} className="register-link">Register Now</button>
-              <a href="https://teams.live.com/l/community/FEA6KyxOLpqI-JlggI" target="_blank" rel="noopener noreferrer" className="enquiry-link">Enquiry</a>
+              <button onClick={handleCheckout('https://buy.stripe.com/3csaGJeDegW2cBa002')} className="button-common">Register Now</button>
+              <a href="https://teams.live.com/l/community/FEA6KyxOLpqI-JlggI" target="_blank" rel="noopener noreferrer" className="button-common">Enquiry</a>
             </div>
           </div>
 
@@ -135,8 +135,8 @@ const TechElevate = () => {
               ]}
             />
             <div className="button-group">
-              <button onClick={handleCheckout('https://buy.stripe.com/bIY1693YAcFMbx66os')} className="register-link">Register Now</button>
-              <a href="https://teams.live.com/l/community/FEAvyQ9o0YnEisLOgI" target="_blank" rel="noopener noreferrer" className="enquiry-link">Enquiry</a>
+              <button onClick={handleCheckout('https://buy.stripe.com/bIY1693YAcFMbx66os')} className="button-common">Register Now</button>
+              <a href="https://teams.live.com/l/community/FEAvyQ9o0YnEisLOgI" target="_blank" rel="noopener noreferrer" className="button-common">Enquiry</a>
             </div>
           </div>
 
@@ -166,8 +166,8 @@ const TechElevate = () => {
               ]}
             />
             <div className="button-group">
-              <button onClick={handleCheckout('https://buy.stripe.com/cN29CF2Uw5dk30A6op')} className="register-link">Register Now</button>
-              <a href="https://teams.live.com/l/community/FEA4z3tHlusqz0UBAI" target="_blank" rel="noopener noreferrer" className="enquiry-link">Enquiry</a>
+              <button onClick={handleCheckout('https://buy.stripe.com/cN29CF2Uw5dk30A6op')} className="button-common">Register Now</button>
+              <a href="https://teams.live.com/l/community/FEA4z3tHlusqz0UBAI" target="_blank" rel="noopener noreferrer" className="button-common">Enquiry</a>
             </div>
           </div>
         </div>
