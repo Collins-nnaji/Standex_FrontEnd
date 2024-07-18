@@ -19,11 +19,14 @@ const TechElevate = () => {
   return (
     <div className="tech-elevate">
       <Header />
+      <img src="/images/Tech Elevate.png" alt="Tech Elevate Logo" className="techelevatelogo" />
       <main className="page-container">
-        <h1 className="stylish-font">Get Real Skills with Tech Elevate</h1>
+        <h1 className="stylish-font">Your Gateway to Advanced Tech Skills</h1>
         <p className="sub-text">
-          Welcome to Tech Elevate, your destination for practical technology training programs taught by industry professionals. Gain real-world skills for immediate job placement.
-        </p>
+  Welcome to Tech Elevate, where industry professionals teach practical technology training programs<br />
+  to help you gain real-world skills for immediate job placement.
+</p>
+
         <section className="why-choose-us">
           <h2>Why Choose Tech Elevate</h2>
           <div className="cards">
@@ -178,6 +181,7 @@ const TechElevate = () => {
             <p className="community-content">
               TechElevate is a vibrant community dedicated to empowering individuals interested in getting digital skills. Our mission is to provide guidance, share knowledge, and foster a collaborative environment where members can enhance their technical skills and achieve their career goals.
             </p>
+            <img src="/images/techcommunity.jpg" alt="Tech Community" className="community-image" />
             <a href="https://teams.live.com/l/community/FDAOeGTjNExdVTcUwI" target="_blank" rel="noopener noreferrer" className="community-link">
               Join Now
             </a>

@@ -156,14 +156,16 @@ const JobBoard = () => {
         <SearchBar searchTerm={searchTerm} onSearchChange={handleSearchChange} />
         <JobFilters filters={filters} onFilterChange={handleFilterChange} />
         <div className="job-listings">
-          {filteredJobs.map((job, index) => (
+          {filteredJobs.length > 0 ? filteredJobs.map((job, index) => (
             <div key={index} className="job-card">
               <h3 className="stylish-font">{job.title}</h3>
               <p>{job.location}</p>
               <p>{job.type}</p>
               <button onClick={() => handleApply(job)} className="apply-link">Apply Now</button>
             </div>
-          ))}
+          )) : (
+            <p>No jobs available</p>
+          )}
         </div>
         {selectedJob && (
           <div className="application-form" ref={applicationFormRef}>

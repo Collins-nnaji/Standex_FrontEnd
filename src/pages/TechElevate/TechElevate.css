@@ -324,6 +324,35 @@
   justify-content: center;
   margin-top: 20px;
 }
+.techelevatelogo {
+  width: 350px; /* Increased size */
+  display: block;
+  margin: 40px auto; /* Center the logo and add vertical margin */
+  transition: transform 0.3s, opacity 0.3s; /* Add transition for smooth hover effect */
+  opacity: 0.8; /* Make it blend with the background */
+}
+
+.techelevatelogo:hover {
+  transform: scale(1.05); /* Slightly enlarge the logo on hover */
+  opacity: 1; /* Make it fully opaque on hover */
+}
+
+.logo-container {
+  text-align: center;
+  background: linear-gradient(to right, #f0f0f0, #e0e0e0); /* Optional background gradient to blend the logo */
+  padding: 20px;
+  border-radius: 10px;
+}
+
+
+.community-image {
+  width: 100%;
+  height: auto;
+  margin-top: 20px;
+  max-width: 600px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
 /* Responsive design */
 @media (max-width: 600px) {

@@ -139,8 +139,13 @@ const DojoPage = () => {
             <div className="welcome-text">
               <h1 className="stylish-font">Discover Your Path</h1>
               <p className="sub-text">
-                Unlock Your Tech Potential with Dojo. Our AI-driven platform crafts personalized learning paths, skill assessments, project builders, and career advice to accelerate your journey. Start mastering real skills today with Dojo.
-              </p>
+  Unlock Your Tech Potential with Dojo.<br />
+  Experience personalized learning paths,<br />
+  skill assessments, project builders,<br />
+  and career advice from our AI-driven platform.<br />
+  Start mastering real skills today with Dojo.
+</p>
+
             </div>
           </div>
           <div className="features-container">
