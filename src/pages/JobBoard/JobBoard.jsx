@@ -2,8 +2,6 @@ import React, { useState, useRef, useEffect, useMemo } from 'react';
 import './jobBoard.css';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
-import SearchBar from '../../components/SearchBar/SearchBar';
-import JobFilters from '../../components/JobFilters/JobFilters';
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
 import axios from 'axios';
 
@@ -16,8 +14,6 @@ const JobBoard = () => {
     github: '',
   });
   const [submissionStatus, setSubmissionStatus] = useState('');
-  const [searchTerm, setSearchTerm] = useState('');
-  const [filters, setFilters] = useState({ type: '', location: '' });
   const [loading, setLoading] = useState(false);
   const [jobs, setJobs] = useState([]);
   const applicationFormRef = useRef(null);
@@ -34,22 +30,13 @@ const JobBoard = () => {
     { title: 'Cloud Solutions Architect', location: 'Remote', type: 'Contract' },
     { title: 'Data Scientist', location: 'Remote', type: 'Part-Time' },
     { title: 'Machine Learning Engineer', location: 'Remote', type: 'Contract' },
-    { title: 'AI Research Scientist', location: 'Remote', type: 'Part-Time' },
     { title: 'UX/UI Designer', location: 'Remote', type: 'Contract' },
     { title: 'Product Marketing Manager', location: 'Remote', type: 'Full-Time' },
-    { title: 'Scrum Master', location: 'Remote', type: 'Contract' },
     { title: 'Data Engineer', location: 'Remote', type: 'Full-Time' },
     { title: 'Business Intelligence Analyst', location: 'Remote', type: 'Full-Time' },
-    { title: 'Cybersecurity Specialist', location: 'Remote', type: 'Full-Time' },
-    { title: 'Network Engineer', location: 'Remote', type: 'Full-Time' },
     { title: 'Mobile App Developer', location: 'Remote', type: 'Full-Time' },
-    { title: 'Blockchain Developer', location: 'Remote', type: 'Full-Time' },
-    { title: 'Technical Writer', location: 'Remote', type: 'Part-Time' },
     { title: 'Digital Marketing Specialist', location: 'Remote', type: 'Part-Time' },
     { title: 'Customer Success Manager', location: 'Remote', type: 'Full-Time' },
-    { title: 'IT Support Specialist', location: 'Remote', type: 'Part-Time' },
-    { title: 'Database Administrator', location: 'Remote', type: 'Part-Time' },
-    { title: 'Sales Representative', location: 'Remote', type: 'Full-Time' },
   ], []);
 
   useEffect(() => {
@@ -57,7 +44,8 @@ const JobBoard = () => {
       setLoading(true);
       try {
         const response = await axios.get(`${apiUrl}/jobs`);
-        setJobs([...staticJobs, ...response.data]);
+        const uniqueJobs = [...new Map([...staticJobs, ...response.data].map(job => [job.title + job.location + job.type, job])).values()];
+        setJobs(uniqueJobs);
       } catch (error) {
         console.error('Error fetching jobs:', error);
         setJobs(staticJobs);  // Use static jobs if there's an error
@@ -68,15 +56,6 @@ const JobBoard = () => {
 
     fetchJobs();
   }, [apiUrl, staticJobs]);
-
-  const filteredJobs = jobs.filter(job => {
-    const jobTitle = job.title || ''; // Ensure job.title is defined
-    return (
-      jobTitle.toLowerCase().includes((searchTerm || '').toLowerCase()) &&
-      (filters.type === '' || job.type === filters.type) &&
-      (filters.location === '' || job.location === filters.location)
-    );
-  });
 
   const handleApply = (job) => {
     setSelectedJob(job);
@@ -131,17 +110,6 @@ const JobBoard = () => {
     }
   };
 
-  const handleSearchChange = (value) => {
-    setSearchTerm(value);
-  };
-
-  const handleFilterChange = (filterType, value) => {
-    setFilters(prevFilters => ({
-      ...prevFilters,
-      [filterType]: value
-    }));
-  };
-
   return (
     <div className="job-board">
       <Header />
@@ -153,10 +121,8 @@ const JobBoard = () => {
           <h2 className="stylish-font">Current Job Openings</h2>
           <p className="sub-text">Find the perfect role that suits your skills and interests.</p>
         </div>
-        <SearchBar searchTerm={searchTerm} onSearchChange={handleSearchChange} />
-        <JobFilters filters={filters} onFilterChange={handleFilterChange} />
         <div className="job-listings">
-          {filteredJobs.length > 0 ? filteredJobs.map((job, index) => (
+          {jobs.length > 0 ? jobs.map((job, index) => (
             <div key={index} className="job-card">
               <h3 className="stylish-font">{job.title}</h3>
               <p>{job.location}</p>

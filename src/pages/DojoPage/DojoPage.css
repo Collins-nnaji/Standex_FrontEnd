@@ -299,11 +299,26 @@ button:hover:enabled {
   align-items: center;
 }
 
+.feature-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.feature-header h2 {
+  font-size: 2.5rem;
+  color: transparent;
+  background: linear-gradient(to right, green, black);
+  -webkit-background-clip: text;
+  background-clip: text;
+  font-weight: 600;
+}
+
 .feature-button-card {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
+  padding: 30px;
+  margin-bottom: 20px; /* Added margin to space out cards */
   background: #f9f9f9;
   border-radius: 15px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -311,6 +326,7 @@ button:hover:enabled {
   width: 100%;
   max-width: 400px;
   text-align: center;
+  cursor: pointer;
 }
 
 .feature-button-card:hover {
@@ -338,8 +354,14 @@ button:hover:enabled {
 
 .feature-button-card p {
   margin-top: 10px;
-  font-size: 1rem;
+  font-size: 1.2rem;
   color: #555;
+}
+
+.feature-icon {
+  font-size: 2.5rem;
+  color: #1ab188;
+  margin-bottom: 15px;
 }
 
 /* Back Button */

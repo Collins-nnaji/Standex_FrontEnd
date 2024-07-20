@@ -139,13 +139,12 @@ const DojoPage = () => {
             <div className="welcome-text">
               <h1 className="stylish-font">Discover Your Path</h1>
               <p className="sub-text">
-  Unlock Your Tech Potential with Dojo.<br />
-  Experience personalized learning paths,<br />
-  skill assessments, project builders,<br />
-  and career advice from our AI-driven platform.<br />
-  Start mastering real skills today with Dojo.
-</p>
-
+                Unlock Your Tech Potential with Dojo.<br />
+                Experience personalized learning paths,<br />
+                skill assessments, project builders,<br />
+                and career advice from our AI-driven platform.<br />
+                Start mastering real skills today with Dojo.
+              </p>
             </div>
           </div>
           <div className="features-container">
@@ -157,24 +156,32 @@ const DojoPage = () => {
             <img src="/images/Learning.png" alt="Learning" className="learning-image" />
           </div>
           <div className="feature-buttons">
-            <div className="feature-button-card">
-              <ButtonComponent onClick={() => handleFeatureSelection('learningPath')} text="Generate Learning Path" />
+            <div className="feature-header">
+              <h2>Our Key Features</h2>
+            </div>
+            <div className="feature-button-card" onClick={() => handleFeatureSelection('learningPath')}>
+              <div className="feature-icon">&#128640;</div>
+              <ButtonComponent text="Generate Learning Path" />
               <p>Generate a tailored learning path based on your goals and preferences.</p>
             </div>
-            <div className="feature-button-card">
-              <ButtonComponent onClick={() => handleFeatureSelection('skillAssessment')} text="Skill Assessment Quiz" />
+            <div className="feature-button-card" onClick={() => handleFeatureSelection('skillAssessment')}>
+              <div className="feature-icon">&#127891;</div>
+              <ButtonComponent text="Skill Assessment Quiz" />
               <p>Assess your current skills and identify areas for improvement.</p>
             </div>
-            <div className="feature-button-card">
-              <ButtonComponent onClick={() => handleFeatureSelection('projectBuilder')} text="Project Builder" />
+            <div className="feature-button-card" onClick={() => handleFeatureSelection('projectBuilder')}>
+              <div className="feature-icon">&#128736;</div>
+              <ButtonComponent text="Project Builder" />
               <p>Build and manage projects to apply your skills in real-world scenarios.</p>
             </div>
-            <div className="feature-button-card">
-              <ButtonComponent onClick={() => handleFeatureSelection('resourceLibrary')} text="Resource Library" />
+            <div className="feature-button-card" onClick={() => handleFeatureSelection('resourceLibrary')}>
+              <div className="feature-icon">&#128218;</div>
+              <ButtonComponent text="Resource Library" />
               <p>Access a curated library of resources to support your learning.</p>
             </div>
-            <div className="feature-button-card">
-              <ButtonComponent onClick={() => handleFeatureSelection('careerAdvice')} text="Career Advice" />
+            <div className="feature-button-card" onClick={() => handleFeatureSelection('careerAdvice')}>
+              <div className="feature-icon">&#128104;&#127979;</div>
+              <ButtonComponent text="Career Advice" />
               <p>Get personalized career advice to advance your professional journey.</p>
             </div>
           </div>
