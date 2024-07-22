@@ -23,32 +23,78 @@ const TechElevate = () => {
       <main className="page-container">
         <h1 className="stylish-font">Your Gateway to Advanced Tech Skills</h1>
         <p className="sub-text">
-  Welcome to Tech Elevate, where industry professionals teach practical technology training programs<br />
-  to help you gain real-world skills for immediate job placement.
-</p>
+          Welcome to Tech Elevate, where industry professionals teach practical technology training programs<br />
+          to help you gain real-world skills for immediate job placement.
+        </p>
 
         <section className="why-choose-us">
           <h2>Why Choose Tech Elevate</h2>
           <div className="cards">
             <div className="card-container">
+              <img src="/images/microsoft.png" alt="Microsoft Partnership" className="card-icon" />
               <p className="card-title">Microsoft Partnership</p>
               <p className="card-content">Learn with the latest tools and resources, ensuring you're prepared for the tech world.</p>
             </div>
             <div className="card-container">
+              <img src="/images/toolsaccess.jpeg" alt="Access to Tools" className="card-icon" />
               <p className="card-title">Access to Tools</p>
               <p className="card-content">Get hands-on experience with Power BI, Azure, SQL, and more for one year.</p>
             </div>
             <div className="card-container">
+              <img src="/images/reference.png" alt="Job References" className="card-icon" />
               <p className="card-title">Job References</p>
               <p className="card-content">Stand out to employers with real job experience and professional references.</p>
             </div>
             <div className="card-container">
+              <img src="/images/resources.png" alt="Free Resources" className="card-icon" />
               <p className="card-title">Free Resources</p>
               <p className="card-content">Receive textbooks and materials to support your learning journey.</p>
             </div>
           </div>
         </section>
 
+        <section className="career-prospects">
+          <h2>Career Prospects & Salary Ranges</h2>
+          <div className="prospects-container">
+            <div className="prospect">
+              <img src="/images/salary-icon.png" alt="Salary Icon" className="prospect-icon" />
+              <div className="prospect-info">
+                <h3>Business Intelligence Analyst</h3>
+                <p>Salary Range: £40,000 - £70,000</p>
+                <p>Career prospects in various industries, with a focus on data analysis and strategic decision-making.</p>
+              </div>
+            </div>
+            <div className="prospect">
+              <img src="/images/salary-icon.png" alt="Salary Icon" className="prospect-icon" />
+              <div className="prospect-info">
+                <h3>Data Scientist</h3>
+                <p>Salary Range: £50,000 - £90,000</p>
+                <p>Opportunities in tech companies, finance, healthcare, and more, focusing on predictive modeling and big data.</p>
+              </div>
+            </div>
+            <div className="prospect">
+              <img src="/images/salary-icon.png" alt="Salary Icon" className="prospect-icon" />
+              <div className="prospect-info">
+                <h3>Power Platform Developer</h3>
+                <p>Salary Range: £45,000 - £80,000</p>
+                <p>High demand in businesses seeking to automate processes and improve efficiency with custom apps and workflows.</p>
+              </div>
+            </div>
+            <div className="prospect">
+              <img src="/images/salary-icon.png" alt="Salary Icon" className="prospect-icon" />
+              <div className="prospect-info">
+                <h3>Enterprise Architect</h3>
+                <p>Salary Range: £60,000 - £100,000</p>
+                <p>Key roles in designing and implementing IT infrastructure, ensuring scalability and security.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="why-choose-us">
+          <h2>Courses Offered</h2>
+        </section>
+        
         <div className="courses">
           <div className="course">
             <img src="/images/Businessintelligence.svg" alt="Business Intelligence" className="course-img" />
