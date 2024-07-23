@@ -1,24 +1,36 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import HomePage from './pages/HomePage/HomePage';
 import DojoPage from './pages/DojoPage/DojoPage';
 import JobBoard from './pages/JobBoard/JobBoard';
 import TechElevate from './pages/TechElevate/TechElevate';
-import ScrollToTop from './components/ScrollToTop/ScrollToTop';  // Correct import path
+import ScrollToTop from './components/ScrollToTop/ScrollToTop';
+
+const trackPageView = (url) => {
+  if (typeof window.gtag === 'function') {
+    window.gtag('config', 'G-LLNKZEJCBP', {
+      page_path: url,
+    });
+  }
+};
 
 const App = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    trackPageView(location.pathname + location.search);
+  }, [location]);
+
   return (
-    <Router>
-      <ScrollToTop />  {/* Place ScrollToTop inside Router */}
-      <div className="app">
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/dojo" element={<DojoPage />} />
-          <Route path="/tech-elevate" element={<TechElevate />} />
-          <Route path="/job-board" element={<JobBoard />} />
-        </Routes>
-      </div>
-    </Router>
+    <div className="app">
+      <ScrollToTop />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/dojo" element={<DojoPage />} />
+        <Route path="/tech-elevate" element={<TechElevate />} />
+        <Route path="/job-board" element={<JobBoard />} />
+      </Routes>
+    </div>
   );
 };
 
