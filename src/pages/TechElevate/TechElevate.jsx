@@ -3,9 +3,13 @@ import './TechElevate.css';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import Accordion from '../../components/Accordion/Accordion';
+import EnquiryForm from '../../components/EnquiryForm/EnquiryForm';
+import Modal from '../../components/Modal/Modal';
 
 const TechElevate = () => {
   const [chatbotVisible, setChatbotVisible] = useState(false);
+  const [showForm, setShowForm] = useState(false);
+  const [selectedCourse, setSelectedCourse] = useState('');
 
   const handleCheckout = (url) => (event) => {
     event.preventDefault();
@@ -14,6 +18,16 @@ const TechElevate = () => {
 
   const toggleChatbot = () => {
     setChatbotVisible(!chatbotVisible);
+  };
+
+  const handleEnquiryClick = (courseName) => {
+    setSelectedCourse(courseName);
+    setShowForm(true);
+  };
+
+  const closeForm = () => {
+    setShowForm(false);
+    setSelectedCourse('');
   };
 
   return (
@@ -123,7 +137,7 @@ const TechElevate = () => {
             />
             <div className="button-group">
               <button onClick={handleCheckout('https://buy.stripe.com/bIYaGJeDe0X47gQ5kn')} className="button-common">Register Now</button>
-              <a href="https://teams.live.com/l/community/FEAMvjBvDFf94sroAI" target="_blank" rel="noopener noreferrer" className="button-common">Enquiry</a>
+              <button onClick={() => handleEnquiryClick('Business Intelligence')} className="button-common">Enquiry</button>
             </div>
           </div>
 
@@ -154,7 +168,7 @@ const TechElevate = () => {
             />
             <div className="button-group">
               <button onClick={handleCheckout('https://buy.stripe.com/3csaGJeDegW2cBa002')} className="button-common">Register Now</button>
-              <a href="https://teams.live.com/l/community/FEA6KyxOLpqI-JlggI" target="_blank" rel="noopener noreferrer" className="button-common">Enquiry</a>
+              <button onClick={() => handleEnquiryClick('Data Science')} className="button-common">Enquiry</button>
             </div>
           </div>
 
@@ -185,7 +199,7 @@ const TechElevate = () => {
             />
             <div className="button-group">
               <button onClick={handleCheckout('https://buy.stripe.com/bIY1693YAcFMbx66os')} className="button-common">Register Now</button>
-              <a href="https://teams.live.com/l/community/FEAvyQ9o0YnEisLOgI" target="_blank" rel="noopener noreferrer" className="button-common">Enquiry</a>
+              <button onClick={() => handleEnquiryClick('Power Platform')} className="button-common">Enquiry</button>
             </div>
           </div>
 
@@ -216,7 +230,7 @@ const TechElevate = () => {
             />
             <div className="button-group">
               <button onClick={handleCheckout('https://buy.stripe.com/cN29CF2Uw5dk30A6op')} className="button-common">Register Now</button>
-              <a href="https://teams.live.com/l/community/FEA4z3tHlusqz0UBAI" target="_blank" rel="noopener noreferrer" className="button-common">Enquiry</a>
+              <button onClick={() => handleEnquiryClick('Enterprise Architecture')} className="button-common">Enquiry</button>
             </div>
           </div>
         </div>
@@ -257,6 +271,12 @@ const TechElevate = () => {
           )}
         </div>
       </main>
+      <Modal show={showForm} onClose={closeForm}>
+        <EnquiryForm
+          courseName={selectedCourse}
+          onClose={closeForm}
+        />
+      </Modal>
       <Footer />
     </div>
   );
