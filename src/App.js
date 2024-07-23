@@ -4,6 +4,7 @@ import HomePage from './pages/HomePage/HomePage';
 import DojoPage from './pages/DojoPage/DojoPage';
 import JobBoard from './pages/JobBoard/JobBoard';
 import TechElevate from './pages/TechElevate/TechElevate';
+import AdminPage from './pages/Admin/AdminPage';  // Import the AdminPage
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 
 const trackPageView = (url) => {
@@ -29,6 +30,7 @@ const App = () => {
         <Route path="/dojo" element={<DojoPage />} />
         <Route path="/tech-elevate" element={<TechElevate />} />
         <Route path="/job-board" element={<JobBoard />} />
+        <Route path="/admin" element={<AdminPage />} />  {/* Add the AdminPage route */}
       </Routes>
     </div>
   );
