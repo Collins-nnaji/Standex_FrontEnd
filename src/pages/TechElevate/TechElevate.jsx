@@ -116,23 +116,13 @@ const TechElevate = () => {
             <Accordion
               title="Power BI"
               content={[
-                <ul className="custom-bullets">
-                  <li>Introduction to Power BI, navigating the interface, and creating simple reports.</li>
-                  <li>Importing data from various sources, data transformation techniques, and data cleaning.</li>
-                  <li>Creating interactive reports and dashboards with real-world data sets.</li>
-                  <li>Advanced visualization techniques, publishing reports, and sharing securely within organizations.</li>
-                </ul>
+                "<ul className='custom-bullets'><li>Introduction to Power BI and creating simple reports.</li><li>Importing data and data transformation techniques.</li><li>Creating interactive reports and dashboards.</li><li>Advanced visualization techniques.</li><li>Publishing reports and sharing securely.</li></ul>"
               ]}
             />
             <Accordion
               title="SQL"
               content={[
-                <ul className="custom-bullets">
-                  <li>Understanding SQL syntax and database fundamentals through hands-on exercises.</li>
-                  <li>Writing basic SQL queries to retrieve and manipulate data from databases.</li>
-                  <li>Performing advanced SQL operations such as complex joins, subqueries, and optimization techniques.</li>
-                  <li>Designing and managing databases, implementing best practices for scalability and efficiency.</li>
-                </ul>
+                "<ul className='custom-bullets'><li>Understanding SQL syntax and database fundamentals.</li><li>Writing basic SQL queries to manipulate data.</li><li>Performing advanced SQL operations.</li><li>Designing and managing scalable databases.</li><li>Implementing best practices for efficiency.</li></ul>"
               ]}
             />
             <div className="button-group">
@@ -147,23 +137,13 @@ const TechElevate = () => {
             <Accordion
               title="Machine Learning"
               content={[
-                <ul className="custom-bullets">
-                  <li>Learning the basics of machine learning concepts and algorithms through practical examples.</li>
-                  <li>Data preprocessing and feature engineering, including handling missing data and feature scaling.</li>
-                  <li>Model selection and evaluation, using techniques to choose and validate the best models.</li>
-                  <li>Applying advanced machine learning techniques and deploying models to real-world scenarios.</li>
-                </ul>
+                "<ul className='custom-bullets'><li>Basics of machine learning concepts and algorithms.</li><li>Data preprocessing and feature engineering.</li><li>Model selection and evaluation techniques.</li><li>Advanced machine learning techniques.</li><li>Deploying models to real-world scenarios.</li></ul>"
               ]}
             />
             <Accordion
               title="Large Language Models (LLM) and Prompt Engineering"
               content={[
-                <ul className="custom-bullets">
-                  <li>Exploring the architectures and capabilities of large language models with practical tasks.</li>
-                  <li>Training and fine-tuning LLMs, applying them to various natural language processing tasks.</li>
-                  <li>Designing and optimizing prompts for different applications, focusing on real-world use cases.</li>
-                  <li>Addressing ethical considerations, bias mitigation, and evaluating model performance in practical scenarios.</li>
-                </ul>
+                "<ul className='custom-bullets'><li>Exploring architectures of large language models.</li><li>Training and fine-tuning LLMs.</li><li>Designing and optimizing prompts for applications.</li><li>Addressing ethical considerations and bias.</li><li>Evaluating model performance in real-world tasks.</li></ul>"
               ]}
             />
             <div className="button-group">
@@ -178,23 +158,13 @@ const TechElevate = () => {
             <Accordion
               title="Power Apps"
               content={[
-                <ul className="custom-bullets">
-                  <li>Overview of Power Apps, exploring its ecosystem and capabilities through hands-on projects.</li>
-                  <li>Designing and building canvas apps, creating user-friendly interfaces connected to data sources.</li>
-                  <li>Developing model-driven apps, working on complex applications with sophisticated data models.</li>
-                  <li>Using formulas and expressions, publishing apps, and managing them for secure and scalable deployment.</li>
-                </ul>
+                "<ul className='custom-bullets'><li>Overview of Power Apps and its ecosystem.</li><li>Designing and building canvas apps.</li><li>Developing model-driven apps.</li><li>Using formulas and expressions effectively.</li><li>Publishing and managing apps securely.</li></ul>"
               ]}
             />
             <Accordion
               title="Power Automate"
               content={[
-                <ul className="custom-bullets">
-                  <li>Introduction to Power Automate, creating and managing basic flows to automate tasks.</li>
-                  <li>Building complex workflows with conditions, loops, and approval processes.</li>
-                  <li>Implementing error handling and optimization techniques for efficient workflow management.</li>
-                  <li>Applying security best practices and governance policies to automated processes.</li>
-                </ul>
+                "<ul className='custom-bullets'><li>Introduction to Power Automate and creating flows.</li><li>Building complex workflows with conditions.</li><li>Implementing error handling in workflows.</li><li>Optimizing workflows for efficiency.</li><li>Applying security best practices to flows.</li></ul>"
               ]}
             />
             <div className="button-group">
@@ -209,23 +179,13 @@ const TechElevate = () => {
             <Accordion
               title="Solution Architecture"
               content={[
-                <ul className="custom-bullets">
-                  <li>Learning architecture design fundamentals, including key principles and methodologies.</li>
-                  <li>Designing scalable and resilient systems using cloud computing and infrastructure best practices.</li>
-                  <li>Ensuring security and compliance with industry standards in architecture design.</li>
-                  <li>Focusing on integration and interoperability, and honing project management and communication skills.</li>
-                </ul>
+                "<ul className='custom-bullets'><li>Learning architecture design fundamentals.</li><li>Designing scalable and resilient systems.</li><li>Ensuring security and compliance in design.</li><li>Focusing on integration and interoperability.</li><li>Honing project management skills.</li></ul>"
               ]}
             />
             <Accordion
               title="Data Architecture"
               content={[
-                <ul className="custom-bullets">
-                  <li>Mastering data architecture fundamentals with practical applications.</li>
-                  <li>Creating efficient and scalable data models and designs.</li>
-                  <li>Implementing data integration and ETL processes for smooth data flow.</li>
-                  <li>Managing data storage, ensuring database security, and applying data governance best practices.</li>
-                </ul>
+                "<ul className='custom-bullets'><li>Mastering data architecture fundamentals.</li><li>Creating efficient and scalable data models.</li><li>Implementing data integration and ETL processes.</li><li>Managing data storage and security.</li><li>Applying data governance best practices.</li></ul>"
               ]}
             />
             <div className="button-group">

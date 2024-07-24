@@ -11,6 +11,9 @@
   border-radius: 5px;
   background-color: #f0f0f0;
   transition: background-color 0.3s ease;
+  max-width: 800px; /* Set a maximum width for the accordion */
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .accordion-title:hover {
@@ -22,15 +25,60 @@
 }
 
 .accordion-content {
-  padding: 10px;
+  padding: 15px; /* Increased padding for better readability */
   border-left: 3px solid #1ab188;
   margin-left: 20px;
+  margin-right: 20px;
+  background-color: #e9fbf7; /* Light green background color */
+  max-width: 800px; /* Set a maximum width for the accordion content */
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 5px; /* Rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for better visibility */
 }
 
-.accordion-content p {
+.accordion-content ul.custom-bullets {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin-top: 0; /* Remove top margin */
+  margin-bottom: 0; /* Remove bottom margin */
+}
+
+.accordion-content ul.custom-bullets li {
+  margin-bottom: 10px; /* Add margin to the bottom of each list item */
+}
+
+.card {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #f7fdfc; /* Slightly lighter green shade for cards */
+  max-width: 750px; /* Set a maximum width for the cards */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card-title {
+  font-weight: 600;
+  color: #1ab188;
+  margin-bottom: 10px;
+  text-align: center; /* Center-align the title */
+}
+
+.card-details {
   color: #333;
-  line-height: 1.6;
-  margin: 10px 0;
-  font-size: 1rem;
-  text-align: justify;
+  margin-bottom: 10px;
+  text-align: center; /* Center-align the details */
+}
+
+.card-duration,
+.card-price {
+  color: #555;
+  text-align: center; /* Center-align the duration and price */
+}
+
+.card + .card {
+  margin-top: 15px; /* Add space between cards */
 }
