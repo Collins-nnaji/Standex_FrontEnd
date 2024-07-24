@@ -22,7 +22,8 @@ const EnquiryForm = ({ courseName, onClose }) => {
     localStorage.setItem('enquiries', JSON.stringify(existingEntries));
 
     // Open the brochure PDF in a new tab
-    const pdfUrl = `/brochures/${courseName.replace(/\s+/g, '%20')}.pdf`;
+    const pdfUrl = `/brochures/Tech_Elevate_${courseName.replace(/\s+/g, '_')}.pdf`;
+    console.log(pdfUrl); // Log the constructed URL
     window.open(pdfUrl, '_blank');
 
     setSubmitted(true);

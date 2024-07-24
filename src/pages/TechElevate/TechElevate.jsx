@@ -137,7 +137,7 @@ const TechElevate = () => {
             />
             <div className="button-group">
               <button onClick={handleCheckout('https://buy.stripe.com/bIYaGJeDe0X47gQ5kn')} className="button-common">Register Now</button>
-              <button onClick={() => handleEnquiryClick('Business Intelligence')} className="button-common">Enquiry</button>
+              <button onClick={() => handleEnquiryClick('Business_Intelligence')} className="button-common">Enquiry</button>
             </div>
           </div>
 
@@ -168,7 +168,7 @@ const TechElevate = () => {
             />
             <div className="button-group">
               <button onClick={handleCheckout('https://buy.stripe.com/3csaGJeDegW2cBa002')} className="button-common">Register Now</button>
-              <button onClick={() => handleEnquiryClick('Data Science')} className="button-common">Enquiry</button>
+              <button onClick={() => handleEnquiryClick('Data_Science')} className="button-common">Enquiry</button>
             </div>
           </div>
 
@@ -199,7 +199,7 @@ const TechElevate = () => {
             />
             <div className="button-group">
               <button onClick={handleCheckout('https://buy.stripe.com/bIY1693YAcFMbx66os')} className="button-common">Register Now</button>
-              <button onClick={() => handleEnquiryClick('Power Platform')} className="button-common">Enquiry</button>
+              <button onClick={() => handleEnquiryClick('Power_Platform')} className="button-common">Enquiry</button>
             </div>
           </div>
 
@@ -230,7 +230,7 @@ const TechElevate = () => {
             />
             <div className="button-group">
               <button onClick={handleCheckout('https://buy.stripe.com/cN29CF2Uw5dk30A6op')} className="button-common">Register Now</button>
-              <button onClick={() => handleEnquiryClick('Enterprise Architecture')} className="button-common">Enquiry</button>
+              <button onClick={() => handleEnquiryClick('Enterprise_Architecture')} className="button-common">Enquiry</button>
             </div>
           </div>
         </div>
