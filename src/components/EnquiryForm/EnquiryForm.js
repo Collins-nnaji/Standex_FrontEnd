@@ -6,10 +6,9 @@ const EnquiryForm = ({ courseName, onClose }) => {
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Capture user details and store them in local storage
     const userDetails = {
       name,
       email,
@@ -17,16 +16,25 @@ const EnquiryForm = ({ courseName, onClose }) => {
       timestamp: new Date().toISOString(),
     };
 
-    const existingEntries = JSON.parse(localStorage.getItem('enquiries')) || [];
-    existingEntries.push(userDetails);
-    localStorage.setItem('enquiries', JSON.stringify(existingEntries));
+    try {
+      const response = await fetch('https://tech-elevate-enquiry-backend.vercel.app/api/enquiries', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(userDetails),
+      });
 
-    // Open the brochure PDF in a new tab
-    const pdfUrl = `/brochures/Tech_Elevate_${courseName.replace(/\s+/g, '_')}.pdf`;
-    console.log(pdfUrl); // Log the constructed URL
-    window.open(pdfUrl, '_blank');
-
-    setSubmitted(true);
+      if (response.ok) {
+        setSubmitted(true);
+        const pdfUrl = `/brochures/Tech_Elevate_${courseName.replace(/\s+/g, '_')}.pdf`;
+        window.open(pdfUrl, '_blank');
+      } else {
+        console.error('Error saving enquiry');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
   };
 
   if (submitted) {

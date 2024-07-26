@@ -1,12 +1,21 @@
 import React, { useEffect, useState } from 'react';
-import './EnquiryLogs.css';  // Create this file if you need to style the logs
+import './EnquiryLogs.css';
 
 const EnquiryLogs = () => {
   const [enquiries, setEnquiries] = useState([]);
 
   useEffect(() => {
-    const storedEnquiries = JSON.parse(localStorage.getItem('enquiries')) || [];
-    setEnquiries(storedEnquiries);
+    const fetchEnquiries = async () => {
+      try {
+        const response = await fetch('https://tech-elevate-enquiry-backend.vercel.app/api/enquiries');
+        const data = await response.json();
+        setEnquiries(data);
+      } catch (error) {
+        console.error('Error fetching enquiries:', error);
+      }
+    };
+
+    fetchEnquiries();
   }, []);
 
   return (
