@@ -46,9 +46,11 @@ const JobBoard = () => {
         const response = await axios.get(`${apiUrl}/jobs`);
         const uniqueJobs = [...new Map([...staticJobs, ...response.data].map(job => [job.title + job.location + job.type, job])).values()];
         setJobs(uniqueJobs);
+        console.log('Fetched jobs:', uniqueJobs); // Debugging line
       } catch (error) {
         console.error('Error fetching jobs:', error);
         setJobs(staticJobs);  // Use static jobs if there's an error
+        console.log('Using static jobs:', staticJobs); // Debugging line
       } finally {
         setLoading(false);
       }
@@ -60,6 +62,7 @@ const JobBoard = () => {
   const handleApply = (job) => {
     setSelectedJob(job);
     setSubmissionStatus('');
+    console.log('Selected job for application:', job); // Debugging line
   };
 
   useEffect(() => {
