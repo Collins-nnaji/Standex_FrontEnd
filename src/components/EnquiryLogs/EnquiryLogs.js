@@ -7,7 +7,7 @@ const EnquiryLogs = () => {
   useEffect(() => {
     const fetchEnquiries = async () => {
       try {
-        const response = await fetch('https://tech-elevate-enquiry-backend.vercel.app/api/enquiries');
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/enquiries`);
         const data = await response.json();
         setEnquiries(data);
       } catch (error) {
