@@ -10,6 +10,7 @@ const EnquiryLogs = () => {
         const response = await fetch(`${process.env.REACT_APP_API_URL}/enquiries`);
         const data = await response.json();
         setEnquiries(data);
+        console.log('Fetched enquiries:', data); // Debugging line
       } catch (error) {
         console.error('Error fetching enquiries:', error);
       }

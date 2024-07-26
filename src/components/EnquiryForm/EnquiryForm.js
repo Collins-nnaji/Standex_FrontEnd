@@ -25,12 +25,14 @@ const EnquiryForm = ({ courseName, onClose }) => {
         body: JSON.stringify(userDetails),
       });
 
+      console.log('Enquiry submission response:', response); // Debugging line
+
       if (response.ok) {
         setSubmitted(true);
         const pdfUrl = `/brochures/Tech_Elevate_${courseName.replace(/\s+/g, '_')}.pdf`;
         window.open(pdfUrl, '_blank');
       } else {
-        console.error('Error saving enquiry');
+        console.error('Error saving enquiry:', response.statusText);
       }
     } catch (error) {
       console.error('Error:', error);
