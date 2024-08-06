@@ -15,9 +15,9 @@ const GuidedQuestions = ({ questions, responses, onResponseChange, onSubmit, but
   const allQuestionsAnswered = questions.every((question) => {
     const response = responses[question.id];
     if (Array.isArray(response)) {
-      return response.length > 0 && (!response.includes('Other') || responses[`${question.id}_other`]);
+      return response.length > 0;
     }
-    return response && (response !== 'Other' || responses[`${question.id}_other`]);
+    return response;
   });
 
   return (
@@ -54,14 +54,6 @@ const GuidedQuestions = ({ questions, responses, onResponseChange, onSubmit, but
               onChange={(e) => handleChange(question.id, e.target.value)}
             />
           )}
-          {(Array.isArray(responses[question.id]) && responses[question.id].includes('Other')) || responses[question.id] === 'Other' ? (
-            <input
-              type="text"
-              placeholder="Please specify"
-              value={responses[`${question.id}_other`] || ''}
-              onChange={(e) => handleChange(`${question.id}_other`, e.target.value)}
-            />
-          ) : null}
         </div>
       ))}
       <ButtonComponent onClick={onSubmit} text={buttonText} disabled={!allQuestionsAnswered} />
