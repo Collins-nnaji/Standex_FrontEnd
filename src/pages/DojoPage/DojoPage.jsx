@@ -38,17 +38,17 @@ const DojoPage = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
+        body: JSON.stringify({ 
           feature: selectedFeature,
           questions: questions[selectedFeature].map(q => q.text),
           responses: questions[selectedFeature].map(q => guidedResponses[q.id])
         }),
       });
-  
+
       if (!response.ok) {
         throw new Error('Failed to generate content');
       }
-  
+
       const data = await response.json();
       setGptResponse(data.response);
     } catch (err) {
@@ -67,6 +67,14 @@ const DojoPage = () => {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+  };
+
+  const handleFeatureSelect = (feature) => {
+    setSelectedFeature(feature);
+    setGuidedResponses({});  // Clear previous responses
+    setGptResponse('');  // Clear previous GPT response
+    setError(null);  // Clear any previous errors
+    setActiveTab('content');
   };
 
   const renderFeatureContent = () => {
@@ -200,10 +208,7 @@ const DojoPage = () => {
             </div>
 
             {activeTab === 'features' && (
-              <FeatureGrid onFeatureSelect={(feature) => {
-                setSelectedFeature(feature);
-                setActiveTab('content');
-              }} />
+              <FeatureGrid onFeatureSelect={handleFeatureSelect} />
             )}
 
             {activeTab === 'content' && renderFeatureContent()}
