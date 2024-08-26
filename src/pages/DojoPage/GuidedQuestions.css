@@ -1,164 +1,133 @@
-/* Import the Poppins font */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
+.guided-questions-container {
   font-family: 'Poppins', sans-serif;
-  background-color: #f4f7fa;
-  color: #333;
-}
-
-.guided-questions-section {
-  width: 100%;
   max-width: 800px;
-  margin: 20px auto;
-  background: #ffffff;
+  margin: 0 auto;
   padding: 30px;
+  background: #ffffff;
   border-radius: 15px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
-.guided-questions-section:hover {
+.question-card {
+  margin-bottom: 30px;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.question-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
 }
 
-.guided-questions-section h2 {
-  margin-bottom: 20px;
-  font-size: 28px;
-  color: #333;
-  text-align: center;
-}
-
-.question {
-  margin-bottom: 20px;
-}
-
-.question label {
+.question-label {
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 15px;
   font-size: 18px;
-  color: #555;
+  font-weight: 600;
+  color: #333;
 }
 
-.question input,
-.question select {
+.multi-select,
+.single-select {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.multi-select-option,
+.single-select-option {
+  padding: 10px 15px;
+  background-color: #e9ecef;
+  border: 2px solid #ced4da;
+  border-radius: 25px;
+  font-size: 14px;
+  color: #495057;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.multi-select-option:hover,
+.single-select-option:hover {
+  background-color: #dee2e6;
+}
+
+.multi-select-option.selected,
+.single-select-option.selected {
+  background-color: #007bff;
+  color: #ffffff;
+  border-color: #007bff;
+}
+
+.text-input {
   width: 100%;
-  padding: 12px;
-  border: 1px solid #ddd;
+  padding: 12px 15px;
+  border: 2px solid #ced4da;
   border-radius: 8px;
   font-size: 16px;
-  transition: border-color 0.3s, box-shadow 0.3s;
+  color: #495057;
+  transition: border-color 0.3s ease;
 }
 
-.question input:focus,
-.question select:focus {
+.text-input:focus {
+  outline: none;
   border-color: #007bff;
-  box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
 }
 
-.question input::placeholder {
-  color: #aaa;
-}
-
-button {
-  padding: 12px 24px;
-  background-color: #1ab188;
-  color: #fff;
+.submit-button {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  margin-top: 30px;
+  background-color: #007bff;
+  color: #ffffff;
   border: none;
   border-radius: 8px;
-  cursor: pointer;
   font-size: 18px;
-  transition: background-color 0.3s, transform 0.3s;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-button:disabled {
-  background-color: #999;
+.submit-button:hover:not(:disabled) {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+.submit-button:disabled {
+  background-color: #6c757d;
   cursor: not-allowed;
 }
 
-button:hover:enabled {
-  background-color: #148f6d;
-  transform: scale(1.05);
-}
-
-.error-message {
-  color: red;
-  margin-top: 20px;
+.loading {
   text-align: center;
-}
-
-@media (max-width: 1024px) {
-  .guided-questions-section {
-    padding: 20px;
-  }
-
-  .guided-questions-section h2 {
-    font-size: 24px;
-  }
-
-  .question label {
-    font-size: 16px;
-  }
-
-  .question input,
-  .question select {
-    font-size: 14px;
-  }
-
-  button {
-    font-size: 16px;
-  }
+  font-size: 18px;
+  color: #6c757d;
+  margin-top: 20px;
 }
 
 @media (max-width: 768px) {
-  .guided-questions-section {
-    padding: 15px;
+  .guided-questions-container {
+    padding: 20px;
   }
 
-  .guided-questions-section h2 {
-    font-size: 22px;
+  .question-label {
+    font-size: 16px;
   }
 
-  .question label {
-    font-size: 15px;
-  }
-
-  .question input,
-  .question select {
+  .multi-select-option,
+  .single-select-option {
     font-size: 13px;
   }
 
-  button {
-    font-size: 15px;
-  }
-}
-
-@media (max-width: 480px) {
-  .guided-questions-section {
-    padding: 10px;
-  }
-
-  .guided-questions-section h2 {
-    font-size: 20px;
-  }
-
-  .question label {
+  .text-input {
     font-size: 14px;
   }
 
-  .question input,
-  .question select {
-    font-size: 12px;
-  }
-
-  button {
-    font-size: 14px;
+  .submit-button {
+    font-size: 16px;
   }
 }

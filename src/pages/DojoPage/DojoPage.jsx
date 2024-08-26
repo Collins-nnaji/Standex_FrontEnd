@@ -18,6 +18,7 @@ const DojoPage = () => {
   const [error, setError] = useState(null);
   const [activeTab, setActiveTab] = useState('features');
   const [animationComplete, setAnimationComplete] = useState(false);
+  const [userName, setUserName] = useState('');
 
   useEffect(() => {
     const timer = setTimeout(() => setAnimationComplete(true), 3000);
@@ -41,11 +42,11 @@ const DojoPage = () => {
           message: `Generate a ${selectedFeature} based on these responses:\n${JSON.stringify(guidedResponses, null, 2)}`
         }),
       });
-  
+
       if (!response.ok) {
         throw new Error('Failed to generate content');
       }
-  
+
       const data = await response.json();
       setGptResponse(data.response);
     } catch (err) {
@@ -56,7 +57,7 @@ const DojoPage = () => {
   };
 
   const handleDownloadPDF = () => {
-    const pdfBlob = PDFGenerator(selectedFeature, guidedResponses, gptResponse);
+    const pdfBlob = PDFGenerator(userName, JSON.stringify(guidedResponses, null, 2), gptResponse, selectedFeature);
     const pdfUrl = URL.createObjectURL(pdfBlob);
     const link = document.createElement('a');
     link.href = pdfUrl;
@@ -83,7 +84,13 @@ const DojoPage = () => {
         className="feature-content"
       >
         <h2>{selectedFeature}</h2>
-        <p>Answer the questions below to generate your personalized content.</p>
+        <input
+          type="text"
+          placeholder="Enter your name"
+          value={userName}
+          onChange={(e) => setUserName(e.target.value)}
+          className="name-input"
+        />
         <GuidedQuestions
           questions={featureQuestions}
           responses={guidedResponses}
@@ -109,7 +116,7 @@ const DojoPage = () => {
             <p>Generating your content...</p>
           </div>
         )}
-        
+
         <AnimatePresence>
           {gptResponse && (
             <motion.div
@@ -174,7 +181,7 @@ const DojoPage = () => {
                 Start mastering real skills today with Dojo.
               </p>
             </div>
-            
+
             <div className="tab-container">
               <button 
                 className={`tab ${activeTab === 'features' ? 'active' : ''}`} 

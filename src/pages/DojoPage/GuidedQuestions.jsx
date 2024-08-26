@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import './GuidedQuestions.css';
 
 const GuidedQuestions = ({ questions, responses, onResponseChange, onSubmit, buttonText }) => {
   const handleChange = (questionId, value) => {
@@ -14,7 +15,6 @@ const GuidedQuestions = ({ questions, responses, onResponseChange, onSubmit, but
     onResponseChange(questionId, newValues);
   };
 
-  // Add a check for questions being undefined or empty
   const allQuestionsAnswered = questions && questions.length > 0 && questions.every((question) => {
     const response = responses[question.id];
     if (Array.isArray(response)) {
@@ -23,13 +23,13 @@ const GuidedQuestions = ({ questions, responses, onResponseChange, onSubmit, but
     return response;
   });
 
-  // If questions is undefined or empty, render a loading state or message
   if (!questions || questions.length === 0) {
-    return <div>Loading questions...</div>;
+    return <div className="loading">Loading questions...</div>;
   }
 
   return (
     <motion.div
+      className="guided-questions-container"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
@@ -52,17 +52,17 @@ const GuidedQuestions = ({ questions, responses, onResponseChange, onSubmit, but
               ))}
             </div>
           ) : question.type === 'dropdown' ? (
-            <select
-              id={`question-${question.id}`}
-              value={responses[question.id] || ''}
-              onChange={(e) => handleChange(question.id, e.target.value)}
-              className="select-input"
-            >
-              <option value="">Select an option</option>
+            <div className="single-select">
               {question.options.map((option, index) => (
-                <option key={index} value={option}>{option}</option>
+                <button
+                  key={index}
+                  className={`single-select-option ${responses[question.id] === option ? "selected" : ""}`}
+                  onClick={() => handleChange(question.id, option)}
+                >
+                  {option}
+                </button>
               ))}
-            </select>
+            </div>
           ) : (
             <input
               id={`question-${question.id}`}
@@ -70,6 +70,7 @@ const GuidedQuestions = ({ questions, responses, onResponseChange, onSubmit, but
               value={responses[question.id] || ''}
               onChange={(e) => handleChange(question.id, e.target.value)}
               className="text-input"
+              placeholder="Type your answer here..."
             />
           )}
         </div>

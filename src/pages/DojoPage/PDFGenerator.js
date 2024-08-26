@@ -1,63 +1,64 @@
 import jsPDF from 'jspdf';
 
-const PDFGenerator = (name, prompt, learningPlan, topic) => {
+const PDFGenerator = (name, prompt, content, topic) => {
   const doc = new jsPDF();
 
-  // Set the title font, size, and style
+  // Set default font
+  doc.setFont('helvetica');
+
+  // Add a styled header
+  doc.setFillColor(41, 128, 185); // A nice blue color
+  doc.rect(0, 0, 210, 40, 'F');
+  doc.setTextColor(255, 255, 255);
+  doc.setFontSize(24);
   doc.setFont('helvetica', 'bold');
-  doc.setFontSize(22);
-  doc.setTextColor(40, 40, 40);
-  doc.text(topic, 10, 20);
+  doc.text(topic, 10, 25);
 
   // Add user's name
-  doc.setFontSize(16);
-  doc.text(`Prepared for: ${name}`, 10, 30);
-
-  // Set a smaller font size for the body text
+  doc.setFontSize(12);
   doc.setFont('helvetica', 'normal');
+  doc.text(`Prepared for: ${name}`, 10, 45);
+
+  // Add the full prompt section
+  doc.setFillColor(236, 240, 241); // Light gray background
+  doc.roundedRect(10, 55, 190, 40, 3, 3, 'F');
+  doc.setTextColor(52, 73, 94);
   doc.setFontSize(14);
-
-  // Add the full prompt section with a background color
-  doc.setFillColor(230, 230, 250); // Light lavender color
-  doc.rect(10, 40, 190, 10, 'F'); // Draw filled rectangle
-  doc.setTextColor(0, 0, 0); // Black text color
-  doc.text('Full Prompt:', 12, 48);
-
-  // Split and add the prompt text
-  doc.setFontSize(12);
+  doc.setFont('helvetica', 'bold');
+  doc.text('Prompt:', 15, 65);
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(10);
   const splitPrompt = doc.splitTextToSize(prompt, 180);
-  let verticalOffset = 58;
+  doc.text(splitPrompt, 15, 75);
 
-  splitPrompt.forEach(line => {
-    if (verticalOffset > 280) { // Check if the vertical offset exceeds the page height
+  // Add the content
+  doc.setFontSize(14);
+  doc.setFont('helvetica', 'bold');
+  doc.text(`Generated ${topic}:`, 10, 110);
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(10);
+
+  // Split content into lines and add to PDF
+  const contentLines = doc.splitTextToSize(content, 180);
+  let yPosition = 120;
+
+  contentLines.forEach(line => {
+    if (yPosition > 280) {
       doc.addPage();
-      verticalOffset = 20; // Reset vertical offset for new page
+      yPosition = 20;
     }
-    doc.text(line, 10, verticalOffset);
-    verticalOffset += 10;
+    doc.text(line, 10, yPosition);
+    yPosition += 7;
   });
 
-  // Add some space before the learning plan
-  doc.addPage();
-  
-  // Add a header for the learning plan
-  doc.setFontSize(18);
-  doc.setTextColor(40, 40, 40);
-  doc.text(`Generated ${topic}:`, 10, 20);
-
-  // Add the learning plan text
-  doc.setFontSize(12);
-  const splitLearningPlan = doc.splitTextToSize(learningPlan, 180);
-  verticalOffset = 30;
-
-  splitLearningPlan.forEach(line => {
-    if (verticalOffset > 280) { // Check if the vertical offset exceeds the page height
-      doc.addPage();
-      verticalOffset = 20; // Reset vertical offset for new page
-    }
-    doc.text(line, 10, verticalOffset);
-    verticalOffset += 10;
-  });
+  // Add page numbers
+  const pageCount = doc.internal.getNumberOfPages();
+  for (let i = 1; i <= pageCount; i++) {
+    doc.setPage(i);
+    doc.setFontSize(10);
+    doc.setTextColor(150);
+    doc.text(`Page ${i} of ${pageCount}`, doc.internal.pageSize.width - 20, doc.internal.pageSize.height - 10);
+  }
 
   // Return the blob
   return doc.output('blob');
