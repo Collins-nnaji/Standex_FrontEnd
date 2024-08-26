@@ -1,0 +1,139 @@
+.dojo-welcome-section {
+  background: linear-gradient(135deg, #183d2a, #56ac7a, #064f2e);
+  border-radius: 20px;
+  padding: 40px;
+  margin-bottom: 40px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.dojo-welcome-content {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.dojo-logo-container {
+  flex-shrink: 0;
+  width: 30%;
+  max-width: 250px;
+}
+
+.dojo-logo {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+}
+
+.dojo-welcome-text {
+  flex-grow: 1;
+  text-align: left;
+  color: #ffffff;
+}
+
+.dojo-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  background: linear-gradient(to right, #ffffff, #f0f0f0);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.dojo-subtitle {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  opacity: 0.9;
+}
+
+.dojo-feature-icons {
+  display: flex;
+  gap: 20px;
+}
+
+.dojo-feature-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  border-radius: 12px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.dojo-feature-icon:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.dojo-feature-icon svg {
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.dojo-feature-icon span {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+@media (max-width: 1024px) {
+  .dojo-logo-container {
+    width: 25%;
+  }
+
+  .dojo-title {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .dojo-welcome-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .dojo-logo-container {
+    width: 40%;
+    margin-bottom: 20px;
+  }
+
+  .dojo-title {
+    font-size: 2rem;
+  }
+
+  .dojo-subtitle {
+    font-size: 1rem;
+  }
+
+  .dojo-feature-icons {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .dojo-welcome-section {
+    padding: 30px;
+  }
+
+  .dojo-logo-container {
+    width: 60%;
+    margin: 0 auto 20px;
+  }
+
+  .dojo-welcome-text {
+    text-align: center;
+  }
+
+  .dojo-title {
+    font-size: 1.8rem;
+  }
+
+  .dojo-feature-icons {
+    justify-content: center;
+  }
+
+  .dojo-feature-icon {
+    width: calc(50% - 10px);
+  }
+}

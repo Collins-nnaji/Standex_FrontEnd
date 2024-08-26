@@ -151,7 +151,7 @@ const HomePage = () => {
   return (
     <div className="homepage">
       <Header />
-      <header className="welcome-section">
+      <header className="welcome-section1">
         <div className="welcome-text">
           <h1 className="stylish-font">Welcome to Your Digital Evolution</h1>
           <p className="sub-text">Enhance your journey with digital services, Dojo, and Tech Elevate training.</p>

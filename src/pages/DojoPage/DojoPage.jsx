@@ -1,3 +1,4 @@
+// src/pages/DojoPage/DojoPage.jsx
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import './DojoPage.css';
@@ -6,6 +7,7 @@ import Footer from '../../components/Footer/Footer';
 import FeatureGrid from '../../components/FeatureGrid/FeatureGrid';
 import GuidedQuestions from './GuidedQuestions';
 import PDFGenerator from './PDFGenerator';
+import WelcomeSection from '../../components/WelcomeSection/WelcomeSection';
 import { questions } from './Questions';
 import Lottie from 'react-lottie';
 import animationData from './lottie-animations/dojo-animation.json';
@@ -44,11 +46,11 @@ const DojoPage = () => {
           responses: questions[selectedFeature].map(q => guidedResponses[q.id])
         }),
       });
-  
+
       if (!response.ok) {
         throw new Error('Failed to generate content');
       }
-  
+
       const data = await response.json();
       setGptResponse(data.response);
     } catch (err) {
@@ -69,13 +71,21 @@ const DojoPage = () => {
     document.body.removeChild(link);
   };
 
+  const handleFeatureSelect = (feature) => {
+    setSelectedFeature(feature);
+    setGuidedResponses({});
+    setGptResponse('');
+    setError(null);
+    setActiveTab('content');
+  };
+
   const renderFeatureContent = () => {
     if (!selectedFeature) return null;
 
     const featureQuestions = questions[selectedFeature];
 
     if (!featureQuestions || featureQuestions.length === 0) {
-      return <div>No questions available for this feature.</div>;
+      return <div className="dojo-no-questions">No questions available for this feature.</div>;
     }
 
     return (
@@ -83,15 +93,15 @@ const DojoPage = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="feature-content"
+        className="dojo-feature-content"
       >
-        <h2>{selectedFeature}</h2>
+        <h2 className="dojo-feature-title">{selectedFeature}</h2>
         <input
           type="text"
           placeholder="Enter your name"
           value={userName}
           onChange={(e) => setUserName(e.target.value)}
-          className="name-input"
+          className="dojo-name-input"
         />
         <GuidedQuestions
           questions={featureQuestions}
@@ -102,7 +112,7 @@ const DojoPage = () => {
         />
 
         {loading && (
-          <div className="loading-overlay">
+          <div className="dojo-loading-overlay">
             <Lottie 
               options={{
                 loop: true,
@@ -115,7 +125,7 @@ const DojoPage = () => {
               height={200}
               width={200}
             />
-            <p>Generating your content...</p>
+            <p className="dojo-loading-text">Generating your content...</p>
           </div>
         )}
 
@@ -126,16 +136,27 @@ const DojoPage = () => {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.5 }}
-              className="gpt-response"
+              className="dojo-gpt-response"
             >
-              <h3>Generated {selectedFeature}</h3>
-              <p className="response-text">{gptResponse}</p>
-              <button onClick={handleDownloadPDF} className="download-button">Download as PDF</button>
+              <h3 className="dojo-response-title">Generated {selectedFeature}</h3>
+              <div className="dojo-terminal-window">
+                <div className="dojo-terminal-header">
+                  <span className="dojo-terminal-button"></span>
+                  <span className="dojo-terminal-button"></span>
+                  <span className="dojo-terminal-button"></span>
+                </div>
+                <div className="dojo-terminal-content">
+                  <p className="dojo-response-text">{gptResponse}</p>
+                </div>
+              </div>
+              <button onClick={handleDownloadPDF} className="dojo-download-button">
+                Download as PDF
+              </button>
             </motion.div>
           )}
         </AnimatePresence>
 
-        {error && <p className="error-message">{error}</p>}
+        {error && <p className="dojo-error-message">{error}</p>}
       </motion.div>
     );
   };
@@ -143,14 +164,14 @@ const DojoPage = () => {
   return (
     <div className="dojo-page">
       <Header />
-      <main className="main-content">
+      <main className="dojo-main-content">
         <AnimatePresence>
           {!animationComplete && (
             <motion.div
               initial={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 1 }}
-              className="intro-animation"
+              className="dojo-intro-animation"
             >
               <Lottie 
                 options={{
@@ -173,26 +194,19 @@ const DojoPage = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1 }}
+            className="dojo-content-wrapper"
           >
-            <img src="/images/DojoLogo.svg" alt="Dojo Logo" className="dojo-logo" />
-            <div className="welcome-section">
-              <h1 className="title">Discover Your Path</h1>
-              <p className="subtitle">
-                Unlock Your Tech Potential with Dojo. Experience personalized learning paths,
-                skill assessments, project builders, and career advice from our AI-driven platform.
-                Start mastering real skills today with Dojo.
-              </p>
-            </div>
+            <WelcomeSection />
 
-            <div className="tab-container">
+            <div className="dojo-tab-container">
               <button 
-                className={`tab ${activeTab === 'features' ? 'active' : ''}`} 
+                className={`dojo-tab ${activeTab === 'features' ? 'dojo-active' : ''}`} 
                 onClick={() => setActiveTab('features')}
               >
                 Features
               </button>
               <button 
-                className={`tab ${activeTab === 'content' ? 'active' : ''}`} 
+                className={`dojo-tab ${activeTab === 'content' ? 'dojo-active' : ''}`} 
                 onClick={() => setActiveTab('content')}
               >
                 Generated Content
@@ -200,10 +214,7 @@ const DojoPage = () => {
             </div>
 
             {activeTab === 'features' && (
-              <FeatureGrid onFeatureSelect={(feature) => {
-                setSelectedFeature(feature);
-                setActiveTab('content');
-              }} />
+              <FeatureGrid onFeatureSelect={handleFeatureSelect} />
             )}
 
             {activeTab === 'content' && renderFeatureContent()}
