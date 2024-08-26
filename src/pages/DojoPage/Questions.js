@@ -1,5 +1,5 @@
 export const questions = {
-  learningPath: [
+  "Learning Path": [
     { id: 1, text: "What is your current level of experience?", type: 'dropdown', options: ['Beginner', 'Intermediate', 'Advanced'] },
     { id: 2, text: "How much time can you dedicate weekly to learning?", type: 'dropdown', options: ['Less than 5 hours', '5-10 hours', 'More than 10 hours'] },
     { id: 3, text: "Preferred learning format?", type: 'dropdown', multiple: true, options: ['Videos', 'Articles', 'Interactive Exercises', 'Podcasts', 'Workshops'] },
@@ -13,7 +13,7 @@ export const questions = {
     { id: 11, text: "Are there specific topics or skills you want to learn about?", type: 'text' },
     { id: 12, text: "Do you have any preferred resources or links for learning?", type: 'text' },
   ],
-  skillAssessment: [
+  "Skill Assessment": [
     { id: 1, text: "Which area do you want to assess?", type: 'dropdown', multiple: true, options: ['Web Development', 'Data Science', 'Machine Learning', 'Cybersecurity', 'Cloud Computing', 'DevOps', 'Mobile Development', 'AI/ML', 'Blockchain', 'Networking'] },
     { id: 2, text: "What is your current proficiency level?", type: 'dropdown', options: ['Beginner', 'Intermediate', 'Advanced'] },
     { id: 3, text: "How often do you practice your skills?", type: 'dropdown', options: ['Daily', 'Weekly', 'Monthly', 'Rarely'] },
@@ -24,7 +24,7 @@ export const questions = {
     { id: 8, text: "Do you need feedback on your assessment?", type: 'dropdown', options: ['Yes', 'No'] },
     { id: 9, text: "Are you looking for timed assessments?", type: 'dropdown', options: ['Yes', 'No', 'No preference'] },
   ],
-  projectBuilder: [
+  "Project Builder": [
     { id: 1, text: "What type of project are you interested in?", type: 'dropdown', multiple: true, options: ['Web Application', 'Mobile Application', 'Data Analysis', 'Machine Learning Model', 'Game Development', 'IoT Project', 'Blockchain Application', 'AI/ML Project', 'Cloud Computing', 'DevOps Pipeline'] },
     { id: 2, text: "What is your current skill level?", type: 'dropdown', options: ['Beginner', 'Intermediate', 'Advanced'] },
     { id: 3, text: "What is the goal of your project?", type: 'text' },
@@ -37,7 +37,7 @@ export const questions = {
     { id: 10, text: "Will this project be open source?", type: 'dropdown', options: ['Yes', 'No', 'Not Sure'] },
     { id: 11, text: "Are there specific resources or tools you would like to use?", type: 'text' },
   ],
-  resourceLibrary: [
+  "Resource Library": [
     { id: 1, text: "Preferred resource type?", type: 'dropdown', multiple: true, options: ['Books', 'Articles', 'Video Tutorials', 'Online Courses', 'Webinars', 'Podcasts', 'Cheat Sheets'] },
     { id: 2, text: "Preferred language?", type: 'dropdown', options: ['English', 'Spanish', 'French', 'German', 'Chinese', 'Japanese', 'Other'] },
     { id: 3, text: "What topics are you interested in?", type: 'text' },
@@ -49,7 +49,7 @@ export const questions = {
     { id: 9, text: "Do you prefer short or long resources?", type: 'dropdown', options: ['Short (less than 1 hour)', 'Medium (1-3 hours)', 'Long (more than 3 hours)', 'No preference'] },
     { id: 10, text: "Are there specific resources or links you have found useful?", type: 'text' },
   ],
-  careerAdvice: [
+  "Career Advice": [
     { id: 1, text: "What is your current job role?", type: 'dropdown', options: ['Student', 'Entry-level Professional', 'Mid-level Professional', 'Senior Professional', 'Freelancer', 'Entrepreneur'] },
     { id: 2, text: "What are your career aspirations?", type: 'text' },
     { id: 3, text: "Preferred advice format?", type: 'dropdown', multiple: true, options: ['Articles', 'Videos', 'Mentorship', 'Webinars', 'Workshops'] },
