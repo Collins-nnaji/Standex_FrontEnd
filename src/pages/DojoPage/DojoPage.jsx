@@ -38,15 +38,17 @@ const DojoPage = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ 
-          message: `Generate a ${selectedFeature} based on these responses:\n${JSON.stringify(guidedResponses, null, 2)}`
+        body: JSON.stringify({
+          feature: selectedFeature,
+          questions: questions[selectedFeature].map(q => q.text),
+          responses: questions[selectedFeature].map(q => guidedResponses[q.id])
         }),
       });
-
+  
       if (!response.ok) {
         throw new Error('Failed to generate content');
       }
-
+  
       const data = await response.json();
       setGptResponse(data.response);
     } catch (err) {
@@ -57,7 +59,7 @@ const DojoPage = () => {
   };
 
   const handleDownloadPDF = () => {
-    const pdfBlob = PDFGenerator(userName, JSON.stringify(guidedResponses, null, 2), gptResponse, selectedFeature);
+    const pdfBlob = PDFGenerator(userName, selectedFeature, gptResponse);
     const pdfUrl = URL.createObjectURL(pdfBlob);
     const link = document.createElement('a');
     link.href = pdfUrl;
