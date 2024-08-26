@@ -1,6 +1,6 @@
 import jsPDF from 'jspdf';
 
-const PDFGenerator = (name, prompt, content, topic) => {
+const PDFGenerator = (name, feature, gptResponse) => {
   const doc = new jsPDF();
 
   // Set default font
@@ -12,35 +12,24 @@ const PDFGenerator = (name, prompt, content, topic) => {
   doc.setTextColor(255, 255, 255);
   doc.setFontSize(24);
   doc.setFont('helvetica', 'bold');
-  doc.text(topic, 10, 25);
+  doc.text(feature, 10, 25);
 
   // Add user's name
   doc.setFontSize(12);
   doc.setFont('helvetica', 'normal');
   doc.text(`Prepared for: ${name}`, 10, 45);
 
-  // Add the full prompt section
-  doc.setFillColor(236, 240, 241); // Light gray background
-  doc.roundedRect(10, 55, 190, 40, 3, 3, 'F');
-  doc.setTextColor(52, 73, 94);
+  // Add the GPT response
+  doc.setTextColor(0, 0, 0); // Reset text color to black
   doc.setFontSize(14);
   doc.setFont('helvetica', 'bold');
-  doc.text('Prompt:', 15, 65);
-  doc.setFont('helvetica', 'normal');
-  doc.setFontSize(10);
-  const splitPrompt = doc.splitTextToSize(prompt, 180);
-  doc.text(splitPrompt, 15, 75);
-
-  // Add the content
-  doc.setFontSize(14);
-  doc.setFont('helvetica', 'bold');
-  doc.text(`Generated ${topic}:`, 10, 110);
+  doc.text(`Generated ${feature}:`, 10, 60);
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(10);
 
-  // Split content into lines and add to PDF
-  const contentLines = doc.splitTextToSize(content, 180);
-  let yPosition = 120;
+  // Split GPT response into lines and add to PDF
+  const contentLines = doc.splitTextToSize(gptResponse, 190);
+  let yPosition = 70;
 
   contentLines.forEach(line => {
     if (yPosition > 280) {
